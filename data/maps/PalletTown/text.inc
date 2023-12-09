@@ -10,12 +10,12 @@ PalletTown_Text_OakGrassUnsafeNeedMon::
     .string "I know!\n"
     .string "Here, come with me!$"
 
-PalletTown_Text_RaisingMonsToo::
+PalletTown_Text_Boy::
     .string "I'm raising POKéMON, too.\p"
     .string "When they get strong, they can\n"
     .string "protect me.$"
 
-PalletTown_Text_CanStoreItemsAndMonsInPC::
+PalletTown_Text_FatMan::
     .string "Technology is incredible!\p"
     .string "You can now store and recall items\n"
     .string "and POKéMON as data via PC.$"
