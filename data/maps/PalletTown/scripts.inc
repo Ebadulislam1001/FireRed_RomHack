@@ -1,7 +1,4 @@
-.equ LOCALID_SIGN_LADY, 1
-.equ LOCALID_PROF_OAK,  3
-
-.equ SIGN_LADY_READY, VAR_TEMP_2
+.equ LOCALID_PROF_OAK,  2
 
 PalletTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_OnTransition
