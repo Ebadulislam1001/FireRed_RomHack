@@ -1,14 +1,16 @@
-PalletTown_Text_OakDontGoOut::
-    .string "OAK: Hey! Wait!\n"
-    .string "Don't go out!$"
+PalletTown_Text_DontGoOut::
+    .string "You should not go out,\n"
+    .string "without a POKéMON!$"
 
-PalletTown_Text_OakGrassUnsafeNeedMon::
-    .string "OAK: It's unsafe!\n"
+PalletTown_Text_GrassUnsafeNeedMon::
+    .string "It's unsafe!\n"
     .string "Wild POKéMON live in tall grass!\p"
     .string "You need your own POKéMON for\n"
-    .string "your protection.\p"
-    .string "I know!\n"
-    .string "Here, come with me!$"
+    .string "your protection.$"
+
+PalletTown_Text_GoVisitOak::
+    .string "Go Visit Prof. OAK!\n"
+    .string "He must be back in his Lab by now.$"
 
 PalletTown_Text_Boy::
     .string "I'm raising POKéMON, too.\p"

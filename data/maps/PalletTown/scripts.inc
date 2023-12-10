@@ -1,5 +1,3 @@
-.equ LOCALID_PROF_OAK,  2
-
 PalletTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PalletTown_OnFrame
@@ -141,154 +139,44 @@ PalletTown_Movement_PlayerWalkToLabFromHouse::
 	walk_right
 	step_end
 
-PalletTown_EventScript_OakTriggerLeft::
-	lockall
-	setvar VAR_TEMP_1, 0
-	goto PalletTown_EventScript_OakTrigger
-	end
-
-PalletTown_EventScript_OakTriggerRight::
-	lockall
-	setvar VAR_TEMP_1, 1
-	goto PalletTown_EventScript_OakTrigger
-	end
-
 PalletTown_EventScript_OakTrigger::
 	famechecker FAMECHECKER_OAK, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	textcolor NPC_TEXT_COLOR_MALE
 	delay 30
-	playbgm MUS_OAK, 0
-	message PalletTown_Text_OakDontGoOut
-	waitmessage
-	delay 85
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 30
-	addobject LOCALID_PROF_OAK
-	call_if_eq VAR_TEMP_1, 0, PalletTown_EventScript_OakEnterLeft
-	call_if_eq VAR_TEMP_1, 1, PalletTown_EventScript_OakEnterRight
-	delay 30
-	msgbox PalletTown_Text_OakGrassUnsafeNeedMon
+	msgbox PalletTown_Text_DontGoOut
 	closemessage
 	delay 30
-	call_if_eq VAR_TEMP_1, 0, PalletTown_EventScript_OakLeadPlayerToLabLeft
-	call_if_eq VAR_TEMP_1, 1, PalletTown_EventScript_OakLeadPlayerToLabRight
-	opendoor 16, 13
-	waitdooranim
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakEnterLab
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerEnterLab
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_StopFromLeavingTheTown
 	waitmovement 0
-	closedoor 16, 13
-	waitdooranim
+	msgbox PalletTown_Text_GrassUnsafeNeedMon
+	closemessage
+	delay 30
+	@ making oak available in his lab for the starter scene
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1
 	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
-	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
-	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
-	setflag FLAG_DONT_TRANSITION_MUSIC
-	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, 12
-	waitstate
+	msgbox PalletTown_Text_GoVisitOak
+	closemessage
+	delay 30
+	@setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
+	@setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+	@setflag FLAG_DONT_TRANSITION_MUSIC
+	@warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, 12
+	@waitstate
 	releaseall
 	end
 
-PalletTown_EventScript_OakEnterLeft::
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakEnterLeft
-	waitmovement 0
-	return
 
-PalletTown_EventScript_OakEnterRight::
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakEnterRight
-	waitmovement 0
-	return
-
-PalletTown_EventScript_OakLeadPlayerToLabLeft::
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakWalkToLabLeft
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerWalkToLabLeft
-	waitmovement 0
-	return
-
-PalletTown_EventScript_OakLeadPlayerToLabRight::
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakWalkToLabRight
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerWalkToLabRight
-	waitmovement 0
-	return
-
-PalletTown_Movement_OakEnterLeft::
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	step_end
-
-PalletTown_Movement_OakEnterRight::
-	walk_right
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	step_end
-
-	.macro walk_to_lab
-	walk_left
+PalletTown_Movement_StopFromLeavingTheTown::
 	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	.endm
-
-PalletTown_Movement_OakWalkToLabLeft::
-	walk_down
-	walk_to_lab
-	walk_right
-	walk_in_place_faster_up
-	step_end
-
-PalletTown_Movement_OakWalkToLabRight::
-	walk_down
-	walk_left
-	walk_to_lab
-	walk_right
-	walk_in_place_faster_up
 	step_end
 
 PalletTown_Movement_OakEnterLab::
 	walk_up
 	set_invisible
-	step_end
-
-PalletTown_Movement_PlayerWalkToLabLeft::
-	walk_down
-	walk_down
-	walk_to_lab
-	step_end
-
-PalletTown_Movement_PlayerWalkToLabRight::
-	walk_down
-	walk_down
-	walk_left
-	walk_to_lab
 	step_end
 
 PalletTown_Movement_PlayerEnterLab::

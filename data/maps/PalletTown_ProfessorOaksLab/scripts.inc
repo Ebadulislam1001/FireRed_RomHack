@@ -36,8 +36,9 @@ PalletTown_ProfessorOaksLab_EventScript_SetNationalDexSceneFinished::
 	return
 
 PalletTown_ProfessorOaksLab_EventScript_ReadyOakForStarterScene::
-	setobjectxyperm LOCALID_PROF_OAK, 6, 11
-	setobjectmovementtype LOCALID_PROF_OAK, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PROF_OAK, 6, 3
+	setobjectmovementtype LOCALID_PROF_OAK, MOVEMENT_TYPE_FACE_DOWN
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
 	savebgm MUS_OAK
 	return
 
@@ -207,8 +208,6 @@ PalletTown_ProfessorOaksLab_Movement_OakBringDexesToDeskSouth::
 PalletTown_ProfessorOaksLab_ChooseStarterScene::
 	lockall
 	textcolor NPC_TEXT_COLOR_MALE
-	applymovement LOCALID_PROF_OAK, PalletTown_ProfessorOaksLab_Movement_OakEnter
-	waitmovement 0
 	removeobject LOCALID_PROF_OAK
 	setobjectxyperm LOCALID_PROF_OAK, 6, 3
 	setobjectmovementtype LOCALID_PROF_OAK, MOVEMENT_TYPE_FACE_DOWN
@@ -663,6 +662,7 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene::
 	call EventScript_RestorePrevTextColor
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
+	special EnableNationalPokedex
 	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1
 	msgbox PalletTown_ProfessorOaksLab_Text_OakCatchMonsForDataTakeThese
 	giveitem_msg PalletTown_ProfessorOaksLab_Text_ReceivedFivePokeBalls, ITEM_POKE_BALL, 5
