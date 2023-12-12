@@ -310,7 +310,11 @@
     "PalletTown_PlayersHouse_1F",
     "PalletTown_PlayersHouse_2F",
     "PalletTown_RivalsHouse",
-    "PalletTown_ProfessorOaksLab"
+    "PalletTown_ProfessorOaksLab",
+    "PalletTown_CodersHouse",
+    "PalletTown_School_0F",
+    "PalletTown_School_1F",
+    "PalletTown_School_2F"
   ],
   "gMapGroup_IndoorViridian": [
     "ViridianCity_House",

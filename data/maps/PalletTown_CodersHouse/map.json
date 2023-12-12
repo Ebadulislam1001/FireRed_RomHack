@@ -1,7 +1,7 @@
 {
-  "id": "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
-  "name": "PalletTown_PlayersHouse_2F",
-  "layout": "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F",
+  "id": "MAP_PALLET_TOWN_CODERS_HOUSE",
+  "name": "PalletTown_CodersHouse",
+  "layout": "LAYOUT_PALLET_TOWN_CODERS_HOUSE",
   "music": "MUS_PALLET",
   "region_map_section": "MAPSEC_PALLET_TOWN",
   "requires_flash": false,
@@ -19,11 +19,11 @@
   ],
   "warp_events": [
     {
-      "x": 10,
-      "y": 2,
-      "elevation": 3,
-      "dest_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
-      "dest_warp_id": "2"
+      "x": 8,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_PALLET_TOWN",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [
@@ -33,26 +33,34 @@
     {
       "type": "sign",
       "x": 6,
-      "y": 5,
-      "elevation": 3,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "PalletTown_PlayersHouse_2F_EventScript_NES"
-    },
-    {
-      "type": "sign",
-      "x": 1,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "PalletTown_PlayersHouse_2F_EventScript_PC"
+      "script": "PalletTown_CodersHouse_EventScript_Sign1"
     },
     {
       "type": "sign",
-      "x": 11,
+      "x": 8,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "PalletTown_PlayersHouse_2F_EventScript_Sign"
+      "script": "PalletTown_CodersHouse_EventScript_Sign2"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PalletTown_CodersHouse_EventScript_Sign3"
+    },
+    {
+      "type": "sign",
+      "x": 0,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PalletTown_CodersHouse_EventScript_PC"
     }
   ]
 }

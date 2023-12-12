@@ -12,15 +12,23 @@ PalletTown_Text_GoVisitOak::
     .string "Go Visit Prof. OAK!\n"
     .string "He must be back in his Lab by now.$"
 
-PalletTown_Text_Boy::
-    .string "I'm raising POKéMON, too.\p"
-    .string "When they get strong, they can\n"
-    .string "protect me.$"
-
 PalletTown_Text_FatMan::
     .string "Technology is incredible!\p"
-    .string "You can now store and recall items\n"
-    .string "and POKéMON as data via PC.$"
+    .string "But sometimes, you should take\n"
+    .string "some rest, and touch some grass.$"
+
+PalletTown_Text_Boy::
+    .string "I'm raising POKéMON, too.\p"
+    .string "Do you know that certain POKéMON\n"
+    .string "evolve and get even stronger ?$"
+
+PalletTown_Text_Teacher::
+    .string "If this is your first time\n"
+    .string "playing a POKéMON game,\p"
+    .string "visit the PALLET ACADEMY\n"
+    .string "to learn more about POKéMON.\p"
+    .string "And yes! I just broke the\n"
+    .string "fourth wall! (smirks)$"
 
 PalletTown_Text_OakPokemonResearchLab::
     .string "OAK POKéMON RESEARCH LAB$"
@@ -30,6 +38,14 @@ PalletTown_Text_PlayersHouse::
 
 PalletTown_Text_RivalsHouse::
     .string "{RIVAL}'s house$"
+
+PalletTown_Text_CodersHouse::
+    .string "Coder's house\n"
+    .string "Git Commit, Git Push.$"
+
+PalletTown_Text_SchoolSign::
+    .string "PALLET ACADEMY\n"
+    .string "Learn more about POKéMON!$"
 
 PalletTown_Text_TownSign::
     .string "PALLET TOWN\n"

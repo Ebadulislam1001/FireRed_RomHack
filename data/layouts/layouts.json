@@ -724,7 +724,7 @@
     {
       "id": "LAYOUT_PALLET_TOWN",
       "name": "PalletTown_Layout",
-      "width": 24,
+      "width": 32,
       "height": 20,
       "border_width": 2,
       "border_height": 2,
@@ -4380,6 +4380,54 @@
       "secondary_tileset": "gTileset_MtEmber",
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa/map.bin"
+    },
+    {
+      "id": "LAYOUT_PALLET_TOWN_CODERS_HOUSE",
+      "name": "PalletTown_CodersHouse_Layout",
+      "width": 12,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding1",
+      "border_filepath": "data/layouts/PalletTown_CodersHouse/border.bin",
+      "blockdata_filepath": "data/layouts/PalletTown_CodersHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_PALLET_TOWN_SCHOOL_0F",
+      "name": "PalletTown_School_0F_Layout",
+      "width": 15,
+      "height": 16,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding1",
+      "border_filepath": "data/layouts/PalletTown_School_0F/border.bin",
+      "blockdata_filepath": "data/layouts/PalletTown_School_0F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PALLET_TOWN_SCHOOL_1F",
+      "name": "PalletTown_School_1F_Layout",
+      "width": 15,
+      "height": 15,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding1",
+      "border_filepath": "data/layouts/PalletTown_School_1F/border.bin",
+      "blockdata_filepath": "data/layouts/PalletTown_School_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PALLET_TOWN_SCHOOL_2F",
+      "name": "PalletTown_School_2F_Layout",
+      "width": 15,
+      "height": 15,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding1",
+      "border_filepath": "data/layouts/PalletTown_School_2F/border.bin",
+      "blockdata_filepath": "data/layouts/PalletTown_School_2F/map.bin"
     }
   ]
 }

@@ -193,6 +193,10 @@ PalletTown_EventScript_Boy::
 	msgbox PalletTown_Text_Boy, MSGBOX_NPC
 	end
 
+PalletTown_EventScript_Teacher::
+	msgbox PalletTown_Text_Teacher, MSGBOX_NPC
+	end
+
 PalletTown_EventScript_OaksLabSign::
 	lockall
 	famechecker FAMECHECKER_OAK, 0
@@ -206,6 +210,14 @@ PalletTown_EventScript_PlayersHouseSign::
 
 PalletTown_EventScript_RivalsHouseSign::
 	msgbox PalletTown_Text_RivalsHouse, MSGBOX_SIGN
+	end
+
+PalletTown_EventScript_CodersHouseSign::
+	msgbox PalletTown_Text_CodersHouse, MSGBOX_SIGN
+	end
+
+PalletTown_EventScript_SchoolSign::
+	msgbox PalletTown_Text_SchoolSign, MSGBOX_SIGN
 	end
 
 PalletTown_EventScript_TownSign::
