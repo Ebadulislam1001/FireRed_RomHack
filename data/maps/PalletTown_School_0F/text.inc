@@ -10,18 +10,18 @@ PalletTown_School_0F_Text_Kid2::
     .string "MOVE matches, its power increases.$"
     
 PalletTown_School_0F_Text_Kid3::
-    .string "Grass, Fire, Water, Electric,\n"
-    .string "Ice, Psychic, Dark, Dragon.\p"
-    .string "These are the SPECIAL types.\p"
-    .string "These use Sp.Atk and Sp.Def\n"
-    .string "stats of a POKéMON.$"
-    
-PalletTown_School_0F_Text_Kid4::
     .string "Normal, Ground, Flying, Rock,\n"
     .string "Steel, Fighting, Poison, Bug,\p"
     .string "and Ghost.\n"
     .string "These are the PHYSICAL types.\p"
     .string "These use Ph.Atk and Ph.Def\n"
+    .string "stats of a POKéMON.$"
+    
+PalletTown_School_0F_Text_Kid4::
+    .string "Grass, Fire, Water, Electric,\n"
+    .string "Ice, Psychic, Dark, Dragon.\p"
+    .string "These are the SPECIAL types.\p"
+    .string "These use Sp.Atk and Sp.Def\n"
     .string "stats of a POKéMON.$"
     
 PalletTown_School_0F_Text_Kid5::
