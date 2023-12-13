@@ -1,8 +1,8 @@
 ViridianCity_Text_CanCarryMonsAnywhere::
-    .string "Those POKé BALLS at your waist!\n"
-    .string "You have POKéMON, don't you?\p"
-    .string "It's great that you can carry and\n"
-    .string "use POKéMON anytime, anywhere.$"
+    .string "You can catch POKéMON using\n"
+    .string "POKéBALLS. It's great that\p"
+    .string "you can carry and use POKéMON\n"
+    .string "anytime, anywhere.$"
 
 ViridianCity_Text_GymClosedWonderWhoLeaderIs::
     .string "This POKéMON GYM is always closed.\p"
@@ -19,10 +19,11 @@ ViridianCity_Text_OhOkayThen::
     .string "Oh, okay then!$"
 
 ViridianCity_Text_ExplainCaterpieWeedle::
-    .string "CATERPIE has no poison,\n"
-    .string "but WEEDLE does.\p"
-    .string "Watch that your POKéMON aren't\n"
-    .string "stabbed by WEEDLE's POISON STING.$"
+    .string "CATERPIE evolves into METAPOD,\n"
+    .string "starting from Lv 10, and\p"
+    .string "WEEDLE evolves into KAKUNA,\n"
+    .string "starting from Lv 10, and\p"
+    .string "then further evoles at Lv 15.$"
 
 ViridianCity_Text_GrandpaHasntHadCoffeeYet::
     .string "Oh, Grandpa!\n"
