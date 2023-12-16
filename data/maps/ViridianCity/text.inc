@@ -22,8 +22,9 @@ ViridianCity_Text_ExplainCaterpieWeedle::
     .string "CATERPIE evolves into METAPOD,\n"
     .string "starting from Lv 10, and\p"
     .string "WEEDLE evolves into KAKUNA,\n"
-    .string "starting from Lv 10, and\p"
-    .string "then further evoles at Lv 15.$"
+    .string "starting from Lv 10, and then\p"
+    .string "they further evoles at Lv 15.\n"
+    .string "Cool. isn't it ?$"
 
 ViridianCity_Text_GrandpaHasntHadCoffeeYet::
     .string "Oh, Grandpa!\n"

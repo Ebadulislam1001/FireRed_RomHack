@@ -28,7 +28,7 @@ PewterCity_Text_ClefairyCameFromMoon::
 
 PewterCity_Text_BrockOnlySeriousTrainerHere::
     .string "There aren't many serious POKéMON\n"
-    .string "TRAINERS here.\p"
+    .string "TRAINERS around here.\p"
     .string "They're all like BUG CATCHERS,\n"
     .string "you know, just hobbyists.\p"
     .string "But PEWTER GYM's BROCK isn't like\n"
