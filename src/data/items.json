@@ -1507,7 +1507,7 @@
     {
       "english": "MOON STONE",
       "itemId": "ITEM_MOON_STONE",
-      "price": 0,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A peculiar stone that makes certain\\nspecies of POKéMON evolve.\\nIt is as black as the night sky.",
@@ -3187,7 +3187,7 @@
     {
       "english": "METAL COAT",
       "itemId": "ITEM_METAL_COAT",
-      "price": 100,
+      "price": 2500,
       "holdEffect": "HOLD_EFFECT_STEEL_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA special metallic film that boosts\\nthe power of STEEL-type moves.",
