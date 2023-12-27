@@ -216,7 +216,6 @@ AI_CheckBadMove_CheckEffect::
 AI_CBM_Sleep::
 	get_ability AI_TARGET
 	if_equal ABILITY_INSOMNIA, Score_Minus10
-	if_equal ABILITY_VITAL_SPIRIT, Score_Minus10
 	if_status AI_TARGET, STATUS1_ANY, Score_Minus10
 @	if_side_affecting AI_TARGET, SIDE_STATUS_SAFEGUARD, Score_Minus10  @ Improvement in Emerald
 	end
@@ -2503,6 +2502,7 @@ AI_CV_ChangeSelfAbility_End::
 AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_SPEED_BOOST
 	.byte ABILITY_BATTLE_ARMOR
+	.byte ABILITY_SHELL_ARMOR
 	.byte ABILITY_SAND_VEIL
 	.byte ABILITY_STATIC
 	.byte ABILITY_FLASH_FIRE

@@ -1,3 +1,17 @@
+PewterCity_Text_DontGoOut::
+    .string "Wait, wait, wait!\n"
+    .string "What are you doing?$"
+
+PewterCity_Text_GoVisitBrock::
+    .string "To become a POKéMON champion, you\n"
+    .string "have to defeat the POKéMON league.\p"
+    .string "And to take part in the POKéMON\n"
+    .string "league, you have to gather the\p"
+    .string "gym badges, and for that you have\n"
+    .string "to defeat the gym leaders first.\p"
+    .string "Go visit Brock, the Pewter City\n"
+    .string "gym leader!$"
+
 Text_DreamEaterTeach::
     .string "Yawn!\n"
     .string "I must have dozed off in the sun.\p"

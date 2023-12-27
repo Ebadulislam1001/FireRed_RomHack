@@ -35,6 +35,7 @@
 const struct SpeciesInfo gSpeciesInfo[] =
 {
     [SPECIES_NONE] = {0},
+    
     [SPECIES_BULBASAUR] =
     {
         .baseHP = 45,

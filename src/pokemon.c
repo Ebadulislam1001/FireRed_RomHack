@@ -2435,10 +2435,20 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     }
 
     if (attacker->ability == ABILITY_HUGE_POWER)
-        attack *= 2;
+        attack = attack * 3;
+        attack = attack / 2;
 
     if (attacker->ability == ABILITY_PURE_POWER)
-        spAttack *= 2;
+        spAttack = spAttack * 3;
+        spAttack = spAttack / 2;
+    
+    if (attacker->ability == ABILITY_BATTLE_ARMOR)
+        defense = defense * 3;
+        defense = defense / 2;
+
+    if (attacker->ability == ABILITY_SHELL_ARMOR)
+        spDefense = spDefense * 3;
+        spDefense = spDefense / 2;
 
     if (ShouldGetStatBadgeBoost(FLAG_BADGE01_GET, battlerIdAtk))
         attack = (110 * attack) / 100;
@@ -2496,13 +2506,15 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         gBattleMovePower /= 2;
     if (type == TYPE_FIRE && AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_WATER_SPORT, 0))
         gBattleMovePower /= 2;
-    if (type == TYPE_GRASS && attacker->ability == ABILITY_OVERGROW && attacker->hp <= (attacker->maxHP / 3))
+    if (type == TYPE_GRASS && attacker->ability == ABILITY_OVERGROW && attacker->hp <= (attacker->maxHP / 2))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
-    if (type == TYPE_FIRE && attacker->ability == ABILITY_BLAZE && attacker->hp <= (attacker->maxHP / 3))
+    if (type == TYPE_FIRE && attacker->ability == ABILITY_BLAZE && attacker->hp <= (attacker->maxHP / 2))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
-    if (type == TYPE_WATER && attacker->ability == ABILITY_TORRENT && attacker->hp <= (attacker->maxHP / 3))
+    if (type == TYPE_WATER && attacker->ability == ABILITY_TORRENT && attacker->hp <= (attacker->maxHP / 2))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
-    if (type == TYPE_BUG && attacker->ability == ABILITY_SWARM && attacker->hp <= (attacker->maxHP / 3))
+    if (type == TYPE_BUG && attacker->ability == ABILITY_SWARM && attacker->hp <= (attacker->maxHP / 2))
+        gBattleMovePower = (150 * gBattleMovePower) / 100;
+    if (type == TYPE_FIGHTING && attacker->ability == ABILITY_VITAL_SPIRIT && attacker->hp <= (attacker->maxHP / 2))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
 
     // Self-destruct / Explosion cut defense in half

@@ -1034,7 +1034,6 @@ u8 DoBattlerEndTurnEffects(void)
                 {
                     gStatuses3[gActiveBattler] -= STATUS3_YAWN_TURN(1);
                     if (!(gStatuses3[gActiveBattler] & STATUS3_YAWN) && !(gBattleMons[gActiveBattler].status1 & STATUS1_ANY)
-                     && gBattleMons[gActiveBattler].ability != ABILITY_VITAL_SPIRIT
                      && gBattleMons[gActiveBattler].ability != ABILITY_INSOMNIA && !UproarWakeUpCheck(gActiveBattler))
                     {
                         CancelMultiTurnMoves(gActiveBattler);
@@ -2111,7 +2110,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     }
                     break;
                 case ABILITY_INSOMNIA:
-                case ABILITY_VITAL_SPIRIT:
                     if (gBattleMons[battler].status1 & STATUS1_SLEEP)
                     {
                         gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
@@ -3216,7 +3214,7 @@ u8 IsMonDisobedient(void)
         obedienceLevel = gBattleMons[gBattlerAttacker].level - obedienceLevel;
 
         calc = (Random() & 255);
-        if (calc < obedienceLevel && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_ANY) && gBattleMons[gBattlerAttacker].ability != ABILITY_VITAL_SPIRIT && gBattleMons[gBattlerAttacker].ability != ABILITY_INSOMNIA)
+        if (calc < obedienceLevel && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_ANY) && gBattleMons[gBattlerAttacker].ability != ABILITY_INSOMNIA)
         {
             // try putting asleep
             int i;

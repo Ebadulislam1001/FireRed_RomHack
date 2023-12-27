@@ -149,7 +149,6 @@ PalletTown_EventScript_OakTrigger::
 	msgbox PalletTown_Text_DontGoOut
 	closemessage
 	delay 30
-	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_StopFromLeavingTheTown
 	waitmovement 0
 	msgbox PalletTown_Text_GrassUnsafeNeedMon
