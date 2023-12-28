@@ -310,7 +310,6 @@ AI_CBM_EvasionDown::
 CheckIfAbilityBlocksStatChange::
 	get_ability AI_TARGET
 	if_equal ABILITY_CLEAR_BODY, Score_Minus10
-	if_equal ABILITY_WHITE_SMOKE, Score_Minus10
 	end
 
 AI_CBM_Haze::
@@ -2506,6 +2505,8 @@ AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_BATTLE_ARMOR
 	.byte ABILITY_SHELL_ARMOR
 	.byte ABILITY_SAND_VEIL
+	.byte ABILITY_MINUS
+	.byte ABILITY_WHITE_SMOKE
 	.byte ABILITY_STATIC
 	.byte ABILITY_FLASH_FIRE
 	.byte ABILITY_WONDER_GUARD

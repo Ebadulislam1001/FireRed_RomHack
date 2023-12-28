@@ -309,7 +309,7 @@ const u8 gOddishPokedexTextUnused[] = _("");
 const u8 gGloomPokedexText[] = _(
     "Its pistils exude an incredibly foul odor.\n"
     "The horrid stench can cause fainting at a\n"
-    "distance of 1.25 miles.");
+    "distance of 8 miles.");
 
 const u8 gGloomPokedexTextUnused[] = _("");
 
