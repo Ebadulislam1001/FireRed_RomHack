@@ -2186,6 +2186,8 @@ AI_CV_SunnyDay::
 	if_equal AI_WEATHER_HAIL, AI_CV_SunnyDay2
 	if_equal AI_WEATHER_RAIN, AI_CV_SunnyDay2
 	if_equal AI_WEATHER_SANDSTORM, AI_CV_SunnyDay2
+	get_ability AI_USER
+	if_equal ABILITY_CLOUD_NINE, AI_CV_SunnyDay2
 	goto AI_CV_SunnyDay_End
 
 AI_CV_SunnyDay2::
@@ -2511,6 +2513,7 @@ AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_SWIFT_SWIM
 	.byte ABILITY_HUGE_POWER
 	.byte ABILITY_RAIN_DISH
+	.byte ABILITY_CLOUD_NINE
 	.byte ABILITY_CUTE_CHARM
 	.byte ABILITY_SHED_SKIN
 	.byte ABILITY_MARVEL_SCALE

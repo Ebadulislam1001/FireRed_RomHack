@@ -1050,12 +1050,12 @@
             "mons": [
               {
                 "min_level": 4,
-                "max_level": 5,
+                "max_level": 7,
                 "species": "SPECIES_CATERPIE"
               },
               {
                 "min_level": 4,
-                "max_level": 5,
+                "max_level": 7,
                 "species": "SPECIES_WEEDLE"
               },
               {
@@ -1069,14 +1069,14 @@
                 "species": "SPECIES_KAKUNA"
               },
               {
-                "min_level": 6,
+                "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_CATERPIE"
+                "species": "SPECIES_LEDYBA"
               },
               {
-                "min_level": 6,
+                "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_WEEDLE"
+                "species": "SPECIES_SPINARAK"
               },
               {
                 "min_level": 4,
