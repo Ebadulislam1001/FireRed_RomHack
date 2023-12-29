@@ -1067,13 +1067,13 @@ static void Cmd_accuracycheck(void)
         calc /= sAccuracyStageRatios[buff].divisor;
 
         if (gBattleMons[gBattlerAttacker].ability == ABILITY_COMPOUND_EYES)
-            calc = (calc * 130) / 100; // 30% compound eyes boost
+            calc = (calc * 125) / 100; // 30% compound eyes boost
         if (gBattleMons[gBattlerTarget].ability == ABILITY_WHITE_SMOKE)
-            calc = (calc * 70) / 100; // 30% white loss
+            calc = (calc * 75) / 100; // 20% white loss
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SAND_VEIL && gBattleWeather & B_WEATHER_SANDSTORM)
             calc = (calc * 50) / 100; // 50% sand veil loss
-        if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_MINUS && gBattleWeather & B_WEATHER_RAIN)
-            calc = (calc * 50) / 100; // 50% pluviophile(minus) loss
+        if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_MINUS && gBattleWeather & B_WEATHER_HAIL)
+            calc = (calc * 50) / 100; // 50% snow cloak (minus) loss
         if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_TYPE_PHYSICAL(type))
             calc = (calc * 80) / 100; // 20% hustle loss
 
@@ -7247,6 +7247,7 @@ static void Cmd_weatherdamage(void)
         if (gBattleWeather & B_WEATHER_HAIL)
         {
             if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_ICE)
+                && gBattleMons[gBattlerAttacker].ability != ABILITY_MINUS   
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
             {
