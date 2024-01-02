@@ -1177,6 +1177,7 @@ static void Cmd_get_ability(void)
             }
             else
             {
+                // AI knows opponent's ability, cause it can have only one ability.
                 AI_THINKING_STRUCT->funcResult = gSpeciesInfo[gBattleMons[battlerId].species].abilities[0];
             }
         }

@@ -2997,7 +2997,7 @@
       "itemId": "ITEM_KINGS_ROCK",
       "price": 100,
       "holdEffect": "HOLD_EFFECT_FLINCH",
-      "holdEffectParam": 10,
+      "holdEffectParam": 20,
       "description_english": "An item to be held by a POKéMON.\\nIt may cause the foe to flinch\\nupon taking damage.",
       "importance": 0,
       "registrability": 0,
