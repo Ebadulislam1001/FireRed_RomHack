@@ -2472,9 +2472,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_AIPOM] =
     {
-        .categoryName = _("LONG TAIL"),
-        .height = 8,
-        .weight = 115,
+        .categoryName = _("WARRIOR"),
+        .height = 20,
+        .weight = 1000,
         .description = gAipomPokedexText,
         .unusedDescription = gAipomPokedexTextUnused,
         .pokemonScale = 363,

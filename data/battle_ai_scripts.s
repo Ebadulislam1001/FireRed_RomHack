@@ -286,8 +286,7 @@ AI_CBM_DefenseDown::
 
 AI_CBM_SpeedDown::
 	if_stat_level_equal AI_TARGET, STAT_SPEED, 0, Score_Minus10
-@	get_ability AI_TARGET  @ Improvement in Emerald
-@	if_equal ABILITY_SPEED_BOOST, Score_Minus10
+	if_equal ABILITY_STENCH, Score_Minus10
 	goto CheckIfAbilityBlocksStatChange
 
 AI_CBM_SpAtkDown::

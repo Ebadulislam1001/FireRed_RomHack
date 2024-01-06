@@ -1332,9 +1332,9 @@ const u8 gJumpluffPokedexText[] = _(
 const u8 gJumpluffPokedexTextUnused[] = _("");
 
 const u8 gAipomPokedexText[] = _(
-    "Its tail is so powerful that it can use it\n"
-    "to grab a tree branch and hold itself up\n"
-    "in the air.");
+    "Also known as the \"Dragon Warrior\",\n"
+    "Legends speak of this Pokémon having a\n"
+    "deep connection with the natural elements.\n");
 
 const u8 gAipomPokedexTextUnused[] = _("");
 

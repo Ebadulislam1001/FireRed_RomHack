@@ -16441,62 +16441,62 @@
               {
                 "min_level": 2,
                 "max_level": 5,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_GOLDEEN"
               },
               {
                 "min_level": 2,
                 "max_level": 5,
-                "species": "SPECIES_TANGELA"
-              },
-              {
-                "min_level": 2,
-                "max_level": 3,
-                "species": "SPECIES_MARILL"
-              },
-              {
-                "min_level": 4,
-                "max_level": 5,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_GOLDEEN"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_GOLDEEN"
               },
               {
                 "min_level": 4,
                 "max_level": 5,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 5,
+                "species": "SPECIES_GOLDEEN"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_AIPOM"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_AIPOM"
               },
               {
                 "min_level": 4,
                 "max_level": 4,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_AIPOM"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_AIPOM"
               },
               {
                 "min_level": 4,
                 "max_level": 4,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_AIPOM"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_TANGELA"
+                "species": "SPECIES_AIPOM"
               }
             ]
           }

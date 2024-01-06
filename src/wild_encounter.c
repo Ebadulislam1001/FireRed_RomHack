@@ -339,8 +339,6 @@ static u8 GetAbilityEncounterRateModType(void)
         u8 ability = GetMonAbility(&gPlayerParty[0]);
         if (ability == ABILITY_STENCH)
             sWildEncounterData.abilityEffect = 1;
-        else if (ability == ABILITY_ILLUMINATE)
-            sWildEncounterData.abilityEffect = 2;
     }
     return sWildEncounterData.abilityEffect;
 }

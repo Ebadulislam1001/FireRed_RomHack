@@ -1334,9 +1334,9 @@ const u8 gJumpluffPokedexText[] = _(
 const u8 gJumpluffPokedexTextUnused[] = _("");
 
 const u8 gAipomPokedexText[] = _(
-    "It lives atop tall trees. When leaping\n"
-    "from branch to branch, it deftly uses its\n"
-    "tail for balance.");
+    "Also known as the Dragon Warrior,\n"
+    "Legends speak of this Pokémon having a\n"
+    "deep connection with the nature.\n");
 
 const u8 gAipomPokedexTextUnused[] = _("");
 
