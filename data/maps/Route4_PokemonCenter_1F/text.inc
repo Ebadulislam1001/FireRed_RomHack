@@ -10,23 +10,23 @@ Route4_PokemonCenter_1F_Text_TeamRocketAttacksCerulean::
     .string "Not a day goes by without TEAM\n"
     .string "ROCKET being in the news.$"
 
-Route4_PokemonCenter_1F_Text_LaddieBuyMagikarpForJust500::
+Route4_PokemonCenter_1F_Text_LaddieBuyMagikarpForJust10000::
     .string "MAN: Hello there, laddie!\n"
     .string "Have I got a deal just for you!\p"
     .string "I'll let you have a secret POKéMON\n"
-    .string "- a MAGIKARP - for just ¥500!\p"
+    .string "- a FEEBAS - for just ¥10000!\p"
     .string "So, you'll buy it, am I right?$"
 
-Route4_PokemonCenter_1F_Text_SweetieBuyMagikarpForJust500::
+Route4_PokemonCenter_1F_Text_SweetieBuyMagikarpForJust10000::
     .string "MAN: Hello there, sweetie pie!\n"
     .string "Have I got a deal just for you!\p"
     .string "I'll let you have a secret POKéMON\n"
-    .string "- a MAGIKARP - for just ¥500!\p"
+    .string "- a FEEBAS - for just ¥10000!\p"
     .string "So, you'll buy it, am I right?$"
 
 Route4_PokemonCenter_1F_Text_PaidOutrageouslyForMagikarp::
-    .string "{PLAYER} paid an outrageous ¥500\n"
-    .string "and bought the MAGIKARP…$"
+    .string "{PLAYER} paid an outrageous ¥10000\n"
+    .string "and bought the FEEBAS…$"
 
 Route4_PokemonCenter_1F_Text_OnlyDoingThisAsFavorToYou::
     .string "No? You say no? I'm only doing this\n"

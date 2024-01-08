@@ -16441,62 +16441,62 @@
               {
                 "min_level": 2,
                 "max_level": 5,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_VAPOREON"
               },
               {
                 "min_level": 2,
                 "max_level": 5,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 2,
-                "max_level": 3,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 4,
-                "max_level": 5,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_JOLTEON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_FLAREON"
               },
               {
                 "min_level": 4,
                 "max_level": 5,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_FLAREON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_ESPEON"
+              },
+              {
+                "min_level": 4,
+                "max_level": 5,
+                "species": "SPECIES_UMBREON"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_AIPOM"
+                "species": "SPECIES_ESPEON"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_AIPOM"
+                "species": "SPECIES_UMBREON"
               },
               {
                 "min_level": 4,
                 "max_level": 4,
-                "species": "SPECIES_AIPOM"
+                "species": "SPECIES_ESPEON"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_AIPOM"
+                "species": "SPECIES_UMBREON"
               },
               {
                 "min_level": 4,
                 "max_level": 4,
-                "species": "SPECIES_AIPOM"
+                "species": "SPECIES_ESPEON"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_AIPOM"
+                "species": "SPECIES_UMBREON"
               }
             ]
           }

@@ -825,9 +825,9 @@ const u8 gSeadraPokedexText[] = _(
 const u8 gSeadraPokedexTextUnused[] = _("");
 
 const u8 gGoldeenPokedexText[] = _(
-    "Its dorsal and pectoral fins are strongly\n"
-    "developed like muscles. It can swim at a\n"
-    "speed of five knots.");
+    "This adorably small and loyal Pokémon,\n"
+    "captures the hearts of trainers withs\n"
+    "its charming appearance and devotion.");
 
 const u8 gGoldeenPokedexTextUnused[] = _("");
 
@@ -2230,9 +2230,9 @@ const u8 gGulpinPokedexText[] = _(
 const u8 gGulpinPokedexTextUnused[] = _("");
 
 const u8 gSwalotPokedexText[] = _(
-    "It can swallow a tire whole in one gulp.\n"
-    "It secretes a horribly toxic fluid from\n"
-    "the pores on its body.");
+    "There is nothing its stomach can't digest.\n"
+    "While it is digesting, vile, overpowering\n"
+    "gases are expelled.");
 
 const u8 gSwalotPokedexTextUnused[] = _("");
 

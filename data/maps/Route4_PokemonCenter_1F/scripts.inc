@@ -1,4 +1,4 @@
-.equ MAGIKARP_PRICE, 500
+.equ FEEBAS_PRICE, 10000
 
 Route4_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route4_PokemonCenter_1F_OnTransition
@@ -31,22 +31,22 @@ Route4_PokemonCenter_1F_EventScript_MagikarpSalesman::
 	end
 
 Route4_PokemonCenter_1F_EventScript_AskBuyMagikarpMale::
-	msgbox Route4_PokemonCenter_1F_Text_LaddieBuyMagikarpForJust500, MSGBOX_YESNO
+	msgbox Route4_PokemonCenter_1F_Text_LaddieBuyMagikarpForJust10000, MSGBOX_YESNO
 	goto Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp
 	end
 
 Route4_PokemonCenter_1F_EventScript_AskBuyMagikarpFemale::
-	msgbox Route4_PokemonCenter_1F_Text_SweetieBuyMagikarpForJust500, MSGBOX_YESNO
+	msgbox Route4_PokemonCenter_1F_Text_SweetieBuyMagikarpForJust10000, MSGBOX_YESNO
 	goto Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp
 	end
 
 Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp::
 	goto_if_eq VAR_RESULT, NO, Route4_PokemonCenter_1F_EventScript_DeclineMagikarp
-	checkmoney MAGIKARP_PRICE
+	checkmoney FEEBAS_PRICE
 	goto_if_eq VAR_RESULT, FALSE, Route4_PokemonCenter_1F_EventScript_NotEnoughMoney
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	setvar VAR_TEMP_1, SPECIES_MAGIKARP
-	givemon SPECIES_MAGIKARP, 5
+	setvar VAR_TEMP_1, SPECIES_FEEBAS
+	givemon SPECIES_FEEBAS, 5
 	goto_if_eq VAR_RESULT, 0, Route4_PokemonCenter_1F_EventScript_BuyMagikarpParty
 	goto_if_eq VAR_RESULT, 1, Route4_PokemonCenter_1F_EventScript_BuyMagikarpPC
 	goto_if_eq VAR_RESULT, 2, Route4_PokemonCenter_1F_EventScript_NoRoomForMagikarp
@@ -98,13 +98,13 @@ Route4_PokemonCenter_1F_EventScript_BoughtMagikarp::
 	end
 
 Route4_PokemonCenter_1F_EventScript_PayForMagikarp::
-	removemoney MAGIKARP_PRICE
+	removemoney FEEBAS_PRICE
 	updatemoneybox
 	playfanfare MUS_LEVEL_UP
 	message Route4_PokemonCenter_1F_Text_PaidOutrageouslyForMagikarp
 	waitmessage
 	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_MAGIKARP
+	bufferspeciesname STR_VAR_1, SPECIES_FEEBAS
 	return
 
 Route4_PokemonCenter_1F_EventScript_DeclineMagikarp::
