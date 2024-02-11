@@ -92,11 +92,24 @@ static const struct MenuAction sMultichoiceList_HOF_Eggs_Victories_Quit[] = {
 };
 
 static const struct MenuAction sMultichoiceList_TrainerSchoolWhiteboard[] = {
-    { gText_Slp },
-    { gText_Psn },
-    { gText_Par },
-    { gText_Brn },
-    { gText_Frz },
+    
+    {gText_T_Normal},
+    {gText_T_Fire},
+    {gText_T_Water},
+    {gText_T_Electric},
+    {gText_T_Grass},
+    {gText_T_Ice},
+    {gText_T_Fighting},
+    {gText_T_Poison},
+    {gText_T_Ground},
+    {gText_T_Flying},
+    {gText_T_Psychic},
+    {gText_T_Bug},
+    {gText_T_Rock},
+    {gText_T_Ghost},
+    {gText_T_Dragon},
+    {gText_T_Dark},
+    {gText_T_Steel},
     { gOtherText_Exit }
 };
 

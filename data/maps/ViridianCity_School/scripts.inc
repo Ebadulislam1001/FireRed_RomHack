@@ -1,5 +1,6 @@
 .set LOCALID_WOMAN, 1
 .set LOCALID_LASS,  2
+.set LOCALID_BOY,   3
 
 ViridianCity_School_MapScripts::
 	.byte 0
@@ -14,6 +15,16 @@ ViridianCity_School_EventScript_Lass::
 	release
 	end
 
+ViridianCity_School_EventScript_Boy::
+	lock
+	faceplayer
+	msgbox ViridianCity_School_Text_TryingToMemorizeNotes
+	closemessage
+	applymovement LOCALID_BOY, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	release
+	end
+
 ViridianCity_School_EventScript_Woman::
 	lock
 	faceplayer
@@ -24,18 +35,24 @@ ViridianCity_School_EventScript_Woman::
 	release
 	end
 
-ViridianCity_School_EventScript_Notebook::
+ViridianCity_School_EventScript_GirlsNotebook::
 	lockall
-	msgbox ViridianCity_School_Text_NotebookFirstPage
+	msgbox ViridianCity_School_Text_GirlsNotebookFirstPage
 	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingNotebook
-	msgbox ViridianCity_School_Text_NotebookSecondPage
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingGirlsNotebook
+	msgbox ViridianCity_School_Text_GirlsNotebookSecondPage
 	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingNotebook
-	msgbox ViridianCity_School_Text_NotebookThirdPage
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingGirlsNotebook
+	msgbox ViridianCity_School_Text_GirlsNotebookThirdPage
 	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingNotebook
-	msgbox ViridianCity_School_Text_NotebookFourthPage
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingGirlsNotebook
+	msgbox ViridianCity_School_Text_GirlsNotebookFourthPage
+	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingGirlsNotebook
+	msgbox ViridianCity_School_Text_GirlsNotebookFifthPage
+	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingGirlsNotebook
+	msgbox ViridianCity_School_Text_GirlsNotebookSixthPage
 	applymovement LOCALID_LASS, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_FEMALE
@@ -43,13 +60,36 @@ ViridianCity_School_EventScript_Notebook::
 	releaseall
 	end
 
-ViridianCity_School_EventScript_StopReadingNotebook::
+ViridianCity_School_EventScript_StopReadingGirlsNotebook::
+	releaseall
+	end
+
+ViridianCity_School_EventScript_BoysNotebook::
+	lockall
+	msgbox ViridianCity_School_Text_BoysNotebookFirstPage
+	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingBoysNotebook
+	msgbox ViridianCity_School_Text_BoysNotebookSecondPage
+	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingBoysNotebook
+	msgbox ViridianCity_School_Text_BoysNotebookThirdPage
+	msgbox ViridianCity_School_Text_TurnThePage, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ViridianCity_School_EventScript_StopReadingBoysNotebook
+	msgbox ViridianCity_School_Text_BoysNotebookFourthPage
+	applymovement LOCALID_BOY, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox ViridianCity_School_Text_HeyDontLookAtMyNotes
+	releaseall
+	end
+
+ViridianCity_School_EventScript_StopReadingBoysNotebook::
 	releaseall
 	end
 
 ViridianCity_School_EventScript_Blackboard::
 	lockall
-	msgbox ViridianCity_School_Text_BlackboardListsStatusProblems
+	msgbox ViridianCity_School_Text_BlackboardListsTypeEffects
 	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
 	end
 
@@ -58,37 +98,109 @@ ViridianCity_School_EventScript_ChooseBlackboardTopic::
 	waitmessage
 	multichoicegrid 7, 1, MULTICHOICE_TRAINER_SCHOOL_WHITEBOARD, 3, FALSE
 	switch VAR_RESULT
-	case 0, ViridianCity_School_EventScript_ReadSleep
-	case 1, ViridianCity_School_EventScript_ReadPoison
-	case 2, ViridianCity_School_EventScript_ReadParalysis
-	case 3, ViridianCity_School_EventScript_ReadBurn
-	case 4, ViridianCity_School_EventScript_ReadFreeze
-	case 5, ViridianCity_School_EventScript_ExitBlackboard
+	case 0, ViridianCity_School_EventScript_DescribeNormal
+	case 1, ViridianCity_School_EventScript_DescribeFire
+	case 2, ViridianCity_School_EventScript_DescribeWater
+	case 3, ViridianCity_School_EventScript_DescribeElectric
+	case 4, ViridianCity_School_EventScript_DescribeGrass
+	case 5, ViridianCity_School_EventScript_DescribeIce
+	case 6, ViridianCity_School_EventScript_DescribeFighting
+	case 7, ViridianCity_School_EventScript_DescribePoison
+	case 8, ViridianCity_School_EventScript_DescribeGround
+	case 9, ViridianCity_School_EventScript_DescribeFlying
+	case 10, ViridianCity_School_EventScript_DescribePsychic
+	case 11, ViridianCity_School_EventScript_DescribeBug
+	case 12, ViridianCity_School_EventScript_DescribeRock
+	case 13, ViridianCity_School_EventScript_DescribeGhost
+	case 14, ViridianCity_School_EventScript_DescribeDragon
+	case 15, ViridianCity_School_EventScript_DescribeDark
+	case 16, ViridianCity_School_EventScript_DescribeSteel
+	case 17 ViridianCity_School_EventScript_ExitBlackboard
 	case 127, ViridianCity_School_EventScript_ExitBlackboard
 	end
 
-ViridianCity_School_EventScript_ReadSleep::
-	msgbox ViridianCity_School_Text_ExplainSleep
+ViridianCity_School_EventScript_DescribeNormal::
+	msgbox ViridianCity_School_Text_Normal
 	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
 	end
 
-ViridianCity_School_EventScript_ReadBurn::
-	msgbox ViridianCity_School_Text_ExplainBurn
+ViridianCity_School_EventScript_DescribeFire::
+	msgbox ViridianCity_School_Text_Fire
 	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
 	end
 
-ViridianCity_School_EventScript_ReadPoison::
-	msgbox ViridianCity_School_Text_ExplainPoison
+ViridianCity_School_EventScript_DescribeWater::
+	msgbox ViridianCity_School_Text_Water
 	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
 	end
 
-ViridianCity_School_EventScript_ReadFreeze::
-	msgbox ViridianCity_School_Text_ExplainFreeze
+ViridianCity_School_EventScript_DescribeElectric::
+	msgbox ViridianCity_School_Text_Electric
 	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
 	end
 
-ViridianCity_School_EventScript_ReadParalysis::
-	msgbox ViridianCity_School_Text_ExplainParalysis
+ViridianCity_School_EventScript_DescribeGrass::
+	msgbox ViridianCity_School_Text_Grass
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeIce::
+	msgbox ViridianCity_School_Text_Ice
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeFighting::
+	msgbox ViridianCity_School_Text_Fighting
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribePoison::
+	msgbox ViridianCity_School_Text_Poison
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeGround::
+	msgbox ViridianCity_School_Text_Ground
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeFlying::
+	msgbox ViridianCity_School_Text_Flying
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribePsychic::
+	msgbox ViridianCity_School_Text_Psychic
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeBug::
+	msgbox ViridianCity_School_Text_Bug
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeRock::
+	msgbox ViridianCity_School_Text_Rock
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeGhost::
+	msgbox ViridianCity_School_Text_Ghost
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeDragon::
+	msgbox ViridianCity_School_Text_Dragon
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeDark::
+	msgbox ViridianCity_School_Text_Dark
+	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
+	end
+
+ViridianCity_School_EventScript_DescribeSteel::
+	msgbox ViridianCity_School_Text_Steel
 	goto ViridianCity_School_EventScript_ChooseBlackboardTopic
 	end
 

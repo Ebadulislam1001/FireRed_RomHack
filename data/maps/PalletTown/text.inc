@@ -1,24 +1,19 @@
-PalletTown_Text_OakDontGoOut::
-    .string "OAK: Hey! Wait!\n"
-    .string "Don't go out!$"
+PalletTown_Text_DontGoOut::
+    .string "Hey! Wait! Don't go out!$"
 
-PalletTown_Text_OakGrassUnsafeNeedMon::
-    .string "OAK: It's unsafe!\n"
+PalletTown_Text_GrassUnsafeNeedMon::
+    .string "It's unsafe out there!\n"
     .string "Wild POKéMON live in tall grass!\p"
-    .string "You need your own POKéMON for\n"
-    .string "your protection.\p"
-    .string "I know!\n"
-    .string "Here, come with me!$"
+    .string "You need your own POKéMON\n"
+    .string "for your protection.\p"
+    .string "Go Visit Prof. Oak!\p"
+    .string "He must be back in his\n"
+    .string "lab by now.$"
 
-PalletTown_Text_RaisingMonsToo::
-    .string "I'm raising POKéMON, too.\p"
-    .string "When they get strong, they can\n"
-    .string "protect me.$"
-
-PalletTown_Text_CanStoreItemsAndMonsInPC::
+PalletTown_Text_TechnologyIsIncredible::
     .string "Technology is incredible!\p"
-    .string "You can now store and recall items\n"
-    .string "and POKéMON as data via PC.$"
+    .string "You can now make your very own\n"
+    .string "POKéMON ROM HACK.$"
 
 PalletTown_Text_OakPokemonResearchLab::
     .string "OAK POKéMON RESEARCH LAB$"
@@ -31,7 +26,7 @@ PalletTown_Text_RivalsHouse::
 
 PalletTown_Text_TownSign::
     .string "PALLET TOWN\n"
-    .string "Shades of your journey await!$"
+    .string "It's a good place to start!$"
 
 PalletTown_Text_OakLetMeSeePokedex::
     .string "OAK: Ah, {PLAYER}!\n"

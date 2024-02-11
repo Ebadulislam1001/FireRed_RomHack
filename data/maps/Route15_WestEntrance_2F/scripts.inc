@@ -5,18 +5,26 @@ Route15_WestEntrance_2F_MapScripts::
 
 Route15_WestEntrance_2F_EventScript_LeftBinoculars::
 	lockall
-	msgbox Route15_WestEntrance_2F_Text_LargeShiningBird
-	showmonpic SPECIES_ARTICUNO, 10, 3
+	msgbox Route15_WestEntrance_2F_Text_LargeBirdLugia
+	showmonpic SPECIES_LUGIA, 10, 3
 	delay 20
 	waitbuttonpress
 	hidemonpic
-	setvar VAR_0x8004, SPECIES_ARTICUNO
+	setvar VAR_0x8004, SPECIES_LUGIA
 	special SetSeenMon
 	releaseall
 	end
 
 Route15_WestEntrance_2F_EventScript_RightBinoculars::
-	msgbox Route15_WestEntrance_2F_Text_SmallIslandOnHorizon, MSGBOX_SIGN
+	lockall
+	msgbox Route15_WestEntrance_2F_Text_LargeBirdHooh
+	showmonpic SPECIES_HO_OH, 10, 3
+	delay 20
+	waitbuttonpress
+	hidemonpic
+	setvar VAR_0x8004, SPECIES_HO_OH
+	special SetSeenMon
+	releaseall
 	end
 
 Route15_WestEntrance_2F_EventScript_Aide::

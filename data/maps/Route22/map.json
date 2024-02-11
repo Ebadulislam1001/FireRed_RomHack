@@ -21,7 +21,7 @@
     },
     {
       "map": "MAP_VIRIDIAN_CITY",
-      "offset": -10,
+      "offset": -12,
       "direction": "right"
     }
   ],
@@ -30,7 +30,7 @@
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BLUE",
       "x": 25,
-      "y": 4,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
@@ -61,7 +61,7 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 4,
+      "y": 5,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "1",
@@ -70,7 +70,7 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 5,
+      "y": 6,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "1",
@@ -79,7 +79,7 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 6,
+      "y": 7,
       "elevation": 0,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "1",
@@ -88,7 +88,7 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 4,
+      "y": 5,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "3",
@@ -97,7 +97,7 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 5,
+      "y": 6,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "3",
@@ -106,7 +106,7 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 6,
+      "y": 7,
       "elevation": 0,
       "var": "VAR_MAP_SCENE_ROUTE22",
       "var_value": "3",
@@ -116,8 +116,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 7,
-      "y": 12,
+      "x": 8,
+      "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route22_EventScript_LeagueGateSign"

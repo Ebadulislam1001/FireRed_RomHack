@@ -1,8 +1,7 @@
 ViridianCity_Text_CanCarryMonsAnywhere::
-    .string "Those POKé BALLS at your waist!\n"
-    .string "You have POKéMON, don't you?\p"
-    .string "It's great that you can carry and\n"
-    .string "use POKéMON anytime, anywhere.$"
+    .string "Do you know that POKéMON evolve?\p"
+    .string "Certain species of POKéMON evolve\n"
+    .string "when they meet certain criteria.$"
 
 ViridianCity_Text_GymClosedWonderWhoLeaderIs::
     .string "This POKéMON GYM is always closed.\p"
@@ -12,17 +11,18 @@ ViridianCity_Text_ViridiansGymLeaderReturned::
     .string "VIRIDIAN GYM's LEADER returned!$"
 
 ViridianCity_Text_WantToKnowAboutCaterpillarMons::
-    .string "You want to know about the two\n"
+    .string "You want to know about the\n"
     .string "kinds of caterpillar POKéMON?$"
 
 ViridianCity_Text_OhOkayThen::
     .string "Oh, okay then!$"
 
 ViridianCity_Text_ExplainCaterpieWeedle::
-    .string "CATERPIE has no poison,\n"
-    .string "but WEEDLE does.\p"
-    .string "Watch that your POKéMON aren't\n"
-    .string "stabbed by WEEDLE's POISON STING.$"
+    .string "CATERPIE, WEEDLE, and WURMPLE\n"
+    .string "are the three caterpillar POKéMON.\p"
+    .string "They evolve at level 10 And then\n"
+    .string "they further evolve at level 15.\p"
+    .string "Isn't that amazing?$"
 
 ViridianCity_Text_GrandpaHasntHadCoffeeYet::
     .string "Oh, Grandpa!\n"

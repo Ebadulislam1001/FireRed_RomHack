@@ -6,20 +6,21 @@ Route22_MapScripts::
 Route22_EventScript_EarlyRivalTriggerTop::
 	lockall
 	setvar VAR_TEMP_1, 0
+	setobjectxyperm LOCALID_RIVAL, 25, 5
 	goto Route22_EventScript_EarlyRival
 	end
 
 Route22_EventScript_EarlyRivalTriggerMid::
 	lockall
 	setvar VAR_TEMP_1, 1
-	setobjectxyperm LOCALID_RIVAL, 25, 5
+	setobjectxyperm LOCALID_RIVAL, 25, 6
 	goto Route22_EventScript_EarlyRival
 	end
 
 Route22_EventScript_EarlyRivalTriggerBottom::
 	lockall
 	setvar VAR_TEMP_1, 2
-	setobjectxyperm LOCALID_RIVAL, 25, 5
+	setobjectxyperm LOCALID_RIVAL, 25, 7
 	goto Route22_EventScript_EarlyRival
 	end
 
@@ -27,35 +28,26 @@ Route22_EventScript_EarlyRival::
 	textcolor NPC_TEXT_COLOR_MALE
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_RIVAL
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalApproach
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalApproach
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalApproachBottom
+	call Route22_EventScript_RivalApproach
 	delay 6
 	msgbox Route22_Text_EarlyRivalIntro
-	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_EarlyRivalSquirtle
-	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_EarlyRivalBulbasaur
-	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_EarlyRivalCharmander
+	setvar VAR_LAST_TALKED, LOCALID_RIVAL
+	call Route22_EventScript_EarlyRivalSquirtle
 	msgbox Route22_Text_EarlyRivalPostBattle
 	closemessage
 	delay 10
 	playbgm MUS_RIVAL_EXIT, 0
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalExitBottom
+	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_RivalExit
+	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_RivalExit
+	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_RivalExitBottom
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_ROUTE22, 2
 	releaseall
 	end
 
-Route22_EventScript_EarlyRivalApproach::
+Route22_EventScript_RivalApproach::
 	applymovement LOCALID_RIVAL, Route22_Movement_RivalApproach
-	waitmovement 0
-	return
-
-Route22_EventScript_EarlyRivalApproachBottom::
-	applymovement LOCALID_RIVAL, Route22_Movement_RivalApproachBottom
-	applymovement OBJ_EVENT_ID_PLAYER, Route22_Movement_PlayerFaceRival
 	waitmovement 0
 	return
 
@@ -63,62 +55,15 @@ Route22_EventScript_EarlyRivalSquirtle::
 	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_SQUIRTLE, 0, Route22_Text_EarlyRivalDefeat, Text_RivalVictory
 	return
 
-Route22_EventScript_EarlyRivalBulbasaur::
-	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_BULBASAUR, 0, Route22_Text_EarlyRivalDefeat, Text_RivalVictory
-	return
-
-Route22_EventScript_EarlyRivalCharmander::
-	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_CHARMANDER, 0, Route22_Text_EarlyRivalDefeat, Text_RivalVictory
-	return
-
-Route22_EventScript_EarlyRivalExit::
-	applymovement LOCALID_RIVAL, Route22_Movement_EarlyRivalExit
+Route22_EventScript_RivalExit::
+	applymovement LOCALID_RIVAL, Route22_Movement_RivalExit
 	waitmovement 0
 	return
 
-Route22_EventScript_EarlyRivalExitBottom::
-	applymovement LOCALID_RIVAL, Route22_Movement_EarlyRivalExitBottom
+Route22_EventScript_RivalExitBottom::
+	applymovement LOCALID_RIVAL, Route22_Movement_RivalExitBottom
 	waitmovement 0
 	return
-
-Route22_Movement_UnusedRivalExit:: @ 8
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-Route22_Movement_EarlyRivalExit::
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-Route22_Movement_EarlyRivalExitBottom::
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
 
 Route22_Movement_RivalApproach::
 	walk_right
@@ -130,7 +75,8 @@ Route22_Movement_RivalApproach::
 	walk_right
 	step_end
 
-Route22_Movement_RivalApproachBottom::
+Route22_Movement_RivalExit::
+	walk_down
 	walk_right
 	walk_right
 	walk_right
@@ -139,38 +85,38 @@ Route22_Movement_RivalApproachBottom::
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_down
 	step_end
 
-Route22_Movement_PlayerFaceRival::
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_8
-	walk_in_place_faster_up
+Route22_Movement_RivalExitBottom::
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 Route22_EventScript_LateRivalTriggerTop::
 	lockall
 	setvar VAR_TEMP_1, 0
+	setobjectxyperm LOCALID_RIVAL, 25, 5
 	goto Route22_EventScript_LateRival
 	end
 
 Route22_EventScript_LateRivalTriggerMid::
 	lockall
 	setvar VAR_TEMP_1, 1
-	setobjectxyperm LOCALID_RIVAL, 25, 5
+	setobjectxyperm LOCALID_RIVAL, 25, 6
 	goto Route22_EventScript_LateRival
 	end
 
 Route22_EventScript_LateRivalTriggerBottom::
 	lockall
 	setvar VAR_TEMP_1, 2
-	setobjectxyperm LOCALID_RIVAL, 25, 5
+	setobjectxyperm LOCALID_RIVAL, 25, 7
 	goto Route22_EventScript_LateRival
 	end
 
@@ -178,58 +124,27 @@ Route22_EventScript_LateRival::
 	textcolor NPC_TEXT_COLOR_MALE
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_RIVAL
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_LateRivalApproach
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_LateRivalApproach
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_LateRivalApproachBottom
+	call Route22_EventScript_RivalApproach
+	delay 6
 	msgbox Route22_Text_LateRivalIntro
 	setvar VAR_LAST_TALKED, LOCALID_RIVAL
-	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_LateRivalSquirtle
-	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_LateRivalBulbasaur
-	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_LateRivalCharmander
+	call Route22_EventScript_LateRivalSquirtle
 	msgbox Route22_Text_LateRivalPostBattle
 	closemessage
 	delay 10
 	playbgm MUS_RIVAL_EXIT, 0
-	applymovement LOCALID_RIVAL, Route22_Movement_LateRivalExit
-	waitmovement 0
+	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_RivalExit
+	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_RivalExit
+	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_RivalExitBottom
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_ROUTE22, 4
 	releaseall
 	end
 
-Route22_EventScript_LateRivalApproach::
-	applymovement LOCALID_RIVAL, Route22_Movement_RivalApproach
-	waitmovement 0
-	return
-
-Route22_EventScript_LateRivalApproachBottom::
-	applymovement LOCALID_RIVAL, Route22_Movement_RivalApproachBottom
-	applymovement OBJ_EVENT_ID_PLAYER, Route22_Movement_PlayerFaceRival
-	waitmovement 0
-	return
-
 Route22_EventScript_LateRivalSquirtle::
 	trainerbattle_no_intro TRAINER_RIVAL_ROUTE22_LATE_SQUIRTLE, Route22_Text_LateRivalDefeat
 	return
-
-Route22_EventScript_LateRivalBulbasaur::
-	trainerbattle_no_intro TRAINER_RIVAL_ROUTE22_LATE_BULBASAUR, Route22_Text_LateRivalDefeat
-	return
-
-Route22_EventScript_LateRivalCharmander::
-	trainerbattle_no_intro TRAINER_RIVAL_ROUTE22_LATE_CHARMANDER, Route22_Text_LateRivalDefeat
-	return
-
-Route22_Movement_LateRivalExit::
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
 
 Route22_EventScript_LeagueGateSign::
 	msgbox Route22_Text_LeagueGateSign, MSGBOX_SIGN

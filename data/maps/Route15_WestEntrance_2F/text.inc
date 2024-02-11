@@ -27,15 +27,15 @@ Route15_WestEntrance_2F_Text_ExplainExpShare::
     .string "of the EXP. Points without having\l"
     .string "to battle.$"
 
-Route15_WestEntrance_2F_Text_LargeShiningBird::
+Route15_WestEntrance_2F_Text_LargeBirdLugia::
     .string "Let's see what the binoculars have\n"
     .string "to show…\p"
-    .string "A large, shining bird is flying\n"
-    .string "toward the sea.$"
+    .string "A large bird like something\n"
+    .string "is flying toward the sea.$"
 
-Route15_WestEntrance_2F_Text_SmallIslandOnHorizon::
+Route15_WestEntrance_2F_Text_LargeBirdHooh::
     .string "Let's see what the binoculars have\n"
     .string "to show…\p"
-    .string "It looks like a small island on\n"
-    .string "the horizon!$"
+    .string "A large bird like something\n"
+    .string "is flying toward the sky.$"
 
