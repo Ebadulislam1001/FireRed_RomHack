@@ -6,9 +6,9 @@ Route2_ViridianForest_NorthEntrance_EventScript_Youngster::
 	end
 
 Route2_ViridianForest_NorthEntrance_EventScript_OldMan::
-	msgbox Route2_ViridianForest_NorthEntrance_Text_CanCutSkinnyTrees, MSGBOX_NPC
+	msgbox Route2_ViridianForest_NorthEntrance_Text_AboutHMs, MSGBOX_NPC
 	end
 
 Route2_ViridianForest_NorthEntrance_EventScript_CooltrainerF::
-	msgbox Route2_ViridianForest_NorthEntrance_Text_CanCancelEvolution, MSGBOX_NPC
+	msgbox Route2_ViridianForest_NorthEntrance_Text_DoYouPlayMinecraft, MSGBOX_NPC
 	end

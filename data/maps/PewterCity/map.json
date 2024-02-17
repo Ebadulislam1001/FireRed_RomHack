@@ -206,15 +206,6 @@
     },
     {
       "type": "trigger",
-      "x": 43,
-      "y": 23,
-      "elevation": 3,
-      "var": "VAR_MAP_SCENE_PEWTER_CITY",
-      "var_value": "0",
-      "script": "PewterCity_EventScript_GymGuideTriggerRight"
-    },
-    {
-      "type": "trigger",
       "x": 46,
       "y": 21,
       "elevation": 3,

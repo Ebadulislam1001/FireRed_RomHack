@@ -35,5 +35,5 @@ Route2_EastBuilding_EventScript_GetAideRequestInfo::
 	return
 
 Route2_EastBuilding_EventScript_Rocker::
-	msgbox Route2_EastBuilding_Text_CanGetThroughRockTunnel, MSGBOX_NPC
+	msgbox Route2_EastBuilding_Text_CanGetThroughMtMoon, MSGBOX_NPC
 	end

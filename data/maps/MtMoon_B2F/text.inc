@@ -24,8 +24,8 @@ MtMoon_B2F_Text_LabOnCinnabarRegeneratesFossils::
 MtMoon_B2F_Text_Grunt1Intro::
     .string "We, TEAM ROCKET, shall find the\n"
     .string "fossils!\p"
-    .string "Reviving POKéMON from them will\n"
-    .string "earn us huge riches!$"
+    .string "Also there is something else we\n"
+    .string "are looking for in particular!$"
 
 MtMoon_B2F_Text_Grunt1Defeat::
     .string "Urgh!\n"

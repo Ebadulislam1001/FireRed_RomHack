@@ -14,6 +14,20 @@ EventScript_MonFlewAway::
     release
     end
 
+EventScript_RemoveStaticMonRegi::
+    fadescreen FADE_TO_BLACK
+    fadescreen FADE_FROM_BLACK
+    release
+    end
+
+EventScript_MonFlewAwayRegi::
+    fadescreen FADE_TO_BLACK
+    fadescreen FADE_FROM_BLACK
+    bufferspeciesname STR_VAR_1, VAR_0x8004
+    msgbox Text_MonFlewAway
+    release
+    end
+
 EventScript_AwakenSnorlax::
     message Text_PlayedPokeFlute
     waitmessage

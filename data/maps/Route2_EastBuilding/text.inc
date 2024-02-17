@@ -26,7 +26,7 @@ Route2_EastBuilding_Text_ExplainHM05::
     .string "FLASH lights up even the darkest\n"
     .string "of caves and dungeons.$"
 
-Route2_EastBuilding_Text_CanGetThroughRockTunnel::
+Route2_EastBuilding_Text_CanGetThroughMtMoon::
     .string "Once a POKéMON learns FLASH, you\n"
-    .string "can get through ROCK TUNNEL.$"
+    .string "can get through Mt MOON.$"
 

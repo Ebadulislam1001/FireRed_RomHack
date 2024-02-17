@@ -6,5 +6,5 @@ Route2_ViridianForest_SouthEntrance_EventScript_Woman1::
 	end
 
 Route2_ViridianForest_SouthEntrance_EventScript_Woman2::
-	msgbox Route2_ViridianForest_SouthEntrance_Text_RattataHasWickedBite, MSGBOX_NPC
+	msgbox Route2_ViridianForest_SouthEntrance_Text_TakeFrequentBreaks, MSGBOX_NPC
 	end

@@ -1,8 +1,21 @@
 ViridianForest_Text_FriendsItchingToBattle::
-    .string "I came here with some friends to\n"
-    .string "catch us some BUG POKéMON!\p"
+    .string "Viridian Forest is full of\n"
+    .string "Bug catchers!\p"
     .string "They're all itching to get into\n"
     .string "some POKéMON battles!$"
+
+ViridianForest_Text_RanOutOfPokeBalls::
+    .string "I was throwing POKé BALLS to\n"
+    .string "catch POKéMON, and I ran out.\p"
+    .string "Now I have to buy more POKéBALLs\n"
+    .string "from the POKéMART.$"
+
+ViridianForest_Text_SatoshiIntro::
+    .string "Hello! My name is Satoshi Tajiri!\n"
+    .string "I like catching BUGs.\p"
+    .string "One day I will make a video game\n"
+    .string "full of BUGs.\p"
+    .string "I mean a game about catching BUGs$"
 
 ViridianForest_Text_RickIntro::
     .string "Hey! You have POKéMON!\n"
@@ -65,33 +78,30 @@ ViridianForest_Text_CharliePostBattle::
     .string "BUG POKéMON evolve quickly.\n"
     .string "They're a lot of fun!$"
 
-ViridianForest_Text_RanOutOfPokeBalls::
-    .string "I was throwing POKé BALLS to\n"
-    .string "catch POKéMON, and I ran out.\p"
-    .string "That's why you can never have too\n"
-    .string "many POKé BALLS.$"
-
 ViridianForest_Text_AvoidGrassyAreasWhenWeak::
     .string "TRAINER TIPS\p"
     .string "If your POKéMON are weak and you\n"
     .string "want to avoid battles, stay away\l"
     .string "from grassy areas!$"
 
-ViridianForest_Text_UseAntidoteForPoison::
-    .string "For poison, use ANTIDOTE!\n"
-    .string "Get it at POKéMON MARTS!$"
+ViridianForest_Text_DontTrustBlindly::
+    .string "Dont just follow any path!\p"
+    .string "Wherever there is a path,\n"
+    .string "there may not be a way !$"
 
-ViridianForest_Text_ContactOakViaPCToRatePokedex::
+ViridianForest_Text_UsePCToMovePokemon::
     .string "TRAINER TIPS\p"
-    .string "Contact PROF. OAK via a PC to\n"
-    .string "get your POKéDEX evaluated!$"
+    .string "You can carry atmost 6 POKéMON\n"
+    .string "at a time. However,\p"
+    .string "you can use PC to Deposit and\n"
+    .string "Withdraw POKéMON when needed!$"
 
 ViridianForest_Text_CantCatchOwnedMons::
     .string "TRAINER TIPS\p"
     .string "You can't catch a POKéMON that\n"
     .string "belongs to someone else.\p"
-    .string "Throw POKé BALLS only at wild\n"
-    .string "POKéMON to catch them!$"
+    .string "However you are free to catch\n"
+    .string "wild POKéMON. Gotta catch'em all!$"
 
 ViridianForest_Text_WeakenMonsBeforeCapture::
     .string "TRAINER TIPS\p"
@@ -99,7 +109,7 @@ ViridianForest_Text_WeakenMonsBeforeCapture::
     .string "capture!\p"
     .string "When healthy, they may escape!$"
 
-ViridianForest_Text_LeavingViridianForest::
+ViridianForest_Text_ExitSign::
     .string "LEAVING VIRIDIAN FOREST\n"
     .string "PEWTER CITY AHEAD$"
 

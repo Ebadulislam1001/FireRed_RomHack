@@ -1,10 +1,10 @@
 Route2_ViridianForest_SouthEntrance_Text_ForestIsMaze::
-    .string "Are you going to VIRIDIAN FOREST?\n"
-    .string "It's a natural maze in there.\l"
+    .string "Are you going to the\n"
+    .string "VIRIDIAN FOREST?\p"
     .string "Be careful you don't get lost.$"
 
-Route2_ViridianForest_SouthEntrance_Text_RattataHasWickedBite::
-    .string "RATTATA may be small, but don't\n"
-    .string "underestimate its wicked bite.\p"
-    .string "Have you caught one already?$"
+Route2_ViridianForest_SouthEntrance_Text_TakeFrequentBreaks::
+    .string "Make sure to take frequent breaks.\p"
+    .string "In case the game crashes, a\n"
+    .string "recent saved file comes in handy.$"
 

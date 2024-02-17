@@ -1,6 +1,6 @@
-DiglettsCave_NorthEntrance_RockTunnelPitchBlack::
-    .string "I went inside ROCK TUNNEL, but it's\n"
-    .string "pitch-black and scary in there.\p"
-    .string "If I could get a POKéMON to use\n"
-    .string "FLASH and light it up…$"
+DiglettsCave_NorthEntrance_Text_DiglettDugThisTunnel::
+    .string "Well, isn't this amazing!\n"
+    .string "DIGLETT dug this long tunnel!$"
+    .string "It goes right to VERMILLION CITY,\n"
+    .string "they tell me.$"
 

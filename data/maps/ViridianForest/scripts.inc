@@ -1,3 +1,5 @@
+.set LOCALID_SATOSHI, 12
+
 ViridianForest_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianForest_OnTransition
 	.byte 0
@@ -14,16 +16,26 @@ ViridianForest_EventScript_Boy::
 	msgbox ViridianForest_Text_RanOutOfPokeBalls, MSGBOX_NPC
 	end
 
+ViridianForest_EventScript_Satoshi::
+	lock
+	faceplayer
+	msgbox ViridianForest_Text_SatoshiIntro
+	closemessage
+	applymovement LOCALID_SATOSHI, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
 ViridianForest_EventScript_TrainerTips1::
 	msgbox ViridianForest_Text_AvoidGrassyAreasWhenWeak, MSGBOX_SIGN
 	end
 
 ViridianForest_EventScript_TrainerTips2::
-	msgbox ViridianForest_Text_UseAntidoteForPoison, MSGBOX_SIGN
+	msgbox ViridianForest_Text_DontTrustBlindly, MSGBOX_SIGN
 	end
 
 ViridianForest_EventScript_TrainerTips3::
-	msgbox ViridianForest_Text_ContactOakViaPCToRatePokedex, MSGBOX_SIGN
+	msgbox ViridianForest_Text_UsePCToMovePokemon, MSGBOX_SIGN
 	end
 
 ViridianForest_EventScript_TrainerTips4::
@@ -35,7 +47,7 @@ ViridianForest_EventScript_TrainerTips5::
 	end
 
 ViridianForest_EventScript_ExitSign::
-	msgbox ViridianForest_Text_LeavingViridianForest, MSGBOX_SIGN
+	msgbox ViridianForest_Text_ExitSign, MSGBOX_SIGN
 	end
 
 ViridianForest_EventScript_Rick::
