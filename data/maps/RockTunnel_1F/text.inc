@@ -1,3 +1,13 @@
+RockTunnel_1F_Text_JustANormalRock::
+    .string "It's just a normal rock!\p"
+    .string "...\p"
+    .string "Or is it ?$"
+
+RockTunnel_1F_Text_NotANormalRock::
+    .string "This Rock is making some sounds\p"
+    .string "...\p"
+    .string "Aaaahhh!!!$"
+
 RockTunnel_1F_Text_LennyIntro::
     .string "This tunnel goes a long way, kid!$"
 

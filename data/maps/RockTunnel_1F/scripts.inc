@@ -6,6 +6,47 @@ RockTunnel_1F_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_ROCK_TUNNEL_1F
 	end
 
+RockTunnel_1F_EventScript_Registeel::
+	lock
+	goto_if_unset FLAG_UNLOCK_POSTGAME_LEGENDARIES, RockTunnel_1F_EventScript_NormalRock
+	goto_if_set FLAG_FOUGHT_REGISTEEL, RockTunnel_1F_EventScript_NormalRock
+	message RockTunnel_1F_Text_NotANormalRock
+	waitmessage
+	playmoncry SPECIES_REGISTEEL, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 20
+	playbgm MUS_ENCOUNTER_GYM_LEADER, 0
+	waitbuttonpress
+	setwildbattle SPECIES_REGISTEEL, 5
+	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	special StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RockTunnel_1F_EventScript_DefeatedRegisteel
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, RockTunnel_1F_EventScript_RanFromRegisteel
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, RockTunnel_1F_EventScript_RanFromRegisteel
+	setflag FLAG_FOUGHT_REGISTEEL
+	release
+	end
+
+RockTunnel_1F_EventScript_NormalRock::
+	lock
+	msgbox RockTunnel_1F_Text_JustANormalRock
+	closemessage
+	release
+	end
+
+RockTunnel_1F_EventScript_DefeatedRegisteel::
+	setflag FLAG_FOUGHT_REGISTEEL
+	goto EventScript_RemoveStaticMonRegi
+	end
+
+RockTunnel_1F_EventScript_RanFromRegisteel::
+	setvar VAR_0x8004, SPECIES_REGISTEEL
+	goto EventScript_MonFlewAwayRegi
+	end
+
 RockTunnel_1F_EventScript_RouteSign::
 	msgbox RockTunnel_1F_Text_RouteSign, MSGBOX_SIGN
 	end

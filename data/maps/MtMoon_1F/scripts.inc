@@ -6,8 +6,8 @@ MtMoon_1F_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_MT_MOON_1F
 	end
 
-MtMoon_1F_EventScript_ZubatSign::
-	msgbox MtMoon_1F_Text_ZubatIsABloodsucker, MSGBOX_SIGN
+MtMoon_1F_EventScript_TeamRocketSign::
+	msgbox MtMoon_1F_Text_TeamRocketWasHere, MSGBOX_SIGN
 	end
 
 MtMoon_1F_EventScript_Marcos::

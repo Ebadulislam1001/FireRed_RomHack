@@ -733,12 +733,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
     },
     [SPECIES_PIKACHU] =
     {
-        .baseHP = 35,
+        .baseHP = 50,
         .baseAttack = 55,
-        .baseDefense = 30,
-        .baseSpeed = 90,
-        .baseSpAttack = 50,
-        .baseSpDefense = 40,
+        .baseDefense = 55,
+        .baseSpeed = 105,
+        .baseSpAttack = 70,
+        .baseSpDefense = 55,
         .types = {TYPE_ELECTRIC, TYPE_ELECTRIC},
         .catchRate = 190,
         .expYield = 82,

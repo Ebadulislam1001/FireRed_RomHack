@@ -1,7 +1,7 @@
 Route2_ViridianForest_SouthEntrance_Text_ForestIsMaze::
     .string "Are you going to the\n"
     .string "VIRIDIAN FOREST?\p"
-    .string "Be careful you don't get lost.$"
+    .string "Be careful and don't get lost.$"
 
 Route2_ViridianForest_SouthEntrance_Text_TakeFrequentBreaks::
     .string "Make sure to take frequent breaks.\p"
