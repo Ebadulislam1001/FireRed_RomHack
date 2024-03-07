@@ -2368,8 +2368,8 @@
     {
       "id": "LAYOUT_POKEMON_LEAGUE_LANCES_ROOM",
       "name": "PokemonLeague_LancesRoom_Layout",
-      "width": 28,
-      "height": 24,
+      "width": 13,
+      "height": 13,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
