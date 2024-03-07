@@ -5627,13 +5627,13 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderMisty[] = {
         .iv = 0,
         .lvl = 18,
         .species = SPECIES_MILTANK,
-        .moves = {MOVE_DEFENSE_CURL, MOVE_ROLLOUT, MOVE_MILK_DRINK, MOVE_ATTRACT},
+        .moves = {MOVE_ATTRACT, MOVE_DEFENSE_CURL, MOVE_ROLLOUT, MOVE_MILK_DRINK},
     },
     {
         .iv = 0,
         .lvl = 20,
         .species = SPECIES_MILOTIC,
-        .moves = {MOVE_REFRESH, MOVE_RECOVER, MOVE_SURF, MOVE_ATTRACT},
+        .moves = {MOVE_ATTRACT, MOVE_RECOVER, MOVE_BUBBLE_BEAM, MOVE_ICE_BEAM},
     },
 };
 

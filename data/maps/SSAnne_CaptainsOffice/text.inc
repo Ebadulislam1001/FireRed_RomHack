@@ -4,16 +4,17 @@ SSAnne_CaptainsOffice_Text_CaptainIFeelSeasick::
     .string "Urrp! Seasick…$"
 
 SSAnne_CaptainsOffice_Text_RubbedCaptainsBack::
-    .string "{PLAYER} rubbed the CAPTAIN's\n"
-    .string "back!\p"
+    .string "{PLAYER} rubbed the CAPTAIN's back!\p"
     .string "Rub-rub…\n"
     .string "Rub-rub…$"
 
 SSAnne_CaptainsOffice_Text_ThankYouHaveHMForCut::
     .string "CAPTAIN: Whew! Thank you!\n"
     .string "I'm feeling much better now.\p"
-    .string "You want to see my hidden CUT\n"
-    .string "technique?\p"
+    .string "I'm Captain Briney! and this is\n"
+    .string "my companion Peeko.\p"
+    .string "What? You want to see my\n"
+    .string "hidden CUT technique?\p"
     .string "I could show you my prized CUT\n"
     .string "technique if I weren't so ill…\p"
     .string "I know! You can have this!\n"
@@ -36,18 +37,15 @@ SSAnne_CaptainsOffice_Text_SSAnneWillSetSailSoon::
     .string "Now that I'm not sick anymore,\n"
     .string "I guess it's time.\p"
     .string "The S.S. ANNE will set sail soon!\p"
+    .string "From KANTO, to JOHTO, to HOENN,\p"
     .string "Farewell, until our return to\n"
     .string "VERMILION CITY!$"
-
-SSAnne_CaptainsOffice_Text_YouHaveNoRoomForThis::
-    .string "Oh, no!\n"
-    .string "You have no room for this!$"
 
 SSAnne_CaptainsOffice_Text_YuckShouldntHaveLooked::
     .string "Yuck!\n"
     .string "Shouldn't have looked!$"
 
-SSAnne_CaptainsOffice_Text_HowToConquerSeasickness::
-    .string "How to Conquer Seasickness…\n"
-    .string "The CAPTAIN's reading this!$"
+SSAnne_CaptainsOffice_Text_TheBook::
+    .string "The CAPTAIN's reading this!\p"
+    .string "PIRATES OF THE HOENN REGION.$"
 

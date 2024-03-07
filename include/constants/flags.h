@@ -194,9 +194,9 @@
 #define FLAG_FOUGHT_REGIROCK                            0x0B0
 #define FLAG_FOUGHT_REGISTEEL                           0x0B1
 #define FLAG_FOUGHT_REGICE                              0x0B2
-#define FLAG_0x0B3               0x0B3
-#define FLAG_0x0B4               0x0B4
-#define FLAG_0x0B5               0x0B5
+#define FLAG_WHITE_LOTUS_SUMMONED                       0x0B3
+#define FLAG_GOT_VOUCHER_FROM_KURT                      0x0B4
+#define FLAG_HIDE_KURT                                  0x0B5
 #define FLAG_0x0B6               0x0B6
 #define FLAG_0x0B7               0x0B7
 #define FLAG_0x0B8               0x0B8
@@ -599,7 +599,7 @@
 #define FLAG_0x23E                                       0x23E
 #define FLAG_GOT_TM28_FROM_ROCKET                        0x23F
 #define FLAG_GOT_OLD_ROD                                 0x240
-#define FLAG_GOT_BIKE_VOUCHER                            0x241
+#define FLAG_GOT_TOGEPI_EGG                              0x241
 #define FLAG_0x242                                       0x242
 #define FLAG_GOT_COIN_CASE                               0x243
 #define FLAG_GOT_GOOD_ROD                                0x244
@@ -754,8 +754,8 @@
 #define FLAG_NO_ROOM_FOR_TM42_AT_MEMORIAL_PILLAR         0x2D7
 #define FLAG_LEARNED_YES_NAH_CHANSEY                     0x2D8
 #define FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1       0x2D9
-#define FLAG_GOT_TOGEPI_EGG                              0x2DA
-#define FLAG_NO_ROOM_FOR_TOGEPI_EGG                      0x2DB
+#define FLAG_GOT_WYNAUT_EGG                              0x2DA
+#define FLAG_NO_ROOM_FOR_WYNAUT_EGG                      0x2DB
 #define FLAG_RECOVERED_SAPPHIRE                          0x2DC
 #define FLAG_GOT_RUBY                                    0x2DD
 #define FLAG_TUTOR_FRENZY_PLANT                          0x2DE

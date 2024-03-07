@@ -1,57 +1,33 @@
-VermilionCity_PokemonFanClub_Text_AdmirePikachusTail::
-    .string "Won't you admire my PIKACHU's\n"
-    .string "adorable tail?$"
-
-VermilionCity_PokemonFanClub_Text_PikachuTwiceAsCute::
-    .string "Humph!\p"
-    .string "My PIKACHU is twice as cute as\n"
-    .string "that one!$"
-
-VermilionCity_PokemonFanClub_Text_AdoreMySeel::
-    .string "I just adore my SEEL!\n"
-    .string "It's so lovable!\p"
-    .string "It squeals, “Kyuuuh,” when I\n"
-    .string "hug it!$"
-
-VermilionCity_PokemonFanClub_Text_SeelFarMoreAttractive::
-    .string "Oh, dear!\p"
-    .string "My SEEL is far more attractive.\n"
-    .string "By double, I would say.$"
-
-VermilionCity_PokemonFanClub_Text_Pikachu::
-    .string "PIKACHU: Chu! Pikachu!$"
-
-VermilionCity_PokemonFanClub_Text_Seel::
-    .string "SEEL: Kyuoo!$"
-
 VermilionCity_PokemonFanClub_Text_DidYouComeToHearAboutMyMons::
-    .string "I chair the POKéMON Fan Club!\p"
+    .string "I chair the POKéMON Fan Club!\n"
+    .string "or should I say Old People's Club.\p"
+    .string "Kids these days lack what it takes\n"
+    .string "to be a good POKéMON Trainer!\p"
     .string "I raise more than a hundred\n"
     .string "POKéMON!\p"
-    .string "I'm very fussy when it comes to\n"
-    .string "POKéMON! I surely am!\p"
-    .string "So…\p"
+    .string "That's why they also call me\n"
+    .string "Mr.POKéMON\p"
     .string "Did you come visit to hear about\n"
-    .string "my POKéMON?$"
+    .string "my POKéMON adventures?$"
 
 VermilionCity_PokemonFanClub_Text_ChairmansStory::
     .string "Good!\n"
     .string "Then listen up!\p"
-    .string "My favorite RAPIDASH…\p"
-    .string "It's…cute…lovely…smart… \n"
-    .string "plus…amazing…you think so?…\l"
-    .string "oh yes…it's…stunning…\l"
-    .string "kindly…love it!\p"
-    .string "Hug it…when…sleeping…warm\n"
-    .string "and cuddly…spectacular…\l"
-    .string "ravishing…\l"
+    .string "Legends from renowned Trainers and\n"
+    .string "Researchers piqued my curiosity,\p"
+    .string "Driving me to start a journey\n"
+    .string "to seek out mythical creatures.\p"
+    .string "After months of tireless research\n"
+    .string "and exploration.\p"
+    .string "I stumbled upon a mysterious egg,\n"
+    .string "deep within the heart of a forest.\p"
     .string "…Oops! Look at the time!\l"
     .string "I kept you too long!\p"
     .string "Thanks for hearing me out!\n"
     .string "I want you to have this!$"
 
-VermilionCity_PokemonFanClub_Text_ReceivedBikeVoucherFromChairman::
-    .string "{PLAYER} received a BIKE VOUCHER\n"
+VermilionCity_PokemonFanClub_Text_ReceivedEggFromChairman::
+    .string "{PLAYER} received an MYSTERY EGG\n"
     .string "from the CHAIRMAN.$"
 
 VermilionCity_PokemonFanClub_Text_ExplainBikeVoucher::
@@ -70,27 +46,36 @@ VermilionCity_PokemonFanClub_Text_ComeBackToHearStory::
 
 VermilionCity_PokemonFanClub_Text_DidntComeToSeeAboutMonsAgain::
     .string "Hello, {PLAYER}!\p"
-    .string "Did you come see me about my\n"
-    .string "POKéMON again?\p"
+    .string "Did you come see hear about my\n"
+    .string "POKéMON adventures again?\p"
     .string "No?\n"
     .string "Too bad!$"
 
 VermilionCity_PokemonFanClub_Text_MakeRoomForThis::
     .string "Make room for this!$"
 
-VermilionCity_PokemonFanClub_Text_ChairmanVeryVocalAboutPokemon::
-    .string "Our CHAIRMAN is very vocal about\n"
-    .string "POKéMON.$"
+VermilionCity_PokemonFanClub_Text_NotAllowedToGoIn::
+    .string "You are not allowed to go in.\n"
+    .string "You are just a kid!$"
 
-VermilionCity_PokemonFanClub_Text_ListenPolitelyToOtherTrainers::
-    .string "Let's all listen politely to other\n"
-    .string "TRAINERS!$"
+VermilionCity_PokemonFanClub_Text_Quote1::
+    .string "Start asking yourself the big\n"
+    .string "questions:\p"
+    .string "Who are you ? and\n"
+    .string "What do you want ?$"
 
-VermilionCity_PokemonFanClub_Text_SomeoneBragsBragBack::
-    .string "If someone brags, brag right back!$"
+VermilionCity_PokemonFanClub_Text_Quote2::
+    .string "Sometimes the bast way to solve\n"
+    .string "your own problems is to\p"
+    .string "help someone else.$"
 
-VermilionCity_PokemonFanClub_Text_ChairmanReallyAdoresHisMons::
-    .string "Our CHAIRMAN really does adore his\n"
-    .string "POKéMON.\p"
-    .string "But the person who is most liked by\n"
-    .string "POKéMON is DAISY, I think.$"
+VermilionCity_PokemonFanClub_Text_Quote3::
+    .string "The key to Wisdom and Tea is\n"
+    .string "Proper aging!$"
+
+VermilionCity_PokemonFanClub_Text_Quote4::
+    .string "The only thing better than finding\n"
+    .string "something you are looking for is\p"
+    .string "finding something that you are\n"
+    .string "not looking for!$"
+

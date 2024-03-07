@@ -6,18 +6,12 @@ FiveIsland_WaterLabyrinth_EventScript_EggGentleman::
 	special QuestLog_CutRecording
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_TOGEPI_EGG, FiveIsland_WaterLabyrinth_EventScript_PostEggComment
-	goto_if_set FLAG_NO_ROOM_FOR_TOGEPI_EGG, FiveIsland_WaterLabyrinth_EventScript_ReturnForEgg
+	goto_if_set FLAG_GOT_WYNAUT_EGG, FiveIsland_WaterLabyrinth_EventScript_PostEggComment
+	goto_if_set FLAG_NO_ROOM_FOR_WYNAUT_EGG, FiveIsland_WaterLabyrinth_EventScript_ReturnForEgg
 	msgbox FiveIsland_WaterLabyrinth_Text_LetMeTakeLookAtMons
 	specialvar VAR_RESULT, GetLeadMonFriendship
 	goto_if_eq VAR_RESULT, 6, FiveIsland_WaterLabyrinth_EventScript_LeadMonMaxFriendship
 	msgbox FiveIsland_WaterLabyrinth_Text_HmmISeeIsee
-	release
-	end
-
-FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment::
-	famechecker FAMECHECKER_DAISY, 2
-	msgbox FiveIsland_WaterLabyrinth_Text_CuteMonRemindsMeOfDaisy
 	release
 	end
 
@@ -29,8 +23,8 @@ FiveIsland_WaterLabyrinth_EventScript_LeadMonMaxFriendship::
 FiveIsland_WaterLabyrinth_EventScript_TryGiveEgg::
 	getpartysize
 	goto_if_eq VAR_RESULT, PARTY_SIZE, FiveIsland_WaterLabyrinth_EventScript_NoRoomForEgg
-	setflag FLAG_GOT_TOGEPI_EGG
-	giveegg SPECIES_TOGEPI
+	setflag FLAG_GOT_WYNAUT_EGG
+	giveegg SPECIES_WYNAUT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_LEVEL_UP
 	message FiveIsland_WaterLabyrinth_Text_ReceivedEggFromMan
@@ -40,23 +34,29 @@ FiveIsland_WaterLabyrinth_EventScript_TryGiveEgg::
 	goto FiveIsland_WaterLabyrinth_EventScript_PostEggComment
 	end
 
-@ If the player has a Togepi/Togetic from this game (assumed to be the one the man gave you) then comment on it
+@ If the player has a Wynaut/Wobuffet from this game (assumed to be the one the man gave you) then comment on it
 @ Otherwise make normal comment
 FiveIsland_WaterLabyrinth_EventScript_PostEggComment::
-	bufferspeciesname STR_VAR_2, SPECIES_TOGEPI
-	setvar VAR_0x8004, SPECIES_TOGEPI
+	bufferspeciesname STR_VAR_2, SPECIES_WYNAUT
+	setvar VAR_0x8004, SPECIES_WYNAUT
 	specialvar VAR_RESULT, PlayerPartyContainsSpeciesWithPlayerID
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment
-	bufferspeciesname STR_VAR_2, SPECIES_TOGETIC
-	setvar VAR_0x8004, SPECIES_TOGETIC
+	bufferspeciesname STR_VAR_2, SPECIES_WOBBUFFET
+	setvar VAR_0x8004, SPECIES_WOBBUFFET
 	specialvar VAR_RESULT, PlayerPartyContainsSpeciesWithPlayerID
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment
 	msgbox FiveIsland_WaterLabyrinth_Text_GladIMetSomeoneLikeYou
 	release
 	end
 
+FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment::
+	famechecker FAMECHECKER_DAISY, 2
+	msgbox FiveIsland_WaterLabyrinth_Text_CuteMonRemindsMeOfDaisy
+	release
+	end
+
 FiveIsland_WaterLabyrinth_EventScript_NoRoomForEgg::
-	setflag FLAG_NO_ROOM_FOR_TOGEPI_EGG
+	setflag FLAG_NO_ROOM_FOR_WYNAUT_EGG
 	msgbox FiveIsland_WaterLabyrinth_Text_DontHaveSpaceInYourParty
 	release
 	end

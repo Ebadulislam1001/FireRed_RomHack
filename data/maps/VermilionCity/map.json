@@ -70,7 +70,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_MACHOP",
+      "graphics_id": "OBJ_EVENT_GFX_MACHOKE",
       "x": 35,
       "y": 11,
       "elevation": 3,
@@ -79,7 +79,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VermilionCity_EventScript_Machop",
+      "script": "VermilionCity_EventScript_Machoke",
       "flag": "0"
     },
     {

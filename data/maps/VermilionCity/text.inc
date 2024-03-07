@@ -18,11 +18,11 @@ VermilionCity_Text_BuildingOnThisLand::
     .string "My POKéMON is tamping the land\n"
     .string "to lay the foundation.$"
 
-VermilionCity_Text_Machop::
-    .string "MACHOP: Guoh! Gogogoh!$"
+VermilionCity_Text_Machoke::
+    .string "MACHOKE: Guoh! Gogogoh!$"
 
-VermilionCity_Text_MachopStompingLandFlat::
-    .string "A MACHOP is stomping the land flat.$"
+VermilionCity_Text_MachokeStompingLandFlat::
+    .string "A MACHOKE is stomping the land flat.$"
 
 VermilionCity_Text_SSAnneVisitsOnceAYear::
     .string "The S.S. ANNE is a famous luxury\n"

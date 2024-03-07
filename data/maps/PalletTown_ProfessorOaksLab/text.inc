@@ -176,12 +176,11 @@ PalletTown_ProfessorOaksLab_Text_DeliveredOaksParcel::
     .string "{PLAYER} delivered OAK'S PARCEL.$"
 
 PalletTown_ProfessorOaksLab_Text_OakCustomBallIOrdered::
-    .string "Ah! \n"
-    .string "It's the custom POKé BALL!\p"
-    .string "It's a gift from my friend KURT.\n"
-    .string "He lives in Johto!\p"
-    .string "Thank you KURT!\n"
-    .string "and Thank you {PLAYER}$"
+    .string "Ah! \p"
+    .string "It's the custom POKé BALL!\n"
+    .string "It's a gift from my friend KURT.\p"
+    .string "Thank you KURT!\p"
+    .string "Thank you {PLAYER}$"
 
 PalletTown_ProfessorOaksLab_Text_OakHaveRequestForYouTwo::
     .string "OAK: Oh, right!\n"

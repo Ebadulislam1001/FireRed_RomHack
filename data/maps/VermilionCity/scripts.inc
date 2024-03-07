@@ -233,14 +233,14 @@ VermilionCity_EventScript_OldMan2::
 	msgbox VermilionCity_Text_BuildingOnThisLand, MSGBOX_NPC
 	end
 
-VermilionCity_EventScript_Machop::
+VermilionCity_EventScript_Machoke::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_MACHOP, CRY_MODE_NORMAL
-	msgbox VermilionCity_Text_Machop
+	playmoncry SPECIES_MACHOKE, CRY_MODE_NORMAL
+	msgbox VermilionCity_Text_Machoke
 	waitmoncry
-	msgbox VermilionCity_Text_MachopStompingLandFlat
+	msgbox VermilionCity_Text_MachokeStompingLandFlat
 	release
 	end
 

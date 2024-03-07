@@ -1,87 +1,29 @@
 CeruleanCity_House1_MapScripts::
 	.byte 0
 
-CeruleanCity_House1_EventScript_BadgeGuy::
+CeruleanCity_House1_EventScript_Kurt::
 	lock
 	faceplayer
-	msgbox CeruleanCity_House1_Text_BadgesHaveAmazingSecrets
-	message CeruleanCity_House1_Text_DescribeWhichBadge
+	goto_if_unset FLAG_GOT_VOUCHER_FROM_KURT, CeruleanCity_House1_EventScript_KurtIntro
+	msgbox CeruleanCity_House1_Text_AboutMasterBall
 	waitmessage
-	setvar VAR_0x8004, LISTMENU_BADGES
-	special ListMenu
-	waitstate
-	switch VAR_RESULT
-	case 0, CeruleanCity_House1_EventScript_DescribeBoulderBadge
-	case 1, CeruleanCity_House1_EventScript_DescribeCascadeBadge
-	case 2, CeruleanCity_House1_EventScript_DescribeThunderBadge
-	case 3, CeruleanCity_House1_EventScript_DescribeRainbowBadge
-	case 4, CeruleanCity_House1_EventScript_DescribeSoulBadge
-	case 5, CeruleanCity_House1_EventScript_DescribeMarshBadge
-	case 6, CeruleanCity_House1_EventScript_DescribeVolcanoBadge
-	case 7, CeruleanCity_House1_EventScript_DescribeEarthBadge
-	case 8, CeruleanCity_House1_EventScript_StopDescribingBadges
-	case 127, CeruleanCity_House1_EventScript_StopDescribingBadges
+	release
 	end
 
-CeruleanCity_House1_EventScript_DescribeAnotherBadge::
-	message CeruleanCity_House1_Text_DescribeWhichBadge
+CeruleanCity_House1_EventScript_KurtIntro::
+	msgbox CeruleanCity_House1_Text_KurtIntro
 	waitmessage
-	special ReturnToListMenu
-	waitstate
-	switch VAR_RESULT
-	case 0, CeruleanCity_House1_EventScript_DescribeBoulderBadge
-	case 1, CeruleanCity_House1_EventScript_DescribeCascadeBadge
-	case 2, CeruleanCity_House1_EventScript_DescribeThunderBadge
-	case 3, CeruleanCity_House1_EventScript_DescribeRainbowBadge
-	case 4, CeruleanCity_House1_EventScript_DescribeSoulBadge
-	case 5, CeruleanCity_House1_EventScript_DescribeMarshBadge
-	case 6, CeruleanCity_House1_EventScript_DescribeVolcanoBadge
-	case 7, CeruleanCity_House1_EventScript_DescribeEarthBadge
-	case 8, CeruleanCity_House1_EventScript_StopDescribingBadges
-	case 127, CeruleanCity_House1_EventScript_StopDescribingBadges
+	checkitemspace ITEM_BIKE_VOUCHER
+	goto_if_eq VAR_RESULT, FALSE, CeruleanCity_House1_EventScript_NoRoomForBikeVoucher
+	setflag FLAG_GOT_VOUCHER_FROM_KURT
+	giveitem_msg CeruleanCity_House1_Text_ReceivedBikeVoucherFromChairman, ITEM_BIKE_VOUCHER, 1, MUS_OBTAIN_KEY_ITEM
+	msgbox CeruleanCity_House1_Text_ExplainBikeVoucher
+	waitmessage 
+	release
 	end
 
-CeruleanCity_House1_EventScript_DescribeBoulderBadge::
-	msgbox CeruleanCity_House1_Text_AttackStatFlash
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeCascadeBadge::
-	msgbox CeruleanCity_House1_Text_ObeyLv30Cut
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeThunderBadge::
-	msgbox CeruleanCity_House1_Text_SpeedStatFly
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeRainbowBadge::
-	msgbox CeruleanCity_House1_Text_ObeyLv50Strength
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeSoulBadge::
-	msgbox CeruleanCity_House1_Text_DefenseStatSurf
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeMarshBadge::
-	msgbox CeruleanCity_House1_Text_ObeyLv70RockSmash
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeVolcanoBadge::
-	msgbox CeruleanCity_House1_Text_SpStatsWaterfall
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_DescribeEarthBadge::
-	msgbox CeruleanCity_House1_Text_AllMonsWillObeyYou
-	goto CeruleanCity_House1_EventScript_DescribeAnotherBadge
-	end
-
-CeruleanCity_House1_EventScript_StopDescribingBadges::
-	msgbox CeruleanCity_House1_Text_ComeVisitAnytime
+CeruleanCity_House1_EventScript_NoRoomForBikeVoucher::
+	msgbox CeruleanCity_House1_Text_MakeRoomForThis
+	waitmessage
 	release
 	end

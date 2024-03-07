@@ -24,15 +24,6 @@ SSAnne_CaptainsOffice_EventScript_Captain::
 	release
 	end
 
-@ Unused
-SSAnne_CaptainsOffice_EventScript_NoRoomForCut::
-	msgbox SSAnne_CaptainsOffice_Text_YouHaveNoRoomForThis
-	closemessage
-	applymovement LOCALID_CAPTAIN, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
 SSAnne_CaptainsOffice_EventScript_AlreadyGotCut::
 	applymovement LOCALID_CAPTAIN, Common_Movement_FacePlayer
 	waitmovement 0
@@ -45,5 +36,5 @@ SSAnne_CaptainsOffice_EventScript_TrashCan::
 	end
 
 SSAnne_CaptainsOffice_EventScript_Book::
-	msgbox SSAnne_CaptainsOffice_Text_HowToConquerSeasickness, MSGBOX_SIGN
+	msgbox SSAnne_CaptainsOffice_Text_TheBook, MSGBOX_SIGN
 	end
