@@ -872,8 +872,8 @@ const struct MonCoords gMonFrontPicCoords[] =
     },
     [SPECIES_IGGLYBUFF] =
     {
-        .size = MON_COORDS_SIZE(32, 32),
-        .y_offset = 18,
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
     },
     [SPECIES_TOGEPI] =
     {
