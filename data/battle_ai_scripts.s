@@ -216,7 +216,6 @@ AI_CheckBadMove_CheckEffect::
 AI_CBM_Sleep::
 	get_ability AI_TARGET
 	if_equal ABILITY_INSOMNIA, Score_Minus10
-	if_equal ABILITY_VITAL_SPIRIT, Score_Minus10
 	if_status AI_TARGET, STATUS1_ANY, Score_Minus10
 @	if_side_affecting AI_TARGET, SIDE_STATUS_SAFEGUARD, Score_Minus10  @ Improvement in Emerald
 	end
@@ -293,6 +292,8 @@ AI_CBM_SpeedDown::
 
 AI_CBM_SpAtkDown::
 	if_stat_level_equal AI_TARGET, STAT_SPATK, 0, Score_Minus10
+	get_ability AI_TARGET
+	if_equal ABILITY_HYPER_CUTTER, Score_Minus10
 	goto CheckIfAbilityBlocksStatChange
 
 AI_CBM_SpDefDown::
@@ -338,7 +339,7 @@ AI_CBM_Roar::
 	count_alive_pokemon AI_TARGET
 	if_equal 0, Score_Minus10
 	get_ability AI_TARGET
-	if_equal ABILITY_SUCTION_CUPS, Score_Minus10
+	if_equal ABILITY_STICKY_HOLD, Score_Minus10
 	end
 
 AI_CBM_Poison::
@@ -2502,7 +2503,7 @@ AI_CV_ChangeSelfAbility_End::
 
 AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_SPEED_BOOST
-	.byte ABILITY_BATTLE_ARMOR
+	.byte ABILITY_STURDY
 	.byte ABILITY_SAND_VEIL
 	.byte ABILITY_STATIC
 	.byte ABILITY_FLASH_FIRE
@@ -2510,11 +2511,13 @@ AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_EFFECT_SPORE
 	.byte ABILITY_SWIFT_SWIM
 	.byte ABILITY_HUGE_POWER
+	.byte ABILITY_PURE_POWER
+	.byte ABILITY_BATTLE_ARMOR
+	.byte ABILITY_SHELL_ARMOR
 	.byte ABILITY_RAIN_DISH
 	.byte ABILITY_CUTE_CHARM
 	.byte ABILITY_SHED_SKIN
 	.byte ABILITY_MARVEL_SCALE
-	.byte ABILITY_PURE_POWER
 	.byte ABILITY_CHLOROPHYLL
 	.byte ABILITY_SHIELD_DUST
 	.byte -1
