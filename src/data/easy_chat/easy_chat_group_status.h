@@ -78,7 +78,7 @@ static const u8 sEasyChatWord_Flying[] = _("FLYING");
 static const u8 sEasyChatWord_Drought[] = _("DROUGHT");
 static const u8 sEasyChatWord_Lightningrod[] = _("LIGHTNINGROD");
 static const u8 sEasyChatWord_Compoundeyes[] = _("COMPOUNDEYES");
-static const u8 sEasyChatWord_MarvelScale[] = _("MARVEL SCALE");
+static const u8 sEasyChatWord_MysticScale[] = _("Mystic SCALE");
 static const u8 sEasyChatWord_WonderGuard[] = _("WONDER GUARD");
 static const u8 sEasyChatWord_Insomnia[] = _("INSOMNIA");
 static const u8 sEasyChatWord_Levitate[] = _("LEVITATE");
@@ -506,7 +506,7 @@ static const struct EasyChatWordInfo sEasyChatGroup_Status[] = {
         .enabled = TRUE
     },
     {
-        .text = sEasyChatWord_MarvelScale,
+        .text = sEasyChatWord_MysticScale,
         .alphabeticalOrder = 35,
         .enabled = TRUE
     },

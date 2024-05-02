@@ -59,12 +59,12 @@
 #define ABILITY_SNOW_WARNING 55     // hustle -> snow warning
 #define ABILITY_CUTE_CHARM 56
 #define ABILITY_IMPULSE 57          // plus -> impulse
-#define ABILITY_MINUS 58
+#define ABILITY_MYSTIC_GUARD 58     // minus -> mystic guard 
 #define ABILITY_FORECAST 59
 #define ABILITY_STICKY_HOLD 60      // modified
 #define ABILITY_SHED_SKIN 61
 #define ABILITY_GUTS 62
-#define ABILITY_MARVEL_SCALE 63
+#define ABILITY_MYSTIC_SCALE 63     // marvel scale -> mystic scale
 #define ABILITY_LIQUID_OOZE 64
 #define ABILITY_OVERGROW 65
 #define ABILITY_BLAZE 66
