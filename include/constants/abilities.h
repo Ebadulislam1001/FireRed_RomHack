@@ -56,7 +56,7 @@
 #define ABILITY_HYPER_CUTTER 52     // modified
 #define ABILITY_PICKUP 53
 #define ABILITY_TRUANT 54
-#define ABILITY_HUSTLE 55
+#define ABILITY_SNOW_WARNING 55     // hustle -> snow warning
 #define ABILITY_CUTE_CHARM 56
 #define ABILITY_PLUS 57
 #define ABILITY_MINUS 58
