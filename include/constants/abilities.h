@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_ABILITIES_H
 
 #define ABILITY_NONE 0
-#define ABILITY_STENCH 1
+#define ABILITY_SOLAR_POWER 1       // stench -> solar power
 #define ABILITY_DRIZZLE 2
 #define ABILITY_SPEED_BOOST 3
 #define ABILITY_BATTLE_ARMOR 4      // modified

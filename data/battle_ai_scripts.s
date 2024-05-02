@@ -2183,14 +2183,21 @@ AI_CV_RainDance_End::
 	end
 
 AI_CV_SunnyDay::
-	if_hp_less_than AI_USER, 40, AI_CV_SunnyDay_ScoreDown1
-	get_weather
-	if_equal AI_WEATHER_HAIL, AI_CV_SunnyDay2
-	if_equal AI_WEATHER_RAIN, AI_CV_SunnyDay2
-	if_equal AI_WEATHER_SANDSTORM, AI_CV_SunnyDay2
-	goto AI_CV_SunnyDay_End
+	if_user_faster AI_CV_SunnyDay2
+	get_ability AI_USER
+	if_equal ABILITY_CHLOROPHYLL, AI_CV_SunnyDay3
 
 AI_CV_SunnyDay2::
+	if_hp_less_than AI_USER, 40, AI_CV_SunnyDay_ScoreDown1
+	get_weather
+	if_equal AI_WEATHER_HAIL, AI_CV_SunnyDay3
+	if_equal AI_WEATHER_RAIN, AI_CV_SunnyDay3
+	if_equal AI_WEATHER_SANDSTORM, AI_CV_SunnyDay3
+	get_ability AI_USER
+	if_equal ABILITY_SOLAR_POWER, AI_CV_SunnyDay3
+	goto AI_CV_SunnyDay_End
+
+AI_CV_SunnyDay3::
 	score +1
 	goto AI_CV_SunnyDay_End
 
@@ -2514,6 +2521,7 @@ AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_PURE_POWER
 	.byte ABILITY_BATTLE_ARMOR
 	.byte ABILITY_SHELL_ARMOR
+	.byte ABILITY_SOLAR_POWER
 	.byte ABILITY_RAIN_DISH
 	.byte ABILITY_CUTE_CHARM
 	.byte ABILITY_SHED_SKIN

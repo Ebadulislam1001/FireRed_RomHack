@@ -334,14 +334,14 @@ static bool8 DoWildEncounterRateTest(u32 encounterRate, bool8 ignoreAbility)
 static u8 GetAbilityEncounterRateModType(void)
 {
     sWildEncounterData.abilityEffect = 0;
-    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
-    {
-        u8 ability = GetMonAbility(&gPlayerParty[0]);
-        if (ability == ABILITY_STENCH)
-            sWildEncounterData.abilityEffect = 1;
-        else if (ability == ABILITY_ILLUMINATE)
-            sWildEncounterData.abilityEffect = 2;
-    }
+    // if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
+    // {
+    //     u8 ability = GetMonAbility(&gPlayerParty[0]);
+    //     if (ability == ABILITY_MINUS)
+    //         sWildEncounterData.abilityEffect = 1;
+    //     else if (ability == ABILITY_PLUS)
+    //         sWildEncounterData.abilityEffect = 2;
+    // }
     return sWildEncounterData.abilityEffect;
 }
 

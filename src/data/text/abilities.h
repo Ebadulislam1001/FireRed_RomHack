@@ -1,5 +1,5 @@
 static const u8 sNoneDescription[] = _("No special ability.");
-static const u8 sStenchDescription[] = _("Helps repel wild POKéMON.");
+static const u8 sSolarPowerDescription[] = _("Slight HP recovery in sun.");
 static const u8 sDrizzleDescription[] = _("Summons rain in battle.");
 static const u8 sSpeedBoostDescription[] = _("Gradually boosts SPEED.");
 static const u8 sBattleArmorDescription[] = _("Raises Ph.DEFENSE.");
@@ -80,7 +80,7 @@ static const u8 sAirLockDescription[] = _("Negates weather effects.");
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 {
     [ABILITY_NONE] = sNoneDescription,
-    [ABILITY_STENCH] = sStenchDescription,
+    [ABILITY_SOLAR_POWER] = sSolarPowerDescription,
     [ABILITY_DRIZZLE] = sDrizzleDescription,
     [ABILITY_SPEED_BOOST] = sSpeedBoostDescription,
     [ABILITY_BATTLE_ARMOR] = sBattleArmorDescription,
@@ -162,7 +162,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
     [ABILITY_NONE] = _("-------"),
-    [ABILITY_STENCH] = _("STENCH"),
+    [ABILITY_SOLAR_POWER] = _("SOLAR POWER"),
     [ABILITY_DRIZZLE] = _("DRIZZLE"),
     [ABILITY_SPEED_BOOST] = _("SPEED BOOST"),
     [ABILITY_BATTLE_ARMOR] = _("BATTLE ARMOR"),
