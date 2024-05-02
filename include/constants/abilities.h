@@ -58,7 +58,7 @@
 #define ABILITY_TRUANT 54
 #define ABILITY_SNOW_WARNING 55     // hustle -> snow warning
 #define ABILITY_CUTE_CHARM 56
-#define ABILITY_PLUS 57
+#define ABILITY_IMPULSE 57          // plus -> impulse
 #define ABILITY_MINUS 58
 #define ABILITY_FORECAST 59
 #define ABILITY_STICKY_HOLD 60      // modified
