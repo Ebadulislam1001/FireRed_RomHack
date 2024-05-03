@@ -7,7 +7,7 @@ static const u8 sSturdyDescription[] = _("Blocks critical hits.");
 static const u8 sDampDescription[] = _("Prevents self-destruction.");
 static const u8 sLimberDescription[] = _("Prevents paralysis.");
 static const u8 sSandVeilDescription[] = _("Ups evasion in a sandstorm.");
-static const u8 sStaticDescription[] = _("Paralyzes on contact.");
+static const u8 sStaticDescription[] = _("Paralyzes the foe on contact.");
 static const u8 sVoltAbsorbDescription[] = _("Turns electricity into HP.");
 static const u8 sWaterAbsorbDescription[] = _("Changes water into HP.");
 static const u8 sObliviousDescription[] = _("Prevents attraction.");
@@ -36,7 +36,7 @@ static const u8 sChlorophyllDescription[] = _("Raises SPEED in sunshine.");
 static const u8 sIlluminateDescription[] = _("Encounter rate increases.");
 static const u8 sTraceDescription[] = _("Copies special ability.");
 static const u8 sHugePowerDescription[] = _("Raises Ph.ATTACK.");
-static const u8 sPoisonPointDescription[] = _("Poisons foe on contact.");
+static const u8 sPoisonPointDescription[] = _("Poisons the foe on contact.");
 static const u8 sInnerFocusDescription[] = _("Prevents flinching.");
 static const u8 sMagmaArmorDescription[] = _("Prevents freezing.");
 static const u8 sWaterVeilDescription[] = _("Prevents burns.");
@@ -76,6 +76,8 @@ static const u8 sPurePowerDescription[] = _("Raises Sp.ATTACK.");
 static const u8 sShellArmorDescription[] = _("Raises Sp.DEFENSE.");
 static const u8 sTechnicianDescription[] = _("Boosts weak moves.");
 static const u8 sAirLockDescription[] = _("Negates weather effects.");
+static const u8 sSenjutsuDescription[] = _("Slight HP recovery each turn.");
+static const u8 sGenjutsuDescription[] = _("Confuses the foe on contact.");
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 {
@@ -157,6 +159,8 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SHELL_ARMOR] = sShellArmorDescription,
     [ABILITY_TECHNICIAN] = sTechnicianDescription,
     [ABILITY_AIR_LOCK] = sAirLockDescription,
+    [ABILITY_SENJUTSU] = sSenjutsuDescription,
+    [ABILITY_GENJUTSU] = sGenjutsuDescription,
 };
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -239,4 +243,6 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SHELL_ARMOR] = _("SHELL ARMOR"),
     [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
     [ABILITY_AIR_LOCK] = _("AIR LOCK"),
+    [ABILITY_SENJUTSU] = _("SENJUTSU"),
+    [ABILITY_GENJUTSU] = _("GENJUTSU"),
 };

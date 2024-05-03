@@ -77,9 +77,11 @@
 #define ABILITY_WHITE_SMOKE 73
 #define ABILITY_PURE_POWER 74       // modified
 #define ABILITY_SHELL_ARMOR 75      // modified
-#define ABILITY_TECHNICIAN 76        // cacophony -> technician
+#define ABILITY_TECHNICIAN 76       // cacophony -> technician
 #define ABILITY_AIR_LOCK 77
+#define ABILITY_SENJUTSU 78         // new ability
+#define ABILITY_GENJUTSU 79         // new ability
 
-#define ABILITIES_COUNT 78
+#define ABILITIES_COUNT 80
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H
