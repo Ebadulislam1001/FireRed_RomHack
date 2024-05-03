@@ -2434,14 +2434,18 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         defenderHoldEffectParam = ItemId_GetHoldEffectParam(defender->item);
     }
 
+
+    // Apply boosts from abilities
+    if (attacker->ability == ABILITY_TECHNICIAN && gBattleMovePower <= 60)
+        gBattleMovePower = (150 * gBattleMovePower) / 100;
     if (attacker->ability == ABILITY_HUGE_POWER)
-        attack  = (attack*15)/10;
+        attack  = (150 * attack)/100;
     if (attacker->ability == ABILITY_PURE_POWER)
-        spAttack  = (spAttack*15)/10;
+        spAttack  = (150 * spAttack)/100;
     if (defender->ability == ABILITY_BATTLE_ARMOR)
-        defense  = (defense*15)/10;
+        defense  = (150 * defense)/100;
     if (defender->ability == ABILITY_SHELL_ARMOR)
-        spDefense  = (spDefense*15)/10;
+        spDefense  = (150 * spDefense)/100;
 
     if (ShouldGetStatBadgeBoost(FLAG_BADGE01_GET, battlerIdAtk))
         attack = (110 * attack) / 100;
@@ -2483,6 +2487,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         defense *= 2;
     if (attackerHoldEffect == HOLD_EFFECT_THICK_CLUB && (attacker->species == SPECIES_CUBONE || attacker->species == SPECIES_MAROWAK))
         attack *= 2;
+
+    // Apply boosts from abilities
     if (defender->ability == ABILITY_THICK_FAT && (type == TYPE_FIRE || type == TYPE_ICE))
         spAttack /= 2;
     // if (attacker->ability == ABILITY_HUSTLE)

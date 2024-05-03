@@ -77,7 +77,7 @@
 #define ABILITY_WHITE_SMOKE 73
 #define ABILITY_PURE_POWER 74       // modified
 #define ABILITY_SHELL_ARMOR 75      // modified
-#define ABILITY_CACOPHONY 76
+#define ABILITY_TECHNICIAN 76        // cacophony -> technician
 #define ABILITY_AIR_LOCK 77
 
 #define ABILITIES_COUNT 78
