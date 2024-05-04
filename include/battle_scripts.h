@@ -223,6 +223,8 @@ extern const u8 BattleScript_GhostGetOutGetOut[];
 extern const u8 BattleScript_TooScaredToMove[];
 extern const u8 BattleScript_IntimidateActivates[];
 extern const u8 BattleScript_IntimidateActivatesEnd3[];
+extern const u8 BattleScript_IlluminateActivates[];
+extern const u8 BattleScript_IlluminateActivatesEnd3[];
 extern const u8 BattleScript_IgnoresWhileAsleep[];
 extern const u8 BattleScript_IgnoresAndHitsItself[];
 extern const u8 BattleScript_MoveEffectRecoil[];

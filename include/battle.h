@@ -219,6 +219,7 @@ struct SpecialStatus
     u8 restoredBattlerSprite:1;   // 0x4
     u8 intimidatedMon:1;          // 0x8
     u8 traced:1;                  // 0x10
+    u8 illuminatedMon:1;          // 0x20
     u8 ppNotAffectedByPressure:1;
     u8 faintedHasReplacement:1;
     u8 focusBanded:1;
@@ -440,6 +441,7 @@ struct BattleStruct
     u16 choicedMove[MAX_BATTLERS_COUNT];
     u16 changedItems[MAX_BATTLERS_COUNT];
     u8 intimidateBattler;
+    u8 illuminateBattler;
     u8 switchInItemsCounter;
     u8 field_DA; // battle tower related
     u8 turnSideTracker;

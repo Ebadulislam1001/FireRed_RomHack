@@ -3999,6 +3999,8 @@ BattleScript_DoCastformChangeAnim::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+@@@@@@@@@@@@ INTIMIDATE @@@@@@@@@@@@
+
 BattleScript_IntimidateActivatesEnd3::
 	call BattleScript_DoIntimidateActivationAnim
 	end3
@@ -4018,7 +4020,7 @@ BattleScript_IntimidateActivationAnimLoop::
 	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_IntimidateFail
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_PKMNCUTSATTACKWITH
+	printstring STRINGID_PKMNCUTSPHATTACKWITH
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_IntimidateFail::
 	addbyte gBattlerTarget, 1
@@ -4032,6 +4034,44 @@ BattleScript_IntimidateAbilityFail::
 	printstring STRINGID_PREVENTEDFROMWORKING
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_IntimidateFail
+
+@@@@@@@@@@@@ ILLUMINATE @@@@@@@@@@@@
+
+BattleScript_IlluminateActivatesEnd3::
+	call BattleScript_DoIlluminateActivationAnim
+	end3
+
+BattleScript_DoIlluminateActivationAnim::
+	pause B_WAIT_TIME_SHORT
+BattleScript_IlluminateActivates::
+	setbyte gBattlerTarget, 0
+	setstatchanger STAT_SPATK, 1, TRUE
+BattleScript_IlluminateActivationAnimLoop::
+	trygetilluminatetarget BattleScript_IlluminateEnd
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_IlluminateFail
+	jumpifability BS_TARGET, ABILITY_CLEAR_BODY, BattleScript_IlluminateAbilityFail
+	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_IlluminateAbilityFail
+	jumpifability BS_TARGET, ABILITY_WHITE_SMOKE, BattleScript_IlluminateAbilityFail
+	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_IlluminateFail
+	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_IlluminateFail
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNCUTSSPATTACKWITH
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_IlluminateFail::
+	addbyte gBattlerTarget, 1
+	goto BattleScript_IlluminateActivationAnimLoop
+
+BattleScript_IlluminateEnd::
+	return
+
+BattleScript_IlluminateAbilityFail::
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PREVENTEDFROMWORKING
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_IlluminateFail
+
+@@@@@@@@@@@@ END @@@@@@@@@@@@
 
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT
