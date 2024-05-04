@@ -81,7 +81,8 @@
 #define ABILITY_AIR_LOCK 77
 #define ABILITY_SENJUTSU 78         // new ability
 #define ABILITY_GENJUTSU 79         // new ability
+#define ABILITY_OPPORTUNIST 80      // new ability
 
-#define ABILITIES_COUNT 80
+#define ABILITIES_COUNT 81
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H

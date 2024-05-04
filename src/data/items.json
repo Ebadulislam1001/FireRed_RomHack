@@ -2933,7 +2933,7 @@
       "itemId": "ITEM_QUICK_CLAW",
       "price": 100,
       "holdEffect": "HOLD_EFFECT_QUICK_CLAW",
-      "holdEffectParam": 20,
+      "holdEffectParam": 25,
       "description_english": "An item to be held by a POKéMON.\\nA light and sharp claw. The holder\\nmay be able to strike first.",
       "importance": 0,
       "registrability": 0,
