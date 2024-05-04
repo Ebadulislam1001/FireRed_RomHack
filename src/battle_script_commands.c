@@ -773,22 +773,71 @@ struct PickupItem
 
 static const struct PickupItem sPickupItems[] =
 {
-    { ITEM_ORAN_BERRY, 15 },
-    { ITEM_CHERI_BERRY, 25 },
-    { ITEM_CHESTO_BERRY, 35 },
-    { ITEM_PECHA_BERRY, 45 },
-    { ITEM_RAWST_BERRY, 55 },
-    { ITEM_ASPEAR_BERRY, 65 },
-    { ITEM_PERSIM_BERRY, 75 },
-    { ITEM_TM10, 80 },
-    { ITEM_PP_UP, 85 },
-    { ITEM_RARE_CANDY, 90 },
-    { ITEM_NUGGET, 95 },
-    { ITEM_SPELON_BERRY, 96 },
-    { ITEM_PAMTRE_BERRY, 97 },
-    { ITEM_WATMEL_BERRY, 98 },
-    { ITEM_DURIN_BERRY, 99 },
-    { ITEM_BELUE_BERRY, 1 },
+    // First Batch of common berries
+    {ITEM_ORAN_BERRY,      2},
+    {ITEM_CHERI_BERRY,     4},
+    {ITEM_CHESTO_BERRY,    6},
+    {ITEM_PECHA_BERRY,     8},
+    {ITEM_RAWST_BERRY,    10},
+    {ITEM_ASPEAR_BERRY,   12},
+    {ITEM_LEPPA_BERRY,    14},
+    {ITEM_PERSIM_BERRY,   16},
+    {ITEM_SITRUS_BERRY,   18},
+    {ITEM_TM10,           20},
+    // Second Batch of common berries
+    {ITEM_ORAN_BERRY,     22},
+    {ITEM_PERSIM_BERRY,   24},
+    {ITEM_LEPPA_BERRY,    26},
+    {ITEM_ASPEAR_BERRY,   28},
+    {ITEM_RAWST_BERRY,    30},
+    {ITEM_PECHA_BERRY,    32},
+    {ITEM_CHESTO_BERRY,   34},
+    {ITEM_CHERI_BERRY,    36},
+    {ITEM_SITRUS_BERRY,   38},
+    {ITEM_TM10,           40},
+    // Batch of battle items
+    {ITEM_POKE_BALL,      42},
+    {ITEM_GUARD_SPEC,     44},
+    {ITEM_DIRE_HIT,       46},
+    {ITEM_X_ATTACK,       48},
+    {ITEM_X_DEFEND,       50},
+    {ITEM_X_SPEED,        52},
+    {ITEM_X_ACCURACY,     54},
+    {ITEM_X_SPECIAL,      56},
+    {ITEM_GREAT_BALL,     58},
+    {ITEM_TM10,           60},
+    // Batch of upgrade items
+    {ITEM_RARE_CANDY,     62},
+    {ITEM_HP_UP,          64},
+    {ITEM_PROTEIN,        66},
+    {ITEM_IRON,           68},
+    {ITEM_CARBOS,         70},
+    {ITEM_CALCIUM,        72},
+    {ITEM_PP_UP,          74},
+    {ITEM_ZINC,           76},
+    {ITEM_PP_MAX,         78},
+    {ITEM_RARE_CANDY,     80},
+    // Batch of held items
+    {ITEM_BRIGHT_POWDER,  82},
+    {ITEM_WHITE_HERB,     84},
+    {ITEM_MENTAL_HERB,    86},
+    {ITEM_CHOICE_BAND,    88},
+    {ITEM_KINGS_ROCK,     90},
+    {ITEM_SMOKE_BALL,     92},
+    {ITEM_FOCUS_BAND,     94},
+    {ITEM_SCOPE_LENS,     96},
+    {ITEM_TM10,           98},
+
+    // Uselese berries
+    // { ITEM_CORNN_BERRY,  100 },
+    // { ITEM_MAGOST_BERRY, 100 },
+    // { ITEM_RABUTA_BERRY, 100 },
+    // { ITEM_NOMEL_BERRY,  100 },
+    // { ITEM_SPELON_BERRY, 100 },
+    // { ITEM_PAMTRE_BERRY, 100 },
+    // { ITEM_WATMEL_BERRY, 100 },
+    // { ITEM_DURIN_BERRY,  100 },
+    // { ITEM_BELUE_BERRY,  100 },
 
 };
 
@@ -1069,11 +1118,11 @@ static void Cmd_accuracycheck(void)
         calc /= sAccuracyStageRatios[buff].divisor;
 
         if (gBattleMons[gBattlerAttacker].ability == ABILITY_COMPOUND_EYES)
-            calc = (calc * 130) / 100; // 1.3 compound eyes boost
+            calc = (calc * 130) / 100; // 30% compound eyes boost
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SAND_VEIL && gBattleWeather & B_WEATHER_SANDSTORM)
-            calc = (calc * 80) / 100; // 1.2 snow cloak loss
+            calc = (calc * 70) / 100; // 30% snow cloak loss
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SNOW_CLOAK && gBattleWeather & B_WEATHER_HAIL)
-            calc = (calc * 80) / 100; // 1.2 sand veil loss
+            calc = (calc * 70) / 100; // 30% sand veil loss
         // if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_TYPE_PHYSICAL(type))
         //     calc = (calc * 80) / 100; // 1.2 hustle loss
 
@@ -9299,7 +9348,7 @@ static void Cmd_pickup(void)
             ability = gSpeciesInfo[species].abilities[1];
         else
             ability = gSpeciesInfo[species].abilities[0];
-        if (ability == ABILITY_PICKUP && species != SPECIES_NONE && species != SPECIES_EGG && heldItem == ITEM_NONE && !(Random() % 10))
+        if (ability == ABILITY_PICKUP && species != SPECIES_NONE && species != SPECIES_EGG && heldItem == ITEM_NONE && !(Random() % 6))
         {
             s32 random = Random() % 100;
 

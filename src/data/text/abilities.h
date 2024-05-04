@@ -79,6 +79,7 @@ static const u8 sAirLockDescription[] = _("Negates weather effects.");
 static const u8 sSenjutsuDescription[] = _("Slight HP recovery each turn.");
 static const u8 sGenjutsuDescription[] = _("Confuses the foe on contact.");
 static const u8 sOpportunistDescription[] = _("Sometimes allows to strike first.");
+static const u8 sIceBodyDescription[] = _("Freezes the foe on contact.");
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 {
@@ -163,6 +164,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SENJUTSU] = sSenjutsuDescription,
     [ABILITY_GENJUTSU] = sGenjutsuDescription,
     [ABILITY_OPPORTUNIST] = sOpportunistDescription,
+    [ABILITY_ICE_BODY] = sIceBodyDescription,
 };
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -248,4 +250,5 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SENJUTSU] = _("SENJUTSU"),
     [ABILITY_GENJUTSU] = _("GENJUTSU"),
     [ABILITY_OPPORTUNIST] = _("OPPORTUNIST"),
+    [ABILITY_ICE_BODY] = _("ICE BODY"),
 };
