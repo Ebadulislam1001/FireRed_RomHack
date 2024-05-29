@@ -31,6 +31,7 @@
 #define TUTOR_MOVE_BLAST_BURN      16
 #define TUTOR_MOVE_HYDRO_CANNON    17
 
+// Field moves
 #define FIELD_MOVE_FLASH        0
 #define FIELD_MOVE_CUT          1
 #define FIELD_MOVE_FLY          2
