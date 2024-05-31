@@ -17,44 +17,34 @@ ViridianForest_Text_SatoshiIntro::
     .string "full of BUGs.\p"
     .string "I mean a game about catching BUGs$"
 
-ViridianForest_Text_RickIntro::
-    .string "Hey! You have POKéMON!\n"
-    .string "Come on!\l"
-    .string "Let's battle 'em!$"
-
-ViridianForest_Text_RickDefeat::
-    .string "No!\nCATERPIE can't hack it!$"
-
-ViridianForest_Text_RickPostBattle::
-    .string "Ssh! You'll scare the bugs away.\n"
-    .string "Another time, okay?$"
-
 ViridianForest_Text_DougIntro::
-    .string "Yo!\n"
-    .string "You can't jam out if you're a\l"
-    .string "POKéMON TRAINER!$"
+    .string "Yo!\p"
+    .string "You are a POKéMON trainer.\n"
+    .string "Arent you!\p"
+    .string "Lets battle !!!\p"
+    .string "What? It's your first time\n"
+    .string "battling a stranger?\p"
+    .string "Dont worry. I'll go easy on you.$"
 
 ViridianForest_Text_DougDefeat::
     .string "Huh?\n"
-    .string "I ran out of POKéMON!$"
+    .string "But you said it's your first time.$"
 
 ViridianForest_Text_DougPostBattle::
     .string "That totally stinks! I'm going to\n"
     .string "catch some stronger ones!$"
 
-ViridianForest_Text_SammyIntro::
-    .string "Hey, wait up!\n"
-    .string "What's the hurry? Why the rush?$"
+ViridianForest_Text_RickIntro::
+    .string "Hey! You have POKéMON too!\n"
+    .string "Come on!\l"
+    .string "Let's battle 'em!$"
 
-ViridianForest_Text_SammyDefeat::
-    .string "I give!\n"
-    .string "You're good at this!$"
+ViridianForest_Text_RickDefeat::
+    .string "No!\nAre you a hacker!$"
 
-ViridianForest_Text_SammyPostBattle::
-    .string "Sometimes, you can find stuff on\n"
-    .string "the ground.\p"
-    .string "I'm looking for the stuff I\n"
-    .string "dropped. Can you help me?$"
+ViridianForest_Text_RickPostBattle::
+    .string "I don't know you.\n"
+    .string "Do I?$"
 
 ViridianForest_Text_AnthonyIntro::
     .string "I might be little, but I won't like\n"
@@ -72,11 +62,25 @@ ViridianForest_Text_CharlieIntro::
 
 ViridianForest_Text_CharlieDefeat::
     .string "Oh!\n"
-    .string "I lost!$"
+    .string "I lost! But How?$"
 
 ViridianForest_Text_CharliePostBattle::
     .string "BUG POKéMON evolve quickly.\n"
     .string "They're a lot of fun!$"
+
+ViridianForest_Text_SammyIntro::
+    .string "Hey, wait up!\n"
+    .string "What's the hurry? Why the rush?$"
+
+ViridianForest_Text_SammyDefeat::
+    .string "I give!\n"
+    .string "You're good at this!$"
+
+ViridianForest_Text_SammyPostBattle::
+    .string "Sometimes, you can find stuff on\n"
+    .string "the ground.\p"
+    .string "I'm looking for the stuff I\n"
+    .string "dropped.$"
 
 ViridianForest_Text_AvoidGrassyAreasWhenWeak::
     .string "TRAINER TIPS\p"
@@ -110,6 +114,6 @@ ViridianForest_Text_WeakenMonsBeforeCapture::
     .string "When healthy, they may escape!$"
 
 ViridianForest_Text_ExitSign::
-    .string "LEAVING VIRIDIAN FOREST\n"
+    .string "VIRIDIAN FOREST EXIT\n"
     .string "PEWTER CITY AHEAD$"
 
