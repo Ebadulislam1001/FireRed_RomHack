@@ -24,7 +24,9 @@ Route2_EastBuilding_Text_ExplainHM05::
     .string "HM05 contains the hidden move\n"
     .string "FLASH.\p"
     .string "FLASH lights up even the darkest\n"
-    .string "of caves and dungeons.$"
+    .string "of caves and dungeons.\p"
+    .string "Teach it to one of your POKéMON,\n"
+    .string "and use it whenever needed.$"
 
 Route2_EastBuilding_Text_CanGetThroughMtMoon::
     .string "Once a POKéMON learns FLASH, you\n"
