@@ -42,6 +42,38 @@ PalletTown_RivalsHouse_EventScript_HeardBattledRival::
 	release
 	end
 
+PalletTown_RivalsHouse_EventScript_GiveTownMap::
+	msgbox PalletTown_RivalsHouse_Text_ErrandForGrandpaThisWillHelp
+	closemessage
+	checkitemspace ITEM_TOWN_MAP
+	goto_if_eq VAR_RESULT, FALSE, PalletTown_RivalsHouse_EventScript_NoRoomForTownMap
+	applymovement LOCALID_DAISY, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	removeobject LOCALID_TOWN_MAP
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2
+	delay 15
+	applymovement LOCALID_DAISY, Common_Movement_FacePlayer
+	waitmovement 0
+	delay 12
+	giveitem_msg PalletTown_RivalsHouse_Text_ReceivedTownMapFromDaisy, ITEM_TOWN_MAP, 1, MUS_OBTAIN_KEY_ITEM
+	release
+	end
+
+PalletTown_RivalsHouse_EventScript_NoRoomForTownMap::
+	msgbox PalletTown_RivalsHouse_Text_DontHaveSpaceForThis
+	release
+	end
+
+PalletTown_RivalsHouse_EventScript_ExplainTownMap::
+	msgbox PalletTown_RivalsHouse_Text_ExplainTownMap
+	release
+	end
+
+PalletTown_RivalsHouse_EventScript_PleaseGiveMonsRest::
+	msgbox PalletTown_RivalsHouse_Text_PleaseGiveMonsRest
+	release
+	end
+
 PalletTown_RivalsHouse_EventScript_GroomMon::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
@@ -92,74 +124,38 @@ PalletTown_RivalsHouse_EventScript_RateMonFriendship::
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipLowest::
-	msgbox PalletTown_RivalsHouse_Text_WhyWouldMonHateYouSoMuch
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipLowest
 	release
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipLower::
-	msgbox PalletTown_RivalsHouse_Text_DontLikeWayItGlaresAtYou
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipLower
 	release
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipLow::
-	msgbox PalletTown_RivalsHouse_Text_NotFamiliarWithYouYet
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipLow
 	release
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipMid::
-	msgbox PalletTown_RivalsHouse_Text_ItsWarmingUpToYou
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipMid
 	release
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipHigh::
-	msgbox PalletTown_RivalsHouse_Text_ItsQuiteFriendly
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipHigh
 	release
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipHigher::
-	msgbox PalletTown_RivalsHouse_Text_ItLooksVeryHappy
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipHigher
 	release
 	end
 
 PalletTown_RivalsHouse_EventScript_MonFriendshipHighest::
-	msgbox PalletTown_RivalsHouse_Text_CouldntLoveYouMore
+	msgbox PalletTown_RivalsHouse_Text_MonFriendshipHighest
 	release
-	end
-
-PalletTown_RivalsHouse_EventScript_PleaseGiveMonsRest::
-	msgbox PalletTown_RivalsHouse_Text_PleaseGiveMonsRest
-	release
-	end
-
-PalletTown_RivalsHouse_EventScript_GiveTownMap::
-	msgbox PalletTown_RivalsHouse_Text_ErrandForGrandpaThisWillHelp
-	closemessage
-	checkitemspace ITEM_TOWN_MAP
-	goto_if_eq VAR_RESULT, FALSE, PalletTown_RivalsHouse_EventScript_NoRoomForTownMap
-	applymovement LOCALID_DAISY, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	removeobject LOCALID_TOWN_MAP
-	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2
-	delay 15
-	applymovement LOCALID_DAISY, Common_Movement_FacePlayer
-	waitmovement 0
-	delay 12
-	giveitem_msg PalletTown_RivalsHouse_Text_ReceivedTownMapFromDaisy, ITEM_TOWN_MAP, 1, MUS_OBTAIN_KEY_ITEM
-	release
-	end
-
-PalletTown_RivalsHouse_EventScript_NoRoomForTownMap::
-	msgbox PalletTown_RivalsHouse_Text_DontHaveSpaceForThis
-	release
-	end
-
-PalletTown_RivalsHouse_EventScript_ExplainTownMap::
-	msgbox PalletTown_RivalsHouse_Text_ExplainTownMap
-	release
-	end
-
-PalletTown_RivalsHouse_EventScript_TownMap::
-	msgbox PalletTown_RivalsHouse_Text_ItsBigMapOfKanto, MSGBOX_NPC
 	end
 
 PalletTown_RivalsHouse_EventScript_Bookshelf::
@@ -168,4 +164,8 @@ PalletTown_RivalsHouse_EventScript_Bookshelf::
 
 PalletTown_RivalsHouse_EventScript_Picture::
 	msgbox PalletTown_RivalsHouse_Text_LovelyAndSweetClefairy, MSGBOX_SIGN
+	end
+
+PalletTown_RivalsHouse_EventScript_TownMap::
+	msgbox PalletTown_RivalsHouse_Text_ItsBigMapOfKanto, MSGBOX_NPC
 	end

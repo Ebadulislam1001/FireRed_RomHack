@@ -1,17 +1,19 @@
 PalletTown_RivalsHouse_Text_HiBrothersAtLab::
     .string "DAISY: Hi, {PLAYER}!\p"
-    .string "My brother, {RIVAL}, is out at\n"
-    .string "Grandpa's LAB.$"
+    .string "{RIVAL}, is out at\n"
+    .string "Grandpa's LAB.\p"
+    .string "Also I heard Grandpa was looking\n"
+    .string "for you. Go meet him in the lab.$"
 
 PalletTown_RivalsHouse_Text_HeardYouBattledRival::
     .string "DAISY: {PLAYER}, I heard you had\n"
     .string "a battle against {RIVAL}.\p"
-    .string "I wish I'd seen that!$"
+    .string "I hope he been nice with you!$"
 
 PalletTown_RivalsHouse_Text_ErrandForGrandpaThisWillHelp::
     .string "Grandpa asked you to run an\n"
     .string "errand?\p"
-    .string "Gee, that's lazy of him.\n"
+    .string "He trusts you a lot.\n"
     .string "Here, this will help you.$"
 
 PalletTown_RivalsHouse_Text_ReceivedTownMapFromDaisy::
@@ -31,15 +33,13 @@ PalletTown_RivalsHouse_Text_PleaseGiveMonsRest::
     .string "DAISY: Just like people, POKéMON\n"
     .string "are living things.\p"
     .string "When they get tired, please give\n"
-    .string "them a rest.$"
-
-PalletTown_RivalsHouse_Text_ItsBigMapOfKanto::
-    .string "It's a big map of the KANTO region.\n"
-    .string "Now this would be useful!$"
+    .string "them a rest.\p"
+    .string "I know you will treat your POKéMON\n"
+    .string "with all love and care.$"
 
 PalletTown_RivalsHouse_Text_ShelvesCrammedFullOfBooks::
     .string "The shelves are crammed full of\n"
-    .string "books on POKéMON.$"
+    .string "books about grooming POKéMON.$"
 
 PalletTown_RivalsHouse_Text_LikeMeToGroomMon::
     .string "DAISY: Hi, {PLAYER}!\n"
@@ -78,44 +78,32 @@ PalletTown_RivalsHouse_Text_MayISeeFirstMon::
     .string "For example, {PLAYER}, may I see\n"
     .string "your first POKéMON?$"
 
-PalletTown_RivalsHouse_Text_CouldntLoveYouMore::
-    .string "It couldn't possibly love you\n"
-    .string "any more than it does now.\p"
-    .string "Your POKéMON is happy beyond\n"
-    .string "words.$"
+PalletTown_RivalsHouse_Text_MonFriendshipHighest::
+    .string "Friendship Level: 255 $"
 
-PalletTown_RivalsHouse_Text_ItLooksVeryHappy::
-    .string "It looks very happy.\p"
-    .string "I wish {RIVAL} could see this and\n"
-    .string "learn something from it.$"
+PalletTown_RivalsHouse_Text_MonFriendshipHigher::
+    .string "Friendship Level: 200-254 $"
 
-PalletTown_RivalsHouse_Text_ItsQuiteFriendly::
-    .string "It's quite friendly with you.\n"
-    .string "Keep being good to it!$"
+PalletTown_RivalsHouse_Text_MonFriendshipHigh::
+    .string "Friendship Level: 150-199 $"
 
-PalletTown_RivalsHouse_Text_ItsWarmingUpToYou::
-    .string "It's warming up to you.\n"
-    .string "Trust must be growing between you.$"
+PalletTown_RivalsHouse_Text_MonFriendshipMid::
+    .string "Friendship Level: 100-149 $"
 
-PalletTown_RivalsHouse_Text_NotFamiliarWithYouYet::
-    .string "It's not quite familiar with you\n"
-    .string "yet.\p"
-    .string "POKéMON are all quite wary when\n"
-    .string "you first get them.$"
+PalletTown_RivalsHouse_Text_MonFriendshipLow::
+    .string "Friendship Level: 50-99 $"
 
-PalletTown_RivalsHouse_Text_DontLikeWayItGlaresAtYou::
-    .string "{PLAYER}, I don't like the way it\n"
-    .string "glares at you.\p"
-    .string "Could you try being a little nicer\n"
-    .string "to it?$"
+PalletTown_RivalsHouse_Text_MonFriendshipLower::
+    .string "Friendship Level: 1-49 $"
 
-PalletTown_RivalsHouse_Text_WhyWouldMonHateYouSoMuch::
-    .string "…Um, it's not easy for me to say\n"
-    .string "this, but…\p"
-    .string "Is there some reason why your\n"
-    .string "POKéMON would hate you so much?$"
+PalletTown_RivalsHouse_Text_MonFriendshipLowest::
+    .string "Freindship Level: 0 $"
 
 PalletTown_RivalsHouse_Text_LovelyAndSweetClefairy::
     .string "“The lovely and sweet\n"
     .string "CLEFAIRY”$"
+
+PalletTown_RivalsHouse_Text_ItsBigMapOfKanto::
+    .string "It's a big map of the KANTO region.\n"
+    .string "Now this would be useful!$"
 

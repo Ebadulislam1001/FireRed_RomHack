@@ -25,7 +25,7 @@ PalletTown_PlayersHouse_2F_EventScript_NES::
 	end
 
 PalletTown_PlayersHouse_2F_EventScript_Sign::
-	msgbox PalletTown_PlayersHouse_2F_Text_PressLRForHelp, MSGBOX_SIGN
+	msgbox PalletTown_PlayersHouse_2F_Text_RoomSign, MSGBOX_SIGN
 	end
 
 PalletTown_PlayersHouse_2F_EventScript_PC::
