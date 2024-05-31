@@ -305,13 +305,22 @@ static bool8 ShouldSwitch(void)
     s32 i;
     s32 availableToSwitch;
 
-    if ((gBattleMons[gActiveBattler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
-     || (gStatuses3[gActiveBattler] & STATUS3_ROOTED)
-     || AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_SHADOW_TAG, 0, 0)
-     || AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_ARENA_TRAP, 0, 0))
-        return FALSE; // misses the flying or levitate check
-    if (AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_MAGNET_PULL, 0, 0))
-        if ((gBattleMons[gActiveBattler].type1 == TYPE_STEEL) || (gBattleMons[gActiveBattler].type2 == TYPE_STEEL))
+    if (gBattleMons[gActiveBattler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
+        return FALSE;
+    if (gStatuses3[gActiveBattler] & STATUS3_ROOTED)
+        return FALSE;
+    if (AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_SHADOW_TAG, 0, 0)
+        && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
+        return FALSE;
+    if (AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_ARENA_TRAP, 0, 0)
+        && gBattleMons[gActiveBattler].type1 != TYPE_GROUND
+        && gBattleMons[gActiveBattler].type2 != TYPE_GROUND
+        && gBattleMons[gActiveBattler].ability != ABILITY_LEVITATE
+        && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
+            return FALSE;
+    if (AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_MAGNET_PULL, 0, 0)
+        && (gBattleMons[gActiveBattler].type1 == TYPE_STEEL || gBattleMons[gActiveBattler].type2 == TYPE_STEEL)
+        && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
             return FALSE;
     availableToSwitch = 0;
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
