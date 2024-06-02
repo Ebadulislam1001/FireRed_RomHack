@@ -14,8 +14,10 @@ ViridianCity_OnTransition::
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_TryUnlockGym
 	end
 
-ViridianCity_EventScript_SetOldManNormal::
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_1
+ViridianCity_EventScript_SetOldManBlockingRoad::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_LYING_DOWN
+	setobjectxyperm LOCALID_TUTORIAL_MAN, 21, 11
+	setobjectmovementtype LOCALID_TUTORIAL_MAN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 ViridianCity_EventScript_SetOldManStandingByRoad::
@@ -24,10 +26,8 @@ ViridianCity_EventScript_SetOldManStandingByRoad::
 	setobjectmovementtype LOCALID_TUTORIAL_MAN, MOVEMENT_TYPE_LOOK_AROUND
 	return
 
-ViridianCity_EventScript_SetOldManBlockingRoad::
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_LYING_DOWN
-	setobjectxyperm LOCALID_TUTORIAL_MAN, 21, 11
-	setobjectmovementtype LOCALID_TUTORIAL_MAN, MOVEMENT_TYPE_FACE_DOWN
+ViridianCity_EventScript_SetOldManNormal::
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_1
 	return
 
 ViridianCity_EventScript_TryUnlockGym::
@@ -54,7 +54,7 @@ ViridianCity_EventScript_GymDoorLocked::
 	end
 
 ViridianCity_Movement_JumpDownLedge::
-	jump_2_down
+	walkIn_place_faster_down
 	step_end
 
 ViridianCity_EventScript_CitySign::

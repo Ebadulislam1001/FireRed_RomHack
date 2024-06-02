@@ -35,20 +35,20 @@ ViridianCity_Mart_EventScript_ParcelScene::
 	releaseall
 	end
 
-ViridianCity_Mart_Movement_ApproachCounter::
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_left
-	step_end
-
 ViridianCity_Mart_Movement_FacePlayer::
 	delay_16
 	delay_16
 	delay_16
 	delay_16
 	walk_in_place_faster_right
+	step_end
+
+ViridianCity_Mart_Movement_ApproachCounter::
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_faster_left
 	step_end
 
 ViridianCity_Mart_EventScript_Clerk::
@@ -63,18 +63,19 @@ ViridianCity_Mart_EventScript_Clerk::
 	release
 	end
 
+ViridianCity_Mart_EventScript_SayHiToOak::
+	msgbox ViridianCity_Mart_Text_SayHiToOakForMe
+	release
+	end
+
 	.align 2
 ViridianCity_Mart_Items::
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_AWAKENING
 	.2byte ITEM_NONE
-	release
-	end
-
-ViridianCity_Mart_EventScript_SayHiToOak::
-	msgbox ViridianCity_Mart_Text_SayHiToOakForMe
 	release
 	end
 

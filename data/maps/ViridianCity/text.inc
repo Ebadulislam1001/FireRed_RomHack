@@ -1,8 +1,3 @@
-ViridianCity_Text_CanCarryMonsAnywhere::
-    .string "Do you know that POKéMON evolve?\p"
-    .string "Certain species of POKéMON evolve\n"
-    .string "when they meet certain criteria.$"
-
 ViridianCity_Text_GymClosedWonderWhoLeaderIs::
     .string "This POKéMON GYM is always closed.\p"
     .string "I wonder who the LEADER is?$"
@@ -13,6 +8,11 @@ ViridianCity_Text_ViridiansGymLeaderReturned::
 ViridianCity_Text_WantToKnowAboutCaterpillarMons::
     .string "You want to know about the\n"
     .string "kinds of caterpillar POKéMON?$"
+
+ViridianCity_Text_CanCarryMonsAnywhere::
+    .string "Do you know that POKéMON evolve?\p"
+    .string "Certain species of POKéMON evolve\n"
+    .string "when they meet certain criteria.$"
 
 ViridianCity_Text_OhOkayThen::
     .string "Oh, okay then!$"

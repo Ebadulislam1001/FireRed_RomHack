@@ -5,12 +5,13 @@ ViridianCity_House_Text_NicknamingIsFun::
     .string "names are easier to remember.$"
 
 ViridianCity_House_Text_MyDaddyLovesMonsToo::
-    .string "My daddy loves POKéMON, too.$"
+    .string "We nicknamed our SPEAROW.\n"
+    .string "now we call him JACK.$"
 
 ViridianCity_House_Text_Speary::
-    .string "SPEARY: Tetweet!$"
+    .string "JACK: Tetweet!$"
 
 ViridianCity_House_Text_SpearowNameSpeary::
-    .string "SPEAROW\n"
-    .string "Name: SPEARY$"
+    .string "Species Name: SPEAROW\n"
+    .string "Nickname: JACK$"
 
