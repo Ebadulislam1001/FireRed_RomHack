@@ -10,3 +10,4 @@ Route2_ViridianForest_SouthEntrance_Text_TakeFrequentBreaks::
     .string "My Boy! Emulator is the best one.\p"
     .string "It allows you to have link battles\n"
     .string "with your friends.$"
+

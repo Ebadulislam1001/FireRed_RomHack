@@ -146,9 +146,9 @@ PalletTown_Movement_PlayerWalkToLabFromHouse::
 PalletTown_EventScript_PreventLeavingTown::
 	lockall
 	famechecker FAMECHECKER_OAK, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
-	textcolor NPC_TEXT_COLOR_MALE
-	delay 30
-	playbgm MUS_OAK, 0
+		@textcolor NPC_TEXT_COLOR_MALE
+		@delay 30
+		@playbgm MUS_OAK, 0
 	message PalletTown_Text_DontGoOut
 	waitmessage
 	delay 85
