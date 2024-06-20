@@ -134,12 +134,12 @@ PewterCity_Museum_1F_Movement_ApproachCounterRight::
 	walk_in_place_right
 	step_end
 
-PewterCity_Museum_1F_EventScript_Scientist2::
-	msgbox PewterCity_Museum_1F_Text_WeHaveTwoFossilsOnExhibit, MSGBOX_NPC
-	end
-
 PewterCity_Museum_1F_EventScript_OldMan::
 	msgbox PewterCity_Museum_1F_Text_ShouldBeGratefulForLongLife, MSGBOX_NPC
+	end
+
+PewterCity_Museum_1F_EventScript_Scientist2::
+	msgbox PewterCity_Museum_1F_Text_WeHaveTwoFossilsOnExhibit, MSGBOX_NPC
 	end
 
 PewterCity_Museum_1F_EventScript_OldAmberScientist::

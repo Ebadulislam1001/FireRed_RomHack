@@ -1,12 +1,8 @@
 PewterCity_Gym_Text_BrockIntro::
-    .string "So, you're here. I'm BROCK.\n"
+    .string "Hello, I'm BROCK.\n"
     .string "I'm PEWTER's GYM LEADER.\p"
     .string "My rock-hard willpower is evident\n"
     .string "even in my POKéMON.\p"
-    .string "My POKéMON are all rock hard, and\n"
-    .string "have true-grit determination.\p"
-    .string "That's right - my POKéMON are all\n"
-    .string "the ROCK type!\p"
     .string "Fuhaha! You're going to challenge\n"
     .string "me knowing that you'll lose?\p"
     .string "That's the TRAINER's honor that\n"
@@ -21,7 +17,7 @@ PewterCity_Gym_Text_BrockDefeat::
     .string "I took you for granted, and so\n"
     .string "I lost.\p"
     .string "As proof of your victory, I confer\n"
-    .string "on you this…the official POKéMON\l"
+    .string "on you this… the official POKéMON\l"
     .string "LEAGUE BOULDERBADGE.\p"
     .string "{FONT_NORMAL}{PLAYER} received the BOULDERBADGE\n"
     .string "from BROCK!{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}\p"
@@ -76,8 +72,8 @@ PewterCity_Gym_Text_LiamDefeat::
     .string "It measures distance!$"
 
 PewterCity_Gym_Text_LiamPostBattle::
-    .string "You're pretty hot.\n"
-    .string "…But not as hot as BROCK!$"
+    .string "You're pretty hard.\n"
+    .string "…But not as hard as BROCK!$"
 
 PewterCity_Gym_Text_LetMeTakeYouToTheTop::
     .string "Hiya!\n"
@@ -109,13 +105,13 @@ PewterCity_Gym_Text_YoureChampMaterial::
     .string "You're POKéMON champ material!$"
 
 PewterCity_Gym_Text_GymStatue::
-    .string "PEWTER POKéMON GYM\n"
+    .string "PEWTER CITY POKéMON GYM\n"
     .string "LEADER: BROCK\p"
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}$"
 
 PewterCity_Gym_Text_GymStatuePlayerWon::
-    .string "PEWTER POKéMON GYM\n"
+    .string "PEWTER CITY POKéMON GYM\n"
     .string "LEADER: BROCK\p"
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}, {PLAYER}$"

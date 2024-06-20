@@ -1,12 +1,12 @@
 PewterCity_PokemonCenter_1F_Text_TeamRocketMtMoonImOnPhone::
     .string "What!?\p"
-    .string "TEAM ROCKET is at MT. MOON?\n"
-    .string "Huh?\p"
-    .string "I'm on the phone!\n"
+    .string "TEAM ROCKET is at MT. MOON?\p"
+    .string "Huh?\n"
+    .string "I'm on the phone!\p"
     .string "Scram!$"
 
 PewterCity_PokemonCenter_1F_Text_Jigglypuff::
-    .string "JIGGLYPUFF: Puu pupuu!$"
+    .string "JIGGLYPUFF: puff puff!$"
 
 PewterCity_PokemonCenter_1F_Text_WhenJiggylypuffSingsMonsGetDrowsy::
     .string "Yawn!\p"

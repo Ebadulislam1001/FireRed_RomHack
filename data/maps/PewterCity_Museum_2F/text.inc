@@ -28,7 +28,7 @@ PewterCity_Museum_1F_Text_WhatsSpecialAboutMoonStone::
 
 PewterCity_Museum_1F_Text_BoughtColorTVForMoonLanding::
     .string "July 20, 1969!\p"
-    .string "Humankind first set foot on the\n"
+    .string "Humankind set first foot on the\n"
     .string "moon that day.\p"
     .string "I bought a color TV just so I\n"
     .string "could watch that news.$"

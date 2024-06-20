@@ -1,16 +1,16 @@
 PewterCity_Museum_2F_MapScripts::
 	.byte 0
 
+PewterCity_Museum_2F_EventScript_Scientist::
+	msgbox PewterCity_Museum_1F_Text_RunningSpaceExhibitThisMonth, MSGBOX_NPC
+	end
+
 PewterCity_Museum_2F_EventScript_Man::
 	msgbox PewterCity_Museum_1F_Text_WhatsSpecialAboutMoonStone, MSGBOX_NPC
 	end
 
 PewterCity_Museum_2F_EventScript_OldMan::
 	msgbox PewterCity_Museum_1F_Text_BoughtColorTVForMoonLanding, MSGBOX_NPC
-	end
-
-PewterCity_Museum_2F_EventScript_Scientist::
-	msgbox PewterCity_Museum_1F_Text_RunningSpaceExhibitThisMonth, MSGBOX_NPC
 	end
 
 PewterCity_Museum_2F_EventScript_LittleGirl::
