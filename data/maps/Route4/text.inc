@@ -1,17 +1,19 @@
 Route4_Text_TrippedOverGeodude::
-    .string "Ouch! I tripped over a rocky\n"
-    .string "POKéMON, GEODUDE!$"
+    .string "The entrance to MT. MOON\n"
+    .string "is blocked.\p"
+    .string "Lets hope they fix it\n"
+    .string "in the next update.$"
 
 Route4_Text_CrissyIntro::
     .string "I came to MT. MOON in search of\n"
-    .string "mushroom POKéMON.$"
+    .string "rare POKéMON.$"
 
 Route4_Text_CrissyDefeat::
-    .string "After all I did to catch them!$"
+    .string "I wanna catch more rare POKéMON!$"
 
 Route4_Text_CrissyPostBattle::
     .string "There might not be any more\n"
-    .string "mushrooms here.\p"
+    .string "rare POKéMON here.\p"
     .string "I think I got them all.$"
 
 Route4_Text_MtMoonEntrance::
@@ -19,8 +21,9 @@ Route4_Text_MtMoonEntrance::
     .string "Tunnel Entrance$"
 
 Route4_Text_RouteSign::
-    .string "ROUTE 4\n"
-    .string "MT. MOON - CERULEAN CITY$"
+    .string "ROUTE 4\p"
+    .string "WEST: MT. MOON\n"
+    .string "EAST: CERULEAN CITY$"
 
 Text_MegaPunchTeach::
     .string "A punch of roaring ferocity!\p"
