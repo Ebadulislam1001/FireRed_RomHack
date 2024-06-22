@@ -25,7 +25,7 @@ CeruleanCity_Text_RivalPostBattle::
     .string "Since you're using his system,\n"
     .string "you should go thank him.\p"
     .string "Well, I better get rolling!\n"
-    .string "Smell ya later!$"
+    .string "Smell ya later, Feraligator!$"
 
 CeruleanCity_Text_OhRightLittlePresentAsFavor::
     .string "Oh, yeah, right.\p"

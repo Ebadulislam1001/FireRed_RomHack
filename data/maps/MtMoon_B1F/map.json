@@ -111,8 +111,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 24,
-      "y": 35,
+      "x": 22,
+      "y": 16,
       "elevation": 0,
       "item": "ITEM_BIG_MUSHROOM",
       "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM",

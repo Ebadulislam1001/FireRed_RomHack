@@ -14,19 +14,19 @@ Route4_PokemonCenter_1F_Text_LaddieBuyMagikarpForJust500::
     .string "MAN: Hello there, laddie!\n"
     .string "Have I got a deal just for you!\p"
     .string "I'll let you have a secret POKéMON\n"
-    .string "- a MAGIKARP - for just ¥500!\p"
+    .string "- a FEEBAS - for just ¥500!\p"
     .string "So, you'll buy it, am I right?$"
 
 Route4_PokemonCenter_1F_Text_SweetieBuyMagikarpForJust500::
     .string "MAN: Hello there, sweetie pie!\n"
     .string "Have I got a deal just for you!\p"
     .string "I'll let you have a secret POKéMON\n"
-    .string "- a MAGIKARP - for just ¥500!\p"
+    .string "- a FEEBAS - for just ¥500!\p"
     .string "So, you'll buy it, am I right?$"
 
 Route4_PokemonCenter_1F_Text_PaidOutrageouslyForMagikarp::
     .string "{PLAYER} paid an outrageous ¥500\n"
-    .string "and bought the MAGIKARP…$"
+    .string "and bought the FEEBAS…$"
 
 Route4_PokemonCenter_1F_Text_OnlyDoingThisAsFavorToYou::
     .string "No? You say no? I'm only doing this\n"

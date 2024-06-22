@@ -10,48 +10,6 @@ MtMoon_B2F_OnTransition::
 	call_if_unset FLAG_GOT_FOSSIL_FROM_MT_MOON, MtMoon_B2F_EventScript_ShowFossils
 	end
 
-MtMoon_B2F_EventScript_Regirock::
-	lock
-	goto_if_unset FLAG_UNLOCK_POSTGAME_LEGENDARIES, MtMoon_B2F_EventScript_NormalRock
-	goto_if_set FLAG_FOUGHT_REGIROCK, MtMoon_B2F_EventScript_NormalRock
-	message MtMoon_B2F_Text_NotANormalRock
-	waitmessage
-	playmoncry SPECIES_REGIROCK, CRY_MODE_ENCOUNTER
-	waitmoncry
-	delay 20
-	playbgm MUS_ENCOUNTER_GYM_LEADER, 0
-	waitbuttonpress
-	setwildbattle SPECIES_REGIROCK, 5
-	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
-	special StartLegendaryBattle
-	waitstate
-	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MtMoon_B2F_EventScript_DefeatedRegirock
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MtMoon_B2F_EventScript_RanFromRegirock
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MtMoon_B2F_EventScript_RanFromRegirock
-	setflag FLAG_FOUGHT_REGIROCK
-	release
-	end
-
-MtMoon_B2F_EventScript_NormalRock::
-	lock
-	msgbox MtMoon_B2F_Text_JustANormalRock
-	closemessage
-	release
-	end
-
-MtMoon_B2F_EventScript_DefeatedRegirock::
-	setflag FLAG_FOUGHT_REGIROCK
-	goto EventScript_RemoveStaticMonRegi
-	end
-
-MtMoon_B2F_EventScript_RanFromRegirock::
-	setvar VAR_0x8004, SPECIES_REGIROCK
-	goto EventScript_MonFlewAwayRegi
-	end
-
-
 MtMoon_B2F_EventScript_ShowFossils::
 	clearflag FLAG_HIDE_DOME_FOSSIL
 	clearflag FLAG_HIDE_HELIX_FOSSIL
@@ -86,13 +44,13 @@ MtMoon_B2F_EventScript_BattleMiguel::
 	msgbox MtMoon_B2F_Text_WellEachTakeAFossil
 	return
 
-MtMoon_B2F_EventScript_MiguelFossilPicked::
-	msgbox MtMoon_B2F_Text_LabOnCinnabarRegeneratesFossils
+MtMoon_B2F_EventScript_MiguelGoPickFossil::
+	msgbox MtMoon_B2F_Text_WellEachTakeAFossil
 	release
 	end
 
-MtMoon_B2F_EventScript_MiguelGoPickFossil::
-	msgbox MtMoon_B2F_Text_WellEachTakeAFossil
+MtMoon_B2F_EventScript_MiguelFossilPicked::
+	msgbox MtMoon_B2F_Text_LabOnCinnabarRegeneratesFossils
 	release
 	end
 
@@ -151,16 +109,16 @@ MtMoon_B2F_EventScript_HelixFossil::
 	release
 	end
 
-MtMoon_B2F_EventScript_DontTakeFossil::
-	release
-	end
-
 MtMoon_B2F_Movement_MiguelToDomeFossil::
 	walk_up
 	walk_up
 	walk_up
 	step_end
 
+MtMoon_B2F_EventScript_DontTakeFossil::
+	release
+	end
+	
 MtMoon_B2F_EventScript_Grunt1::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT, MtMoon_B2F_Text_Grunt1Intro, MtMoon_B2F_Text_Grunt1Defeat
 	msgbox MtMoon_B2F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
@@ -179,4 +137,45 @@ MtMoon_B2F_EventScript_Grunt3::
 MtMoon_B2F_EventScript_Grunt4::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_4, MtMoon_B2F_Text_Grunt4Intro, MtMoon_B2F_Text_Grunt4Defeat
 	msgbox MtMoon_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MtMoon_B2F_EventScript_Regirock::
+	lock
+	goto_if_unset FLAG_UNLOCK_POSTGAME_LEGENDARIES, MtMoon_B2F_EventScript_NormalRock
+	goto_if_set FLAG_FOUGHT_REGIROCK, MtMoon_B2F_EventScript_NormalRock
+	message MtMoon_B2F_Text_NotANormalRock
+	waitmessage
+	playmoncry SPECIES_REGIROCK, CRY_MODE_ENCOUNTER
+	waitmoncry
+	closemessage
+	delay 20
+	playbgm MUS_ENCOUNTER_GYM_LEADER, 0
+	waitbuttonpress
+	setwildbattle SPECIES_REGIROCK, 5 @ set level to 49
+	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	special StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MtMoon_B2F_EventScript_DefeatedRegirock
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MtMoon_B2F_EventScript_RanFromRegirock
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MtMoon_B2F_EventScript_RanFromRegirock
+	setflag FLAG_FOUGHT_REGIROCK
+	release
+	end
+
+MtMoon_B2F_EventScript_NormalRock::
+	msgbox MtMoon_B2F_Text_JustANormalRock
+	closemessage
+	release
+	end
+
+MtMoon_B2F_EventScript_DefeatedRegirock::
+	setflag FLAG_FOUGHT_REGIROCK
+	goto EventScript_RemoveStaticMonRegi
+	end
+
+MtMoon_B2F_EventScript_RanFromRegirock::
+	setvar VAR_0x8004, SPECIES_REGIROCK
+	goto EventScript_MonFlewAwayRegi
 	end

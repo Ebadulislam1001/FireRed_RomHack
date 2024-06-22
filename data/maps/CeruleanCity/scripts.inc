@@ -15,9 +15,9 @@ CeruleanCity_OnTransition::
 	end
 
 CeruleanCity_EventScript_BlockExits::
-	setobjectxyperm LOCALID_POLICEMAN, 30, 12
-	setobjectxyperm LOCALID_SLOWBRO, 26, 31
-	setobjectxyperm LOCALID_LASS, 27, 31
+	setobjectxyperm LOCALID_POLICEMAN, 33, 12
+	setobjectxyperm LOCALID_SLOWBRO, 22, 31
+	setobjectxyperm LOCALID_LASS, 23, 31
 	return
 
 CeruleanCity_EventScript_RivalTriggerLeft::
@@ -29,14 +29,14 @@ CeruleanCity_EventScript_RivalTriggerLeft::
 CeruleanCity_EventScript_RivalTriggerMid::
 	lockall
 	setvar VAR_TEMP_1, 1
-	setobjectxyperm LOCALID_RIVAL, 23, 0
+	setobjectxyperm LOCALID_RIVAL, 25, 0
 	goto CeruleanCity_EventScript_Rival
 	end
 
 CeruleanCity_EventScript_RivalTriggerRight::
 	lockall
 	setvar VAR_TEMP_1, 2
-	setobjectxyperm LOCALID_RIVAL, 24, 0
+	setobjectxyperm LOCALID_RIVAL, 26, 0
 	goto CeruleanCity_EventScript_Rival
 	end
 
@@ -96,6 +96,14 @@ CeruleanCity_EventScript_RivalStartExitRight::
 	waitmovement 0
 	return
 
+CeruleanCity_Movement_RivalEnter::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 CeruleanCity_Movement_PlayerWatchRivalExit::
 	delay_16
 	delay_8
@@ -110,14 +118,6 @@ CeruleanCity_Movement_PlayerWatchRivalExitRight::
 	walk_in_place_faster_left
 	delay_16
 	walk_in_place_faster_down
-	step_end
-
-CeruleanCity_Movement_RivalEnter::
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
 	step_end
 
 CeruleanCity_Movement_RivalStartExit::

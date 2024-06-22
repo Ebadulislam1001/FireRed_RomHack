@@ -85,7 +85,7 @@ MtMoon_1F_Text_MarcosPostBattle::
 
 MtMoon_1F_Text_TeamRocketWasHere::
     .string "The original text is overwritten\n"
-    .string "by some paint. Now it says\p"
+    .string "by some paint. Now it says...\p"
     .string "TEAM ROCKET WAS HERE!$"
 
 MtMoon_1F_Text_BrockHelpsExcavateFossils::

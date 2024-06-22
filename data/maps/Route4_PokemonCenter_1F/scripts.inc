@@ -10,16 +10,6 @@ Route4_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_ROUTE4
 	end
 
-Route4_PokemonCenter_1F_EventScript_Boy::
-	msgbox Route4_PokemonCenter_1F_Text_CanHaveSixMonsWithYou, MSGBOX_NPC
-	end
-
-Route4_PokemonCenter_1F_EventScript_Gentleman::
-	lock
-	msgbox Route4_PokemonCenter_1F_Text_TeamRocketAttacksCerulean
-	release
-	end
-
 Route4_PokemonCenter_1F_EventScript_MagikarpSalesman::
 	lock
 	faceplayer
@@ -46,7 +36,7 @@ Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp::
 	goto_if_eq VAR_RESULT, FALSE, Route4_PokemonCenter_1F_EventScript_NotEnoughMoney
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	setvar VAR_TEMP_1, SPECIES_MAGIKARP
-	givemon SPECIES_MAGIKARP, 5
+	givemon SPECIES_FEEBAS, 5, ITEM_SOOTHE_BELL
 	goto_if_eq VAR_RESULT, 0, Route4_PokemonCenter_1F_EventScript_BuyMagikarpParty
 	goto_if_eq VAR_RESULT, 1, Route4_PokemonCenter_1F_EventScript_BuyMagikarpPC
 	goto_if_eq VAR_RESULT, 2, Route4_PokemonCenter_1F_EventScript_NoRoomForMagikarp
@@ -140,6 +130,16 @@ Route4_PokemonCenter_1F_EventScript_Nurse::
 
 Route4_PokemonCenter_1F_EventScript_Youngster::
 	msgbox Route4_PokemonCenter_1F_Text_ShouldStoreMonsUsingPC, MSGBOX_NPC
+	end
+
+Route4_PokemonCenter_1F_EventScript_Boy::
+	msgbox Route4_PokemonCenter_1F_Text_CanHaveSixMonsWithYou, MSGBOX_NPC
+	end
+
+Route4_PokemonCenter_1F_EventScript_Gentleman::
+	lock
+	msgbox Route4_PokemonCenter_1F_Text_TeamRocketAttacksCerulean
+	release
 	end
 
 Route4_PokemonCenter_1F_EventScript_Newspaper::
