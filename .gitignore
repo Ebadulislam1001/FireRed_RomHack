@@ -1,5 +1,4 @@
-legacy
-TEXT_FILES
+aaa
 *.1bpp
 *.4bpp
 *.8bpp
@@ -63,5 +62,3 @@ prefabs.json
 .vscode/*.*
 *.js
 *.sym
-*_gold.png
-*_silver.png
