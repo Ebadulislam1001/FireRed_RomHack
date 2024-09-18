@@ -3073,12 +3073,12 @@
       "secondaryId": 0
     },
     {
-      "english": "DEEPSEATOOTH",
+      "english": "STONE TABLET",
       "itemId": "ITEM_DEEP_SEA_TOOTH",
       "price": 200,
       "holdEffect": "HOLD_EFFECT_DEEP_SEA_TOOTH",
       "holdEffectParam": 0,
-      "description_english": "An item to be held by a POKéMON.\\nA fang that gleams a sharp silver.\\nIt raises the SP. ATK stat.",
+      "description_english": "An ancient stone tablet.\\nSomething is written on it that\\nonly certain POKéMON can understand.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_ITEMS",
@@ -3089,12 +3089,12 @@
       "secondaryId": 0
     },
     {
-      "english": "DEEPSEASCALE",
+      "english": "METAL DISC",
       "itemId": "ITEM_DEEP_SEA_SCALE",
       "price": 200,
       "holdEffect": "HOLD_EFFECT_DEEP_SEA_SCALE",
       "holdEffectParam": 0,
-      "description_english": "An item to be held by a POKéMON.\\nA scale that shines a faint pink.\\nIt raises the SP. DEF stat.",
+      "description_english": "An shiny metal disc.\\nSomething is written on it that\\nonly certain POKéMON can understand.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_ITEMS",
