@@ -2477,14 +2477,17 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         spAttack = (150 * spAttack) / 100;
     if (defenderHoldEffect == HOLD_EFFECT_SOUL_DEW && !(gBattleTypeFlags & (BATTLE_TYPE_BATTLE_TOWER)) && (defender->species == SPECIES_LATIAS || defender->species == SPECIES_LATIOS))
         spDefense = (150 * spDefense) / 100;
-    if (attackerHoldEffect == HOLD_EFFECT_DEEP_SEA_TOOTH && attacker->species == SPECIES_CLAMPERL)
-        spAttack *= 2;
-    if (defenderHoldEffect == HOLD_EFFECT_DEEP_SEA_SCALE && defender->species == SPECIES_CLAMPERL)
-        spDefense *= 2;
+    // if (attackerHoldEffect == HOLD_EFFECT_DEEP_SEA_TOOTH && attacker->species == SPECIES_CLAMPERL)
+    //     spAttack *= 2;
+    // if (defenderHoldEffect == HOLD_EFFECT_DEEP_SEA_SCALE && defender->species == SPECIES_CLAMPERL)
+    //     spDefense *= 2;
     if (attackerHoldEffect == HOLD_EFFECT_LIGHT_BALL && attacker->species == SPECIES_PIKACHU)
         spAttack *= 2;
     if (defenderHoldEffect == HOLD_EFFECT_METAL_POWDER && defender->species == SPECIES_DITTO)
+    {
         defense *= 2;
+        spDefense *= 2;
+    }
     if (attackerHoldEffect == HOLD_EFFECT_THICK_CLUB && (attacker->species == SPECIES_CUBONE || attacker->species == SPECIES_MAROWAK))
         attack *= 2;
 
@@ -5033,13 +5036,15 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
     int i;
     u16 targetSpecies = 0;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u16 heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    u16 gender = GetGenderFromSpeciesAndPersonality(species, personality);
+    u16 heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     u8 level;
     u16 friendship;
-    u8 beauty = GetMonData(mon, MON_DATA_BEAUTY, NULL);
-    u16 upperPersonality = personality >> 16;
     u8 holdEffect;
+    
+    // u16 upperPersonality = personality >> 16;
+    // u8 beauty = GetMonData(mon, MON_DATA_BEAUTY, NULL);
 
     if (heldItem == ITEM_ENIGMA_BERRY)
         holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
@@ -5060,60 +5065,57 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
         {
             switch (gEvolutionTable[species][i].method)
             {
-            case EVO_FRIENDSHIP:
-                if (friendship >= 220)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
-            // FR/LG removed the time of day evolutions due to having no RTC.
-            case EVO_FRIENDSHIP_DAY:
-                /*
-                RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && friendship >= 220)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                */
-                break;
-            case EVO_FRIENDSHIP_NIGHT:
-                /*
-                RtcCalcLocalTime();
-                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && friendship >= 220)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                */
-                break;
             case EVO_LEVEL:
-                if (gEvolutionTable[species][i].param <= level)
+                if (level >= gEvolutionTable[species][i].param)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_LEVEL_ATK_GT_DEF:
-                if (gEvolutionTable[species][i].param <= level)
-                    if (GetMonData(mon, MON_DATA_ATK, NULL) > GetMonData(mon, MON_DATA_DEF, NULL))
-                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
-            case EVO_LEVEL_ATK_EQ_DEF:
-                if (gEvolutionTable[species][i].param <= level)
-                    if (GetMonData(mon, MON_DATA_ATK, NULL) == GetMonData(mon, MON_DATA_DEF, NULL))
-                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
-            case EVO_LEVEL_ATK_LT_DEF:
-                if (gEvolutionTable[species][i].param <= level)
-                    if (GetMonData(mon, MON_DATA_ATK, NULL) < GetMonData(mon, MON_DATA_DEF, NULL))
-                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
-            case EVO_LEVEL_SILCOON:
-                if (gEvolutionTable[species][i].param <= level && (upperPersonality % 10) <= 4)
+            case EVO_LEVEL_MALE:
+                if (level >= gEvolutionTable[species][i].param && gender == MON_MALE)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_LEVEL_CASCOON:
-                if (gEvolutionTable[species][i].param <= level && (upperPersonality % 10) > 4)
+            case EVO_LEVEL_FEMALE:
+                if (level >= gEvolutionTable[species][i].param && gender == MON_FEMALE)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_FRIENDSHIP:
+                if (friendship >= gEvolutionTable[species][i].param)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_LEVEL_ITEM:
+                if (heldItem == gEvolutionTable[species][i].param)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_NINJASK:
                 if (gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_BEAUTY:
-                if (gEvolutionTable[species][i].param <= beauty)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
+            // case EVO_LEVEL_ATK_GT_DEF:
+            //     if (gEvolutionTable[species][i].param <= level)
+            //         if (GetMonData(mon, MON_DATA_ATK, NULL) > GetMonData(mon, MON_DATA_DEF, NULL))
+            //             targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //     break;
+            // case EVO_LEVEL_ATK_EQ_DEF:
+            //     if (gEvolutionTable[species][i].param <= level)
+            //         if (GetMonData(mon, MON_DATA_ATK, NULL) == GetMonData(mon, MON_DATA_DEF, NULL))
+            //             targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //     break;
+            // case EVO_LEVEL_ATK_LT_DEF:
+            //     if (gEvolutionTable[species][i].param <= level)
+            //         if (GetMonData(mon, MON_DATA_ATK, NULL) < GetMonData(mon, MON_DATA_DEF, NULL))
+            //             targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //     break;
+            // case EVO_LEVEL_SILCOON:
+            //     if (gEvolutionTable[species][i].param <= level && (upperPersonality % 10) <= 4)
+            //         targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //     break;
+            // case EVO_LEVEL_CASCOON:
+            //     if (gEvolutionTable[species][i].param <= level && (upperPersonality % 10) > 4)
+            //         targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //     break;
+            // case EVO_BEAUTY:
+            //     if (gEvolutionTable[species][i].param <= beauty)
+            //         targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //     break;
             }
         }
         break;
@@ -5125,20 +5127,20 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
             case EVO_TRADE:
                 targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_TRADE_ITEM:
-                if (gEvolutionTable[species][i].param == heldItem)
-                {
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            // case EVO_TRADE_ITEM:
+            //     if (gEvolutionTable[species][i].param == heldItem)
+            //     {
+            //         targetSpecies = gEvolutionTable[species][i].targetSpecies;
                     
-                    // Prevent cross-generational evolutions like Scizor and Steelix until the National Pokedex is obtained
-                    if (IsNationalPokedexEnabled() || targetSpecies <= KANTO_SPECIES_END)
-                    {
-                        heldItem = ITEM_NONE;
-                        SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
-                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                    }
-                }
-                break;
+            //         // Prevent cross-generational evolutions like Scizor and Steelix until the National Pokedex is obtained
+            //         if (IsNationalPokedexEnabled() || targetSpecies <= KANTO_SPECIES_END)
+            //         {
+            //             heldItem = ITEM_NONE;
+            //             SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
+            //             targetSpecies = gEvolutionTable[species][i].targetSpecies;
+            //         }
+            //     }
+            //     break;
             }
         }
         break;
