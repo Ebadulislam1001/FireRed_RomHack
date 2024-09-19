@@ -2,9 +2,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "fileHelper.cpp"
 using namespace std;
 
-#define MAX_MOVES 354
+#define TOTAL_MOVES 354
 
 struct Move
 {
@@ -18,10 +19,6 @@ struct Move
     int effectChance;
 };
 
-void skipChars(FILE *&readPointer, int charCount);
-void skipLines(FILE *&readPointer, int lineCount);
-int readInt(FILE *&readPointer);
-string readString(FILE *&readPointer, char delim);
 void readMoveList(vector<Move> &moveList);
 void printMoveList(vector<Move> &moveList);
 
@@ -95,40 +92,6 @@ int main()
     return 0;
 }
 
-void skipChars(FILE *&readPointer, int charCount)
-{
-    for (int i = 0; i < charCount; i++)
-        fgetc(readPointer);
-}
-void skipLines(FILE *&readPointer, int lineCount)
-{
-    for (int i = 0; i < lineCount; i++)
-    {
-        char line[200];
-        fscanf(readPointer, "%[^\n]", line);
-        fgetc(readPointer);
-    }
-}
-int readInt(FILE *&readPointer)
-{
-    int ans = 0;
-    fscanf(readPointer, "%d", &ans);
-    return ans;
-}
-string readString(FILE *&readPointer, char delim)
-{
-    string ans = "";
-    char ch;
-    while (true)
-    {
-        fscanf(readPointer, "%c", &ch);
-        if (ch == delim)
-            break;
-        ans.push_back(ch);
-    }
-    return ans;
-}
-
 void readMoveList(vector<Move> &moveList)
 {
     FILE *readPointer = fopen("./../src/data/battle_moves.h", "r");
@@ -139,7 +102,7 @@ void readMoveList(vector<Move> &moveList)
     }
 
     skipLines(readPointer, 15); // 15 garbage lines in the beginning
-    for (int i = 0; i < MAX_MOVES; i++)
+    for (int i = 0; i < TOTAL_MOVES; i++)
     {
         Move thisMove;
         skipChars(readPointer, 10);

@@ -24,8 +24,7 @@ const u8 gVenusaurPokedexText[] = _(
     "solar energy. It stays on the move to\n"
     "seek sunlight.");
 
-const u8 gVenusaurPokedexTextUnused[] = _(
-    " ");
+const u8 gVenusaurPokedexTextUnused[] = _("");
 
 const u8 gCharmanderPokedexText[] = _(
     "It has a preference for hot things.\n"
@@ -81,16 +80,14 @@ const u8 gMetapodPokedexText[] = _(
     "while its shell is soft, exposing its weak\n"
     "and tender body.");
 
-const u8 gMetapodPokedexTextUnused[] = _(
-    " ");
+const u8 gMetapodPokedexTextUnused[] = _("");
 
 const u8 gButterfreePokedexText[] = _(
     "In battle, it flaps its wings at great\n"
     "speed to release highly toxic dust into\n"
     "the air.");
 
-const u8 gButterfreePokedexTextUnused[] = _(
-    " ");
+const u8 gButterfreePokedexTextUnused[] = _("");
 
 const u8 gWeedlePokedexText[] = _(
     "Often found in forests, eating leaves.\n"
