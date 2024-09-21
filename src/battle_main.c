@@ -3007,6 +3007,7 @@ u8 IsRunningFromBattleImpossible(void)
         holdEffect = gEnigmaBerries[gActiveBattler].holdEffect;
     else
         holdEffect = ItemId_GetHoldEffect(gBattleMons[gActiveBattler].item);
+
     gPotentialItemEffectBattler = gActiveBattler;
     if (holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN
      || (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -3037,7 +3038,7 @@ u8 IsRunningFromBattleImpossible(void)
         }
     }
     i = AbilityBattleEffects(ABILITYEFFECT_CHECK_FIELD_EXCEPT_BATTLER, gActiveBattler, ABILITY_MAGNET_PULL, 0, 0);
-    if (i != 0 && IS_BATTLER_OF_TYPE(gActiveBattler, TYPE_STEEL))
+    if (i != 0 && IS_BATTLER_OF_TYPE(gActiveBattler, TYPE_STEEL) &&  gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
     {
         gBattleScripting.battler = i - 1;
         gLastUsedAbility = gBattleMons[i - 1].ability;
@@ -3210,7 +3211,7 @@ static void HandleTurnActionSelectionState(void)
                             ) || (
                                 i = AbilityBattleEffects(ABILITYEFFECT_CHECK_FIELD_EXCEPT_BATTLER, gActiveBattler, ABILITY_MAGNET_PULL, 0, 0)
                                 && IS_BATTLER_OF_TYPE(gActiveBattler, TYPE_STEEL)
-                                && gBattleMons[gActiveBattler].ability != ABILITY_LEVITATE
+                                && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY
                             ))
                     {
                         BtlController_EmitChoosePokemon(BUFFER_A, ((i - 1) << 4) | PARTY_ACTION_ABILITY_PREVENTS, 6, gLastUsedAbility, gBattleStruct->battlerPartyOrders[gActiveBattler]);

@@ -309,19 +309,26 @@ static bool8 ShouldSwitch(void)
         return FALSE;
     if (gStatuses3[gActiveBattler] & STATUS3_ROOTED)
         return FALSE;
+
+    // Pokemon with ability run away can switch out against shadow tag.
     if (AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_SHADOW_TAG, 0, 0)
         && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
         return FALSE;
+        
+    // Pokemon with type flying or ability levitate or ability run away can switch out against shadow tag.
     if (AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_ARENA_TRAP, 0, 0)
-        && gBattleMons[gActiveBattler].type1 != TYPE_GROUND
-        && gBattleMons[gActiveBattler].type2 != TYPE_GROUND
+        && gBattleMons[gActiveBattler].type1 != TYPE_FLYING
+        && gBattleMons[gActiveBattler].type2 != TYPE_FLYING
         && gBattleMons[gActiveBattler].ability != ABILITY_LEVITATE
         && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
             return FALSE;
+
+    // Pokemon with type other than steel or ability run away can switch out against shadow tag.
     if (AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_MAGNET_PULL, 0, 0)
         && (gBattleMons[gActiveBattler].type1 == TYPE_STEEL || gBattleMons[gActiveBattler].type2 == TYPE_STEEL)
         && gBattleMons[gActiveBattler].ability != ABILITY_RUN_AWAY)
             return FALSE;
+
     availableToSwitch = 0;
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
     {
