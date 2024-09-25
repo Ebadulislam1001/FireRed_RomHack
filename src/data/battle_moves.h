@@ -626,15 +626,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SUPERSONIC] =
     {
-        .effect = EFFECT_CONFUSE,
-        .power = 0,
-        .type = TYPE_NORMAL,
-        .accuracy = 55,
-        .pp = 20,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_SELECTED,
+        .effect = EFFECT_FLINCH_HIT, // MOVE_AVALANCHE
+        .power = 75,
+        .type = TYPE_ICE,
+        .accuracy = 90,
+        .pp = 10,
+        .secondaryEffectChance = 30,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_SONIC_BOOM] =
@@ -3837,12 +3837,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_LUSTER_PURGE] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
-        .power = 70,
-        .type = TYPE_PSYCHIC,
+        .effect = EFFECT_FLINCH_MINIMIZE_HIT, // MOVE_DARK_PULSE
+        .power = 80,
+        .type = TYPE_DARK,
         .accuracy = 100,
-        .pp = 5,
-        .secondaryEffectChance = 50,
+        .pp = 30,
+        .secondaryEffectChance = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
@@ -3850,12 +3850,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_MIST_BALL] =
     {
-        .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
-        .power = 70,
-        .type = TYPE_PSYCHIC,
+        .effect = EFFECT_FLINCH_MINIMIZE_HIT, // MOVE_DRAGON_PULSE
+        .power = 80,
+        .type = TYPE_DRAGON,
         .accuracy = 100,
-        .pp = 5,
-        .secondaryEffectChance = 50,
+        .pp = 30,
+        .secondaryEffectChance = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
