@@ -3564,15 +3564,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_ASSIST] =
     {
-        .effect = EFFECT_ASSIST,
-        .power = 0,
-        .type = TYPE_NORMAL,
+        .effect = EFFECT_DOUBLE_EDGE, // MOVE_BRAVE_BIRD
+        .power = 120,
+        .type = TYPE_FLYING,
         .accuracy = 100,
-        .pp = 20,
+        .pp = 15,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_DEPENDS,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_INGRAIN] =
@@ -4071,15 +4071,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_FAKE_TEARS] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_2,
-        .power = 0,
-        .type = TYPE_DARK,
+        .effect = EFFECT_DOUBLE_EDGE, // MOVE_HEAD_SMASH
+        .power = 120,
+        .type = TYPE_ROCK,
         .accuracy = 100,
-        .pp = 20,
+        .pp = 15,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_AIR_CUTTER] =
