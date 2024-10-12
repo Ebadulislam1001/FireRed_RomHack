@@ -27,6 +27,7 @@ void readPokedex(vector<Pokemon> &pokedex);
 void writeStatsInDex(vector<Pokemon> &pokedex);
 void updateNames(vector<Pokemon> &pokedex);
 void printPokedex(vector<Pokemon> &pokedex);
+void printCSV(vector<Pokemon> &pokedex);
 void printDataAnalysis(vector<Pokemon> &pokedex);
 
 int main()
@@ -36,76 +37,8 @@ int main()
     writeStatsInDex(pokedex);
     updateNames(pokedex);
     printPokedex(pokedex);
+    printCSV(pokedex);
     // printDataAnalysis(pokedex);
-
-    // int prevChoice = 1;
-    // while (true)
-    // {
-    //     printPokedex(pokedex);
-
-    //     printf("Sort the pokedex in the order of\n");
-    //     printf("1. Index\t2. Name \t3. BST\n");
-    //     printf("4. HP   \t5. PA   \t6. PD \n");
-    //     printf("7. SA   \t8. SD   \t9. SP \n");
-    //     printf("0. Exit \n");
-    //     printf("Enter your choice: ");
-    //     int currChoice;
-    //     scanf("%d", &currChoice);
-    //     if (currChoice == 0)
-    //     {
-    //         break;
-    //     }
-    //     else if (currChoice == prevChoice)
-    //     {
-    //         reverse(pokedex.begin(), pokedex.end());
-    //     }
-    //     else if (currChoice == 1)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.index < b.index; });
-    //     }
-    //     else if (currChoice == 2)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.name < b.name; });
-    //     }
-    //     else if (currChoice == 3)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.BST < b.BST; });
-    //     }
-    //     else if (currChoice == 4)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.HP < b.HP; });
-    //     }
-    //     else if (currChoice == 5)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.PA < b.PA; });
-    //     }
-    //     else if (currChoice == 6)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.PD < b.PD; });
-    //     }
-    //     else if (currChoice == 7)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.SA < b.SA; });
-    //     }
-    //     else if (currChoice == 8)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.SD < b.SD; });
-    //     }
-    //     else if (currChoice == 9)
-    //     {
-    //         stable_sort(pokedex.begin(), pokedex.end(), [](Pokemon a, Pokemon b)
-    //                     { return a.SP < b.SP; });
-    //     }
-    //     prevChoice = currChoice;
-    // }
     return 0;
 }
 
@@ -252,6 +185,71 @@ void updateNames(vector<Pokemon> &pokedex)
 
     fclose(readPointer);
 }
+void printPokedex(vector<Pokemon> &pokedex)
+{
+    FILE *writePointer = fopen("species_info.txt", "w");
+    if (writePointer == NULL)
+    {
+        cout << "Could not open the output file for writing" << endl;
+        return;
+    }
+
+    // string lineSeparator = "+-------+---------------+-----------+-----------+---------------+---------------+-----+-----+-----+-----+-----+-----+-----+";
+    string lineSeparator = "+-------+---------------+-----+-----+-----+-----+-----+-----+-----+-----------+-----------+---------------+---------------+";
+    fprintf(writePointer, "%s\n", lineSeparator.c_str());
+    // fprintf(writePointer, "| INDEX |  NAME         | TYPE 1    | TYPE 2    | ABILITY 1     | ABILITY 2     | HP  | PA  | PD  | SA  | SD  | SP  | BST |\n");
+    fprintf(writePointer, "| INDEX |  NAME         | HP  | PA  | PD  | SA  | SD  | SP  | BST | TYPE 1    | TYPE 2    | ABILITY 1     | ABILITY 2     |\n");
+    fprintf(writePointer, "%s\n", lineSeparator.c_str());
+
+    for (int i = 0; i < pokedex.size(); i += 1)
+    {
+        Pokemon pkmn = pokedex[i];
+        fprintf(writePointer, "|  %03d  | %-12s  ", pokedex[i].index, pkmn.name.c_str());
+        fprintf(writePointer, "| %3d | %3d | %3d ", pkmn.HP, pkmn.PA, pkmn.PD);
+        fprintf(writePointer, "| %3d | %3d | %3d ", pkmn.SA, pkmn.SD, pkmn.SP);
+        fprintf(writePointer, "| %3d ", pkmn.BST);
+        fprintf(writePointer, "| %-8s  ", pkmn.types[0].c_str());
+        fprintf(writePointer, "| %-8s  ", pkmn.types[1].c_str());
+        fprintf(writePointer, "| %-13s ", pkmn.abils[0].c_str());
+        fprintf(writePointer, "| %-13s ", pkmn.abils[1].c_str());
+        fprintf(writePointer, "|\n%s\n", lineSeparator.c_str());
+        // printf("successfully wrote %dth pokemon data\n", i + 1);
+    }
+
+    fclose(writePointer);
+}
+void printCSV(vector<Pokemon> &pokedex)
+{
+    FILE *writePointer = fopen("./../../../Data_Analysis/Ebad/species_info.csv", "w");
+    if (writePointer == NULL)
+    {
+        cout << "Could not open the output file for writing" << endl;
+        return;
+    }
+
+    fprintf(writePointer, "DexNum,Name,HP,PA,PD,SA,SD,SP,BST,Type1,Type2,Abil1,Abil2\n");
+
+    for (int i = 0; i < pokedex.size(); i += 1)
+    {
+        Pokemon pkmn = pokedex[i];
+        fprintf(writePointer, "%03d,", pokedex[i].index);
+        fprintf(writePointer, "\"%s\",", pkmn.name.c_str());
+        fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
+        fprintf(writePointer, "%d,", pkmn.BST);
+
+        if (pkmn.types[1] == "")
+            fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
+        else
+            fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+
+        if (pkmn.abils[1] == "")
+            fprintf(writePointer, "%s,...\n", pkmn.abils[0].c_str());
+        else
+            fprintf(writePointer, "%s,%s\n", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+    }
+
+    fclose(writePointer);
+}
 void printDataAnalysis(vector<Pokemon> &pokedex)
 {
     int typeCount = 18; // including "empty" type
@@ -301,37 +299,4 @@ void printDataAnalysis(vector<Pokemon> &pokedex)
                 printf(" %3s ", "---");
         }
     }
-}
-void printPokedex(vector<Pokemon> &pokedex)
-{
-    FILE *writePointer = fopen("species_info.txt", "w");
-    if (writePointer == NULL)
-    {
-        cout << "Could not open the output file for writing" << endl;
-        return;
-    }
-
-    // string lineSeparator = "+-------+---------------+-----------+-----------+---------------+---------------+-----+-----+-----+-----+-----+-----+-----+";
-    string lineSeparator = "+-------+---------------+-----+-----+-----+-----+-----+-----+-----+-----------+-----------+---------------+---------------+";
-    fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    // fprintf(writePointer, "| INDEX |  NAME         | TYPE 1    | TYPE 2    | ABILITY 1     | ABILITY 2     | HP  | PA  | PD  | SA  | SD  | SP  | BST |\n");
-    fprintf(writePointer, "| INDEX |  NAME         | HP  | PA  | PD  | SA  | SD  | SP  | BST | TYPE 1    | TYPE 2    | ABILITY 1     | ABILITY 2     |\n");
-    fprintf(writePointer, "%s\n", lineSeparator.c_str());
-
-    for (int i = 0; i < pokedex.size(); i += 1)
-    {
-        Pokemon pkmn = pokedex[i];
-        fprintf(writePointer, "|  %03d  | %-12s  ", pokedex[i].index, pkmn.name.c_str());
-        fprintf(writePointer, "| %3d | %3d | %3d ", pkmn.HP, pkmn.PA, pkmn.PD);
-        fprintf(writePointer, "| %3d | %3d | %3d ", pkmn.SA, pkmn.SD, pkmn.SP);
-        fprintf(writePointer, "| %3d ", pkmn.BST);
-        fprintf(writePointer, "| %-8s  ", pkmn.types[0].c_str());
-        fprintf(writePointer, "| %-8s  ", pkmn.types[1].c_str());
-        fprintf(writePointer, "| %-13s ", pkmn.abils[0].c_str());
-        fprintf(writePointer, "| %-13s ", pkmn.abils[1].c_str());
-        fprintf(writePointer, "|\n%s\n", lineSeparator.c_str());
-        // printf("successfully wrote %dth pokemon data\n", i + 1);
-    }
-
-    fclose(writePointer);
 }

@@ -1,5 +1,6 @@
 aaa
 docs/output.txt
+.vscode
 *.1bpp
 *.4bpp
 *.8bpp
