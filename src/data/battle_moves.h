@@ -639,15 +639,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SONIC_BOOM] =
     {
-        .effect = EFFECT_SONICBOOM,
-        .power = 1,
-        .type = TYPE_NORMAL,
-        .accuracy = 90,
-        .pp = 20,
-        .secondaryEffectChance = 0,
+        .effect = EFFECT_ATTACK_UP_HIT, // MOVE_RAGE_FIST
+        .power = 30,
+        .type = TYPE_GHOST,
+        .accuracy = 95,
+        .pp = 35,
+        .secondaryEffectChance = 50,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_DISABLE] =
@@ -1406,15 +1406,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SMOKESCREEN] =
     {
-        .effect = EFFECT_ACCURACY_DOWN,
-        .power = 0,
-        .type = TYPE_NORMAL,
-        .accuracy = 100,
-        .pp = 20,
-        .secondaryEffectChance = 0,
+        .effect = EFFECT_ATTACK_UP_HIT, // MOVE_POISON_JAB
+        .power = 30,
+        .type = TYPE_POISON,
+        .accuracy = 95,
+        .pp = 35,
+        .secondaryEffectChance = 50,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_CONFUSE_RAY] =
@@ -2394,15 +2394,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SCARY_FACE] =
     {
-        .effect = EFFECT_SPEED_DOWN_2,
-        .power = 0,
-        .type = TYPE_NORMAL,
-        .accuracy = 90,
-        .pp = 10,
-        .secondaryEffectChance = 0,
+        .effect = EFFECT_ATTACK_UP_HIT, // MOVE_POWER_UP_HIT
+        .power = 20,
+        .type = TYPE_FIGHTING,
+        .accuracy = 95,
+        .pp = 35,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_FAINT_ATTACK] =
