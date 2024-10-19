@@ -4500,15 +4500,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_WATER_SPORT] =
     {
-        .effect = EFFECT_WATER_SPORT,
-        .power = 0,
-        .type = TYPE_WATER,
+        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT, // MOVE_AZURE_DRIVE
+        .power = 70,
+        .type = TYPE_DRAGON,
         .accuracy = 100,
         .pp = 15,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .secondaryEffectChance = 20,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_CALM_MIND] =
@@ -4591,15 +4591,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_DOOM_DESIRE] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT, // MOVE_AZURE_DRIVE
-        .power = 70,
+        .effect = EFFECT_OVERHEAT, // MOVE_DRACO_METEOR
+        .power = 140,
         .type = TYPE_DRAGON,
-        .accuracy = 100,
-        .pp = 15,
-        .secondaryEffectChance = 20,
+        .accuracy = 90,
+        .pp = 5,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_PSYCHO_BOOST] =
