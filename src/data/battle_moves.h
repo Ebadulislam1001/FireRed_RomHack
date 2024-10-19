@@ -3213,7 +3213,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SHADOW_BALL] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
+        .effect = EFFECT_DEFENSE_DOWN_HIT,
         .power = 80,
         .type = TYPE_GHOST,
         .accuracy = 100,
@@ -3902,15 +3902,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_MUD_SPORT] =
     {
-        .effect = EFFECT_MUD_SPORT,
-        .power = 0,
+        .effect = EFFECT_DEFENSE_DOWN_HIT, // MOVE_EARTH_POWER
+        .power = 70,
         .type = TYPE_GROUND,
         .accuracy = 100,
         .pp = 15,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .secondaryEffectChance = 20,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_ICE_BALL] =
@@ -4357,15 +4357,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_BLOCK] =
     {
-        .effect = EFFECT_MEAN_LOOK,
-        .power = 0,
-        .type = TYPE_NORMAL,
+        .effect = EFFECT_DEFENSE_DOWN_HIT, // MOVE_INFESTATION
+        .power = 70,
+        .type = TYPE_BUG,
         .accuracy = 100,
-        .pp = 5,
-        .secondaryEffectChance = 0,
+        .pp = 15,
+        .secondaryEffectChance = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_HOWL] =
