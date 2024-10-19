@@ -133,7 +133,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_SPIKE_CANNON]  = _("OMINOUS WIND"),
     [MOVE_CONSTRICT]     = _("SEAQUAKE"),
     [MOVE_AMNESIA]       = _("AMNESIA"),
-    [MOVE_KINESIS]       = _("KINESIS"),
+    [MOVE_KINESIS]       = _("ENERGY BALL"),
     [MOVE_SOFT_BOILED]   = _("SOFTBOILED"),
     [MOVE_HI_JUMP_KICK]  = _("HI JUMP KICK"),
     [MOVE_GLARE]         = _("CROSS POISON"),
@@ -352,6 +352,6 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_ROCK_BLAST]    = _("ROCK BLAST"),
     [MOVE_SHOCK_WAVE]    = _("SHOCK WAVE"),
     [MOVE_WATER_PULSE]   = _("WATER PULSE"),
-    [MOVE_DOOM_DESIRE]   = _("DOOM DESIRE"),
+    [MOVE_DOOM_DESIRE]   = _("AZURE DRIVE"),
     [MOVE_PSYCHO_BOOST]  = _("PSYCHO BOOST")
 };
