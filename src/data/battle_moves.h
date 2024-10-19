@@ -1250,15 +1250,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_MEDITATE] =
     {
-        .effect = EFFECT_ATTACK_UP,
-        .power = 0,
-        .type = TYPE_PSYCHIC,
-        .accuracy = 0,
-        .pp = 40,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .effect = EFFECT_UPROAR, // MOVE_BUG_BUZZ
+        .power = 50,
+        .type = TYPE_BUG,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_RANDOM,
         .priority = 0,
-        .flags = FLAG_SNATCH_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_AGILITY] =
@@ -1458,15 +1458,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_BARRIER] =
     {
-        .effect = EFFECT_DEFENSE_UP_2,
-        .power = 0,
-        .type = TYPE_PSYCHIC,
-        .accuracy = 0,
-        .pp = 30,
+        .effect = EFFECT_PURSUIT, // MOVE_ROCKY_EXIT
+        .power = 50,
+        .type = TYPE_ROCK,
+        .accuracy = 100,
+        .pp = 20,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_SNATCH_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_LIGHT_SCREEN] =
@@ -2967,7 +2967,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_PURSUIT] =
     {
         .effect = EFFECT_PURSUIT,
-        .power = 40,
+        .power = 50,
         .type = TYPE_DARK,
         .accuracy = 100,
         .pp = 20,
@@ -3824,15 +3824,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_TAIL_GLOW] =
     {
-        .effect = EFFECT_SPECIAL_ATTACK_UP_2,
-        .power = 0,
-        .type = TYPE_BUG,
+        .effect = EFFECT_DOUBLE_HIT, // MOVE_DUAL_CHOP
+        .power = 30,
+        .type = TYPE_DRAGON,
         .accuracy = 100,
-        .pp = 20,
+        .pp = 30,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_SNATCH_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_LUSTER_PURGE] =
