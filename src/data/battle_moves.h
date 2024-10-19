@@ -4422,15 +4422,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_BOUNCE] =
     {
-        .effect = EFFECT_SEMI_INVULNERABLE,
-        .power = 85,
-        .type = TYPE_FLYING,
-        .accuracy = 85,
-        .pp = 5,
-        .secondaryEffectChance = 30,
+        .effect = EFFECT_FURY_CUTTER, // MOVE_DRIP_DROP
+        .power = 30,
+        .type = TYPE_WATER,
+        .accuracy = 95,
+        .pp = 20,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_MUD_SHOT] =
