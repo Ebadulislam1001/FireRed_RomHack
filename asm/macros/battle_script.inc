@@ -778,7 +778,7 @@
 	.4byte \param0
 	.endm
 
-	.macro tryconversiontypechange param0:req
+	.macro setabilitytohiddenskill param0:req
 	.byte 0x90
 	.4byte \param0
 	.endm

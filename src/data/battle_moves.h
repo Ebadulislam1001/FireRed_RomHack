@@ -2082,7 +2082,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_CONVERSION] =
     {
-        .effect = EFFECT_CONVERSION,
+        .effect = EFFECT_CONVERSION, // MOVE_HIDDEN_SKILL
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,

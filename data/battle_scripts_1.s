@@ -659,10 +659,10 @@ BattleScript_EffectConversion::
 	attackcanceler
 	attackstring
 	ppreduce
-	tryconversiontypechange BattleScript_ButItFailed
+	setabilitytohiddenskill BattleScript_ButItFailed
 	attackanimation
 	waitanimation
-	printstring STRINGID_PKMNCHANGEDTYPE
+	printstring STRINGID_PKMNCHANGEDABILITY
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 

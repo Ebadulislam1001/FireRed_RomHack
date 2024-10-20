@@ -204,7 +204,7 @@ static void Cmd_confuseifrepeatingattackends(void);
 static void Cmd_setmultihitcounter(void);
 static void Cmd_initmultihitstring(void);
 static void Cmd_forcerandomswitch(void);
-static void Cmd_tryconversiontypechange(void);
+static void Cmd_setabilitytohiddenskill(void);
 static void Cmd_givepaydaymoney(void);
 static void Cmd_setlightscreen(void);
 static void Cmd_tryKO(void);
@@ -456,7 +456,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_setmultihitcounter,                      //0x8D
     Cmd_initmultihitstring,                      //0x8E
     Cmd_forcerandomswitch,                       //0x8F
-    Cmd_tryconversiontypechange,                 //0x90
+    Cmd_setabilitytohiddenskill,                 //0x90
     Cmd_givepaydaymoney,                         //0x91
     Cmd_setlightscreen,                          //0x92
     Cmd_tryKO,                                   //0x93
@@ -854,6 +854,28 @@ static const struct PickupItem sPickupItems[] =
 //     [BATTLE_TERRAIN_BUILDING]   = TYPE_NORMAL,
 //     [BATTLE_TERRAIN_PLAIN]      = TYPE_NORMAL,
 // };
+static const u8 sSkillsToSkipCount = 14;
+static const u8 sSkillsToSkip[] =
+{
+    ABILITY_NONE,
+    ABILITY_DRIZZLE,
+    ABILITY_CLOUD_NINE,
+
+    ABILITY_INTIMIDATE,
+    ABILITY_SHADOW_TAG,
+    ABILITY_WONDER_GUARD,
+
+    ABILITY_ILLUMINATE,
+    ABILITY_TRACE,
+    ABILITY_SAND_STREAM,
+
+    ABILITY_PICKUP,
+    ABILITY_SNOW_WARNING,
+    ABILITY_FORECAST,
+
+    ABILITY_DROUGHT,
+    ABILITY_AIR_LOCK
+};
 
 // - ITEM_ULTRA_BALL skips Master Ball and ITEM_NONE
 static const u8 sBallCatchBonuses[] =
@@ -7050,64 +7072,39 @@ static void Cmd_forcerandomswitch(void)
     }
 }
 
-// Randomly changes user's type to one of its moves' type
-static void Cmd_tryconversiontypechange(void)
+// Changes user's ability based on its IVs
+static void Cmd_setabilitytohiddenskill(void)
 {
-    u8 validMoves = 0;
-    u8 moveChecked;
-    u8 moveType;
+    s32 hiddenSkillBits  = ((gBattleMons[gBattlerAttacker].hpIV & 3) << 0)
+              | ((gBattleMons[gBattlerAttacker].attackIV & 3) << 2)
+              | ((gBattleMons[gBattlerAttacker].defenseIV & 3) << 4)
+              | ((gBattleMons[gBattlerAttacker].speedIV & 3) << 6)
+              | ((gBattleMons[gBattlerAttacker].spAttackIV & 3) << 8)
+              | ((gBattleMons[gBattlerAttacker].spDefenseIV & 3) << 10);
 
-    while (validMoves < MAX_MON_MOVES)
-    {
-        if (gBattleMons[gBattlerAttacker].moves[validMoves] == MOVE_NONE)
-            break;
+    // we are considering (NUMBER_OF_MON_TYPES - sSkillsToSkipCount) because we want the skip (sSkillsToSkipCount) type i.e. TYPE_MYSTERY
+    u16 hiddenSkill = ((ABILITIES_COUNT - sSkillsToSkipCount) * hiddenSkillBits) / 4096;
 
-        validMoves++;
-    }
-
-    for (moveChecked = 0; moveChecked < validMoves; moveChecked++)
-    {
-        moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[moveChecked]].type;
-
-        if (moveType == TYPE_MYSTERY)
-        {
-            if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-                moveType = TYPE_GHOST;
-            else
-                moveType = TYPE_NORMAL;
-        }
-        if (moveType != gBattleMons[gBattlerAttacker].type1
-            && moveType != gBattleMons[gBattlerAttacker].type2)
-        {
-            break;
+    int i;
+    for (i = 0; i < sSkillsToSkipCount; i++) {
+        if (hiddenSkill >= sSkillsToSkip[i]) {
+            hiddenSkill += 1;
         }
     }
 
-    if (moveChecked == validMoves)
-    {
+    if (gBattleMons[gBattlerAttacker].ability == hiddenSkill
+     || gBattleMons[gBattlerAttacker].ability == ABILITY_TRUANT
+     || gBattleMons[gBattlerAttacker].ability == ABILITY_WONDER_GUARD
+     || gBattleMons[gBattlerAttacker].ability == ABILITY_SHADOW_TAG
+     || gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+     {
+        // Can't update users ability
         gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
-    }
+     }
     else
     {
-        do
-        {
-            while ((moveChecked = Random() & (MAX_MON_MOVES - 1)) >= validMoves);
-
-            moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[moveChecked]].type;
-
-            if (moveType == TYPE_MYSTERY)
-            {
-                if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-                    moveType = TYPE_GHOST;
-                else
-                    moveType = TYPE_NORMAL;
-            }
-        }
-        while (moveType == gBattleMons[gBattlerAttacker].type1 || moveType == gBattleMons[gBattlerAttacker].type2);
-
-        SET_BATTLER_TYPE(gBattlerAttacker, moveType);
-        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
-
+        // Update users ability to hiddenSkill
+        gBattleMons[gBattlerAttacker].ability = hiddenSkill;
         gBattlescriptCurrInstr += 5;
     }
 }
