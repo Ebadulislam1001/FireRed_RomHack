@@ -828,7 +828,7 @@ static const struct PickupItem sPickupItems[] =
     {ITEM_SCOPE_LENS,     96},
     {ITEM_TM10,           98},
 
-    // Uselese berries
+    // Useless berries
     // { ITEM_CORNN_BERRY,  100 },
     // { ITEM_MAGOST_BERRY, 100 },
     // { ITEM_RABUTA_BERRY, 100 },
@@ -841,19 +841,19 @@ static const struct PickupItem sPickupItems[] =
 
 };
 
-static const u8 sTerrainToType[] =
-{
-    [BATTLE_TERRAIN_GRASS]      = TYPE_GRASS,
-    [BATTLE_TERRAIN_LONG_GRASS] = TYPE_GRASS,
-    [BATTLE_TERRAIN_SAND]       = TYPE_GROUND,
-    [BATTLE_TERRAIN_UNDERWATER] = TYPE_WATER,
-    [BATTLE_TERRAIN_WATER]      = TYPE_WATER,
-    [BATTLE_TERRAIN_POND]       = TYPE_WATER,
-    [BATTLE_TERRAIN_MOUNTAIN]   = TYPE_ROCK,
-    [BATTLE_TERRAIN_CAVE]       = TYPE_ROCK,
-    [BATTLE_TERRAIN_BUILDING]   = TYPE_NORMAL,
-    [BATTLE_TERRAIN_PLAIN]      = TYPE_NORMAL,
-};
+// static const u8 sTerrainToType[] =
+// {
+//     [BATTLE_TERRAIN_GRASS]      = TYPE_GRASS,
+//     [BATTLE_TERRAIN_LONG_GRASS] = TYPE_GRASS,
+//     [BATTLE_TERRAIN_SAND]       = TYPE_GROUND,
+//     [BATTLE_TERRAIN_UNDERWATER] = TYPE_WATER,
+//     [BATTLE_TERRAIN_WATER]      = TYPE_WATER,
+//     [BATTLE_TERRAIN_POND]       = TYPE_WATER,
+//     [BATTLE_TERRAIN_MOUNTAIN]   = TYPE_ROCK,
+//     [BATTLE_TERRAIN_CAVE]       = TYPE_ROCK,
+//     [BATTLE_TERRAIN_BUILDING]   = TYPE_NORMAL,
+//     [BATTLE_TERRAIN_PLAIN]      = TYPE_NORMAL,
+// };
 
 // - ITEM_ULTRA_BALL skips Master Ball and ITEM_NONE
 static const u8 sBallCatchBonuses[] =
@@ -9463,10 +9463,23 @@ static void Cmd_tryrecycleitem(void)
 
 static void Cmd_settypetoterrain(void)
 {
-    if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, sTerrainToType[gBattleTerrain]))
+    u8 hiddenTypeBits  = ((gBattleMons[gBattlerAttacker].hpIV & 1) << 0)
+              | ((gBattleMons[gBattlerAttacker].attackIV & 1) << 1)
+              | ((gBattleMons[gBattlerAttacker].defenseIV & 1) << 2)
+              | ((gBattleMons[gBattlerAttacker].speedIV & 1) << 3)
+              | ((gBattleMons[gBattlerAttacker].spAttackIV & 1) << 4)
+              | ((gBattleMons[gBattlerAttacker].spDefenseIV & 1) << 5);
+    u8 hiddenType = ((NUMBER_OF_MON_TYPES - 1) * hiddenTypeBits) / 64;
+
+    if (hiddenType >= TYPE_MYSTERY)
     {
-        SET_BATTLER_TYPE(gBattlerAttacker, sTerrainToType[gBattleTerrain]);
-        PREPARE_TYPE_BUFFER(gBattleTextBuff1, sTerrainToType[gBattleTerrain]);
+        hiddenType += 1;
+    }
+
+    if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, hiddenType))
+    {
+        SET_BATTLER_TYPE(gBattlerAttacker, hiddenType);
+        PREPARE_TYPE_BUFFER(gBattleTextBuff1, hiddenType);
 
         gBattlescriptCurrInstr += 5;
     }

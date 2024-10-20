@@ -2872,7 +2872,6 @@ AI_SetupFirstTurn_SetupEffectsToEncourage::
 	.byte EFFECT_COSMIC_POWER
 	.byte EFFECT_BULK_UP
 	.byte EFFECT_CALM_MIND
-	.byte EFFECT_CAMOUFLAGE
 	.byte -1
 
 AI_PreferStrongestMove::
