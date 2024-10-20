@@ -1193,7 +1193,7 @@
 	.4byte \param0
 	.endm
 
-	.macro settypetoterrain param0:req
+	.macro settypetohiddentype param0:req
 	.byte 0xeb
 	.4byte \param0
 	.endm
