@@ -4058,15 +4058,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_AROMATHERAPY] =
     {
-        .effect = EFFECT_HEAL_BELL,
+        .effect = EFFECT_FOCUS_BOOST,
         .power = 0,
-        .type = TYPE_GRASS,
-        .accuracy = 0,
-        .pp = 5,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
-        .priority = 0,
-        .flags = FLAG_SNATCH_AFFECTED,
+        .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = -3,
+        .flags = FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_FAKE_TEARS] =

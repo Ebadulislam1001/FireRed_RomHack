@@ -256,6 +256,7 @@ static const u16 sDiscouragedPowerfulMoveEffects[] =
     EFFECT_SUPERPOWER,
     EFFECT_ERUPTION,
     EFFECT_OVERHEAT,
+    EFFECT_FOCUS_BOOST,
     0xFFFF
 };
 
