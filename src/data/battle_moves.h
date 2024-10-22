@@ -3720,15 +3720,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_IMPRISON] =
     {
-        .effect = EFFECT_IMPRISON,
+        .effect = EFFECT_DUAL_SCREEN, // MOVE_DUAL_SCREEN
         .power = 0,
         .type = TYPE_PSYCHIC,
-        .accuracy = 100,
-        .pp = 10,
+        .accuracy = 0,
+        .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED,
+        .flags = FLAG_SNATCH_AFFECTED,
     },
 
     [MOVE_REFRESH] =

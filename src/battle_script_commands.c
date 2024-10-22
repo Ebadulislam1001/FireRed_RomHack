@@ -286,7 +286,6 @@ static void Cmd_assistattackselect(void);
 static void Cmd_trysetmagiccoat(void);
 static void Cmd_trysetsnatch(void);
 static void Cmd_trygetintimidatetarget(void);
-static void Cmd_trygetilluminatetarget(void);
 static void Cmd_switchoutabilities(void);
 static void Cmd_jumpifhasnohp(void);
 static void Cmd_getsecretpowereffect(void);
@@ -309,6 +308,8 @@ static void Cmd_subattackerhpbydmg(void);
 static void Cmd_removeattackerstatus1(void);
 static void Cmd_finishaction(void);
 static void Cmd_finishturn(void);
+static void Cmd_trygetilluminatetarget(void);
+static void Cmd_setdualscreen(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -561,6 +562,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_finishaction,                            //0xF6
     Cmd_finishturn,                              //0xF7
     Cmd_trygetilluminatetarget,                  //0xF8
+    Cmd_setdualscreen,                           //0xF9
 };
 
 struct StatFractions
@@ -6503,6 +6505,28 @@ static void Cmd_setreflect(void)
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_REFLECT_DOUBLE;
         else
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_REFLECT_SINGLE;
+    }
+    gBattlescriptCurrInstr++;
+}
+static void Cmd_setdualscreen(void)
+{
+    // If either Reflect or Light Screen is already active, fail
+    if ((gSideStatuses[GET_BATTLER_SIDE(gBattlerAttacker)] & SIDE_STATUS_REFLECT) || (gSideStatuses[GET_BATTLER_SIDE(gBattlerAttacker)] & SIDE_STATUS_LIGHTSCREEN))
+    {
+        gMoveResultFlags |= MOVE_RESULT_MISSED;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SIDE_STATUS_FAILED;
+    }
+    else
+    {
+        gSideStatuses[GET_BATTLER_SIDE(gBattlerAttacker)] |= SIDE_STATUS_REFLECT;
+        gSideTimers[GET_BATTLER_SIDE(gBattlerAttacker)].reflectTimer = 3;
+        gSideTimers[GET_BATTLER_SIDE(gBattlerAttacker)].reflectBattlerId = gBattlerAttacker;
+
+        gSideStatuses[GET_BATTLER_SIDE(gBattlerAttacker)] |= SIDE_STATUS_LIGHTSCREEN;
+        gSideTimers[GET_BATTLER_SIDE(gBattlerAttacker)].lightscreenTimer = 3;
+        gSideTimers[GET_BATTLER_SIDE(gBattlerAttacker)].lightscreenBattlerId = gBattlerAttacker;
+        
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_DUAL_SCREEN;
     }
     gBattlescriptCurrInstr++;
 }

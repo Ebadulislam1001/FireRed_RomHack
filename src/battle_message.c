@@ -128,6 +128,7 @@ static const u8 sText_PkmnRaisedSpDef[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\
 static const u8 sText_PkmnRaisedSpDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised SP. DEF a little!");
 static const u8 sText_PkmnRaisedDef[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised DEFENSE!");
 static const u8 sText_PkmnRaisedDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised DEFENSE a little!");
+static const u8 sText_PkmnDefendedByScreen[] = _("{B_ATK_PREFIX2} is now defended\nby {B_CURRENT_MOVE}");
 static const u8 sText_PkmnCoveredByVeil[] = _("{B_ATK_PREFIX2}'s party is covered\nby a veil!");
 static const u8 sText_PkmnUsedSafeguard[] = _("{B_DEF_NAME_WITH_PREFIX}'s party is protected\nby SAFEGUARD!");
 static const u8 sText_PkmnSafeguardExpired[] = _("{B_ATK_PREFIX3}'s party is no longer\nprotected by SAFEGUARD!");
@@ -894,7 +895,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT - BATTLESTRINGS_TABLE_ST
     [STRINGID_TRAINER1MON1AND2COMEBACK - BATTLESTRINGS_TABLE_START]      = sText_Trainer1RecallBoth,
     [STRINGID_PKMNSXWHIPPEDUPHAILSTORM - BATTLESTRINGS_TABLE_START]      = sText_PkmnsXWhippedUpHailstorm,
     [STRINGID_PKMNCUTSSPATTACKWITH - BATTLESTRINGS_TABLE_START]          = sText_PkmnCutsSpAttackWith,
-    [STRINGID_PKMNCHANGEDABILITY - BATTLESTRINGS_TABLE_START]            = sText_PkmnChangedAbility
+    [STRINGID_PKMNCHANGEDABILITY - BATTLESTRINGS_TABLE_START]            = sText_PkmnChangedAbility,
+    [STRINGID_PKMNDEFENDEDBYSCREEN - BATTLESTRINGS_TABLE_START]          = sText_PkmnDefendedByScreen
 };
 
 const u16 gMissStringIds[] =
@@ -964,7 +966,8 @@ const u16 gReflectLightScreenSafeguardStringIds[] =
     [B_MSG_SET_REFLECT_DOUBLE]     = STRINGID_PKMNRAISEDDEFALITTLE,
     [B_MSG_SET_LIGHTSCREEN_SINGLE] = STRINGID_PKMNRAISEDSPDEF,
     [B_MSG_SET_LIGHTSCREEN_DOUBLE] = STRINGID_PKMNRAISEDSPDEFALITTLE,
-    [B_MSG_SET_SAFEGUARD]          = STRINGID_PKMNCOVEREDBYVEIL
+    [B_MSG_SET_SAFEGUARD]          = STRINGID_PKMNCOVEREDBYVEIL,
+    [B_MSG_SET_DUAL_SCREEN]        = STRINGID_PKMNDEFENDEDBYSCREEN
 };
 
 const u16 gLeechSeedStringIds[] =

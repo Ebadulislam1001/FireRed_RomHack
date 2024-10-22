@@ -2592,9 +2592,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         if ((sideStatus & SIDE_STATUS_REFLECT) && gCritMultiplier == 1)
         {
             if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
-                damage = 2 * (damage / 3);
+                damage = 2 * (damage / 3); // damage 0f 100 becomes damage of 66
             else
-                damage /= 2;
+                damage /= 2; // damage of 100 becomes damage of 50
         }
 
         // Moves hitting both targets do half damage in double battles
@@ -2643,9 +2643,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         if ((sideStatus & SIDE_STATUS_LIGHTSCREEN) && gCritMultiplier == 1)
         {
             if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
-                damage = 2 * (damage / 3);
+                damage = 2 * (damage / 3); // damage 0f 100 becomes damage of 66
             else
-                damage /= 2;
+                damage /= 2; // damage 0f 100 becomes damage of 50
         }
 
         // Moves hitting both targets do half damage in double battles

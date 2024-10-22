@@ -236,6 +236,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDragonDance            @ EFFECT_DRAGON_DANCE
 	.4byte BattleScript_EffectCamouflage             @ EFFECT_CAMOUFLAGE
 	.4byte BattleScript_EffectFocusBoost             @ EFFECT_FOCUS_BOOST
+	.4byte BattleScript_EffectDualScreen             @ EFFECT_DUAL_SCREEN
 
 BattleScript_EffectHit::
 	jumpifnotmove MOVE_SURF, BattleScript_HitFromAtkCanceler
@@ -981,6 +982,13 @@ BattleScript_PrintReflectLightScreenSafeguardString::
 	printfromtable gReflectLightScreenSafeguardStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+
+BattleScript_EffectDualScreen::
+	attackcanceler
+	attackstring
+	ppreduce
+	setdualscreen
+	goto BattleScript_PrintReflectLightScreenSafeguardString
 
 BattleScript_EffectPoison::
 	attackcanceler

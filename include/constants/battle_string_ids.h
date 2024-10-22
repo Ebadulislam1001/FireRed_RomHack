@@ -387,8 +387,9 @@
 #define STRINGID_PKMNSXWHIPPEDUPHAILSTORM 386
 #define STRINGID_PKMNCUTSSPATTACKWITH 387
 #define STRINGID_PKMNCHANGEDABILITY 388
+#define STRINGID_PKMNDEFENDEDBYSCREEN 389
 
-#define BATTLESTRINGS_COUNT     389
+#define BATTLESTRINGS_COUNT     390
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -466,6 +467,7 @@
 #define B_MSG_SET_LIGHTSCREEN_SINGLE 3
 #define B_MSG_SET_LIGHTSCREEN_DOUBLE 4
 #define B_MSG_SET_SAFEGUARD          5
+#define B_MSG_SET_DUAL_SCREEN        6
 
 // gProtectLikeUsedStringIds
 #define B_MSG_PROTECTED_ITSELF 0
