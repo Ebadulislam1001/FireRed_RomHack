@@ -10,7 +10,7 @@ void skipLines(FILE *&readPointer, int lineCount)
 {
     for (int i = 0; i < lineCount; i += 1)
     {
-        char line[100];
+        char line[1000];
         fscanf(readPointer, "%[^\n]", line);
         fgetc(readPointer);
     }

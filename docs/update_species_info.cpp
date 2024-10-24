@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include <map>
 #include <vector>
+#include <map>
 #include <algorithm>
 #include "fileHelper.cpp"
 using namespace std;
@@ -34,9 +34,9 @@ int main()
 {
     vector<Pokemon> pokedex;
     readPokedex(pokedex);
-    writeStatsInDex(pokedex);
+    writeStatsInDex(pokedex); // use old names
     updateNames(pokedex);
-    printPokedex(pokedex);
+    printPokedex(pokedex); // use new names
     printCSV(pokedex);
     // printDataAnalysis(pokedex);
     return 0;
@@ -48,7 +48,7 @@ void readPokedex(vector<Pokemon> &pokedex)
     readPointer = fopen("./../src/data/pokemon/species_info.h", "r");
     if (readPointer == NULL)
     {
-        printf("Could not open the input file for reading");
+        printf("Could not open species_info.h\n");
         return;
     }
 
@@ -111,7 +111,7 @@ void writeStatsInDex(vector<Pokemon> &pokedex)
     // writePointer = fopen("./output.txt", "w");
     if (writePointer == NULL)
     {
-        printf("Could not open the output file for writing\n");
+        printf("Could not open pokedex_text_fr.h\n");
         return;
     }
     fprintf(writePointer, "const u8 gDummyPokedexText[] = _(\n");
@@ -169,7 +169,7 @@ void updateNames(vector<Pokemon> &pokedex)
     readPointer = fopen("./../src/data/text/species_names.h", "r");
     if (readPointer == NULL)
     {
-        printf("Could not open the input file for reading");
+        printf("Could not open species_names.h\n");
         return;
     }
 
@@ -190,7 +190,7 @@ void printPokedex(vector<Pokemon> &pokedex)
     FILE *writePointer = fopen("species_info.txt", "w");
     if (writePointer == NULL)
     {
-        cout << "Could not open the output file for writing" << endl;
+        printf("Could not open species_info.txt\n");
         return;
     }
 
@@ -223,7 +223,7 @@ void printCSV(vector<Pokemon> &pokedex)
     FILE *writePointer = fopen("./../../../Data_Analysis/Ebad/species_info.csv", "w");
     if (writePointer == NULL)
     {
-        cout << "Could not open the output file for writing" << endl;
+        printf("Could not open species_info.csv\n");
         return;
     }
 
