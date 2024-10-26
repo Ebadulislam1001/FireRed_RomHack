@@ -239,7 +239,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDualScreen             @ EFFECT_DUAL_SCREEN
 
 BattleScript_EffectHit::
-	jumpifnotmove MOVE_SURF, BattleScript_HitFromAtkCanceler
+	jumpifnotmove MOVE_CONSTRICT, BattleScript_HitFromAtkCanceler @MOVE_SEAQUAKE
 	jumpifnostatus3 BS_TARGET, STATUS3_UNDERWATER, BattleScript_HitFromAtkCanceler
 	orword gHitMarker, HITMARKER_IGNORE_UNDERWATER
 	setbyte sDMG_MULTIPLIER, 2
