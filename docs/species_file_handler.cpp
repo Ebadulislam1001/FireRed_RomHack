@@ -220,7 +220,7 @@ void printPokedex(vector<Pokemon> &pokedex)
 }
 void printCSV(vector<Pokemon> &pokedex)
 {
-    FILE *writePointer = fopen("./../../../Data_Analysis/Ebad/species_info.csv", "w");
+    FILE *writePointer = fopen("species_info.csv", "w");
     if (writePointer == NULL)
     {
         printf("Could not open species_info.csv\n");
