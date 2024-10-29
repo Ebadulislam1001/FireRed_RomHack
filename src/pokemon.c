@@ -2410,6 +2410,11 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     spAttack = attacker->spAttack;
     spDefense = defender->spDefense;
 
+    if(move == MOVE_SMOG /* MOVE_SPEED_STRIKE */)
+    {
+        attack = attacker->speed;
+    }
+
     // Get attacker hold item info
     if (attacker->item == ITEM_ENIGMA_BERRY)
     {

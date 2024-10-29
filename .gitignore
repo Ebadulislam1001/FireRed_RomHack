@@ -11,6 +11,8 @@ docs/output.txt
 *.dump
 *.elf
 *.exe
+*.out
+*.ipynb
 *.fwjpnfont
 *.gba
 !data/*.gba
