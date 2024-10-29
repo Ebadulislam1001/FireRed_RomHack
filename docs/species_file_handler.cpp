@@ -27,8 +27,8 @@ void readPokedex(vector<Pokemon> &pokedex);
 void writeStatsInDex(vector<Pokemon> &pokedex);
 void updateNames(vector<Pokemon> &pokedex);
 void printPokedex(vector<Pokemon> &pokedex);
-void printCSV(vector<Pokemon> &pokedex);
-void printDataAnalysis(vector<Pokemon> &pokedex);
+// void printCSV(vector<Pokemon> &pokedex);
+// void printDataAnalysis(vector<Pokemon> &pokedex);
 
 int main()
 {
@@ -37,7 +37,7 @@ int main()
     writeStatsInDex(pokedex); // use old names
     updateNames(pokedex);
     printPokedex(pokedex); // use new names
-    printCSV(pokedex);
+    // printCSV(pokedex);
     // printDataAnalysis(pokedex);
     return 0;
 }
@@ -218,85 +218,87 @@ void printPokedex(vector<Pokemon> &pokedex)
 
     fclose(writePointer);
 }
-void printCSV(vector<Pokemon> &pokedex)
-{
-    FILE *writePointer = fopen("species_info.csv", "w");
-    if (writePointer == NULL)
-    {
-        printf("Could not open species_info.csv\n");
-        return;
-    }
 
-    fprintf(writePointer, "DexNum,Name,HP,PA,PD,SA,SD,SP,BST,Type1,Type2,Abil1,Abil2\n");
+// void printCSV(vector<Pokemon> &pokedex)
+// {
+//     FILE *writePointer = fopen("species_info.csv", "w");
+//     if (writePointer == NULL)
+//     {
+//         printf("Could not open species_info.csv\n");
+//         return;
+//     }
+// 
+//     fprintf(writePointer, "DexNum,Name,HP,PA,PD,SA,SD,SP,BST,Type1,Type2,Abil1,Abil2\n");
+// 
+//     for (int i = 0; i < pokedex.size(); i += 1)
+//     {
+//         Pokemon pkmn = pokedex[i];
+//         fprintf(writePointer, "%03d,", pokedex[i].index);
+//         fprintf(writePointer, "\"%s\",", pkmn.name.c_str());
+//         fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
+//         fprintf(writePointer, "%d,", pkmn.BST);
+// 
+//         if (pkmn.types[1] == "")
+//             fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
+//         else
+//             fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+// 
+//         if (pkmn.abils[1] == "")
+//             fprintf(writePointer, "%s,...\n", pkmn.abils[0].c_str());
+//         else
+//             fprintf(writePointer, "%s,%s\n", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+//     }
+// 
+//     fclose(writePointer);
+// }
 
-    for (int i = 0; i < pokedex.size(); i += 1)
-    {
-        Pokemon pkmn = pokedex[i];
-        fprintf(writePointer, "%03d,", pokedex[i].index);
-        fprintf(writePointer, "\"%s\",", pkmn.name.c_str());
-        fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
-        fprintf(writePointer, "%d,", pkmn.BST);
-
-        if (pkmn.types[1] == "")
-            fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
-        else
-            fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
-
-        if (pkmn.abils[1] == "")
-            fprintf(writePointer, "%s,...\n", pkmn.abils[0].c_str());
-        else
-            fprintf(writePointer, "%s,%s\n", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
-    }
-
-    fclose(writePointer);
-}
-void printDataAnalysis(vector<Pokemon> &pokedex)
-{
-    int typeCount = 18; // including "empty" type
-    vector<string> typeName = {"", "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE", "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG", "ROCK", "GHOST", "DRAGON", "DARK", "STEEL"};
-    vector<string> typeAbbr = {"???", "NRM", "FIR", "WTR", "ELE", "GRS", "ICE", "FGH", "PSN", "GRN", "FLY", "PSY", "BUG", "RCK", "GHS", "DGN", "DRK", "STL"};
-    map<string, int> indexOf;
-    for (int i = 0; i < typeCount; i += 1)
-    {
-        indexOf[typeName[i]] = i;
-    }
-
-    vector<int> typeFrequency(typeCount, 0);
-    vector<vector<int>> typeCombFrequency2(typeCount, vector<int>(typeCount, 0));
-
-    for (int i = 0; i < pokedex.size(); i += 1)
-    {
-        Pokemon pkmn = pokedex[i];
-        string type1 = pkmn.types[0];
-        string type2 = pkmn.types[1];
-
-        typeFrequency[indexOf[type1]] += 1;
-        typeFrequency[indexOf[type2]] += 1;
-        typeCombFrequency2[indexOf[type1]][indexOf[type2]] += 1;
-        typeCombFrequency2[indexOf[type2]][indexOf[type1]] += 1;
-    }
-
-    printf("\nType frequency:\n");
-    for (int i = 0; i < typeCount; i += 1)
-    {
-        printf("%s : %3d\n", typeAbbr[i].c_str(), typeFrequency[i]);
-    }
-
-    printf("\nType combination frequency:");
-    printf("\n###");
-    for (int i = typeCount; i > 0; i -= 1)
-    {
-        printf(" %s ", typeAbbr[i - 1].c_str());
-    }
-    for (int i = 0; i < typeCount; i += 1)
-    {
-        printf("\n%s", typeAbbr[i].c_str());
-        for (int j = typeCount - 1; j > i; j -= 1)
-        {
-            if (typeCombFrequency2[i][j] > 0)
-                printf(" %3d ", typeCombFrequency2[i][j]);
-            else
-                printf(" %3s ", "---");
-        }
-    }
-}
+// void printDataAnalysis(vector<Pokemon> &pokedex)
+// {
+//     int typeCount = 18; // including "empty" type
+//     vector<string> typeName = {"", "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE", "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG", "ROCK", "GHOST", "DRAGON", "DARK", "STEEL"};
+//     vector<string> typeAbbr = {"???", "NRM", "FIR", "WTR", "ELE", "GRS", "ICE", "FGH", "PSN", "GRN", "FLY", "PSY", "BUG", "RCK", "GHS", "DGN", "DRK", "STL"};
+//     map<string, int> indexOf;
+//     for (int i = 0; i < typeCount; i += 1)
+//     {
+//         indexOf[typeName[i]] = i;
+//     }
+// 
+//     vector<int> typeFrequency(typeCount, 0);
+//     vector<vector<int>> typeCombFrequency2(typeCount, vector<int>(typeCount, 0));
+// 
+//     for (int i = 0; i < pokedex.size(); i += 1)
+//     {
+//         Pokemon pkmn = pokedex[i];
+//         string type1 = pkmn.types[0];
+//         string type2 = pkmn.types[1];
+// 
+//         typeFrequency[indexOf[type1]] += 1;
+//         typeFrequency[indexOf[type2]] += 1;
+//         typeCombFrequency2[indexOf[type1]][indexOf[type2]] += 1;
+//         typeCombFrequency2[indexOf[type2]][indexOf[type1]] += 1;
+//     }
+// 
+//     printf("\nType frequency:\n");
+//     for (int i = 0; i < typeCount; i += 1)
+//     {
+//         printf("%s : %3d\n", typeAbbr[i].c_str(), typeFrequency[i]);
+//     }
+// 
+//     printf("\nType combination frequency:");
+//     printf("\n###");
+//     for (int i = typeCount; i > 0; i -= 1)
+//     {
+//         printf(" %s ", typeAbbr[i - 1].c_str());
+//     }
+//     for (int i = 0; i < typeCount; i += 1)
+//     {
+//         printf("\n%s", typeAbbr[i].c_str());
+//         for (int j = typeCount - 1; j > i; j -= 1)
+//         {
+//             if (typeCombFrequency2[i][j] > 0)
+//                 printf(" %3d ", typeCombFrequency2[i][j]);
+//             else
+//                 printf(" %3s ", "---");
+//         }
+//     }
+// }

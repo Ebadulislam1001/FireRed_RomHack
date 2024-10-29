@@ -24,16 +24,16 @@ struct Move
 
 void readMoveList(vector<Move> &moveList);
 void updateNames(vector<Move> &moveList);
-void printCSV(vector<Move> &moveList);
 void printMoveList(vector<Move> &moveList);
+// void printCSV(vector<Move> &moveList);
 
 int main()
 {
     vector<Move> moveList;
     readMoveList(moveList);
     updateNames(moveList);
-    printCSV(moveList);
     printMoveList(moveList); // use new names
+    // printCSV(moveList); // use new names
 }
 
 void readMoveList(vector<Move> &moveList)
@@ -128,36 +128,6 @@ void updateNames(vector<Move> &moveList)
     fclose(readPointer);
     printf("UPDATING COMPLETE !!!\n");
 }
-void printCSV(vector<Move> &moveList)
-{
-    printf("GENERATING CSV...\n");
-    FILE *writePointer = fopen("moves_info.csv", "w");
-    if (writePointer == NULL)
-    {
-        printf("Could not open moves_info.csv\n");
-        return;
-    }
-
-    fprintf(writePointer, "Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority\n");
-
-    for (int i = 0; i < moveList.size(); i += 1)
-    {
-        Move thisMove = moveList[i];
-        fprintf(writePointer, "%d,", thisMove.index);
-        fprintf(writePointer, "\"%s\",", thisMove.name.c_str());
-        fprintf(writePointer, "\"%s\",", thisMove.type.c_str());
-        fprintf(writePointer, "%d,", thisMove.basePower);
-        fprintf(writePointer, "%d,", thisMove.accuracy);
-        fprintf(writePointer, "%d,", thisMove.pp);
-        fprintf(writePointer, "\"%s\",", thisMove.effect.c_str());
-        fprintf(writePointer, "%d,", thisMove.effectChance);
-        fprintf(writePointer, "\"%s\",", thisMove.target.c_str());
-        fprintf(writePointer, "%d\n", thisMove.priority);
-    }
-
-    fclose(writePointer);
-    printf("GENERATING COMPLETE !!!\n");
-}
 void printMoveList(vector<Move> &moveList)
 {
     printf("PRINTING ...\n");
@@ -225,3 +195,33 @@ void printMoveList(vector<Move> &moveList)
     fclose(writePointer);
     printf("PRINTING COMPLETE !!!\n");
 }
+// void printCSV(vector<Move> &moveList)
+// {
+//     printf("GENERATING CSV...\n");
+//     FILE *writePointer = fopen("moves_info.csv", "w");
+//     if (writePointer == NULL)
+//     {
+//         printf("Could not open moves_info.csv\n");
+//         return;
+//     }
+// 
+//     fprintf(writePointer, "Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority\n");
+// 
+//     for (int i = 0; i < moveList.size(); i += 1)
+//     {
+//         Move thisMove = moveList[i];
+//         fprintf(writePointer, "%d,", thisMove.index);
+//         fprintf(writePointer, "\"%s\",", thisMove.name.c_str());
+//         fprintf(writePointer, "\"%s\",", thisMove.type.c_str());
+//         fprintf(writePointer, "%d,", thisMove.basePower);
+//         fprintf(writePointer, "%d,", thisMove.accuracy);
+//         fprintf(writePointer, "%d,", thisMove.pp);
+//         fprintf(writePointer, "\"%s\",", thisMove.effect.c_str());
+//         fprintf(writePointer, "%d,", thisMove.effectChance);
+//         fprintf(writePointer, "\"%s\",", thisMove.target.c_str());
+//         fprintf(writePointer, "%d\n", thisMove.priority);
+//     }
+// 
+//     fclose(writePointer);
+//     printf("GENERATING COMPLETE !!!\n");
+// }
