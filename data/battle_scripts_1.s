@@ -1829,7 +1829,10 @@ BattleScript_SkullBashEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTwister::
-	jumpifnostatus3 BS_TARGET, STATUS3_ON_AIR, BattleScript_FlinchEffect
+	jumpifstatus3 BS_TARGET, STATUS3_ON_AIR, BattleScript_TwisterDamage2x
+	jumpifstatus3 BS_TARGET, STATUS3_UNDERWATER, BattleScript_TwisterDamage2x
+	goto BattleScript_FlinchEffect
+BattleScript_TwisterDamage2x::
 	orword gHitMarker, HITMARKER_IGNORE_ON_AIR
 	setbyte sDMG_MULTIPLIER, 2
 BattleScript_FlinchEffect::
