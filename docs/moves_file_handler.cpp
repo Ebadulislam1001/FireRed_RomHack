@@ -140,19 +140,19 @@ void printMoveList(vector<Move> &moveList)
 
     // Apply custom sorting on the moveList
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.priority > b.priority; });
+                { return a.priority < b.priority; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.pp > b.pp; });
+                { return a.pp < b.pp; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.accuracy > b.accuracy; });
+                { return a.accuracy < b.accuracy; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.effectChance > b.effectChance; });
+                { return a.effectChance < b.effectChance; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.target > b.target; });
+                { return a.target < b.target; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.effect < b.effect; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.basePower > b.basePower; });
+                { return a.basePower < b.basePower; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.type < b.type; });
 
@@ -171,9 +171,9 @@ void printMoveList(vector<Move> &moveList)
         // bool condition = thisMove.accuracy < 100;
         // bool condition = thisMove.target == "USER";
         // bool condition = thisMove.effectChance >= 50;
-        bool condition = thisMove.effect == "MULTI_HIT";
+        // bool condition = thisMove.effect == "MULTI_HIT";
         // bool condition = thisMove.priority < 0;
-        // bool condition = true;
+        bool condition = true;
         if (condition)
         {
             // fprintf(writePointer, "| %4d  ", thisMove.index);
