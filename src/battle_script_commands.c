@@ -9321,36 +9321,86 @@ static void Cmd_jumpifhasnohp(void)
 
 static void Cmd_getsecretpowereffect(void)
 {
-    switch (gBattleTerrain)
+    u8 randomInt = Random() % 18;
+
+    switch (randomInt)
     {
-    case BATTLE_TERRAIN_GRASS:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON;
+    // Nerfing Targets Stat
+    case 0:
+    case 1:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ATK_MINUS_1; // 1/60
         break;
-    case BATTLE_TERRAIN_LONG_GRASS:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
+    case 2:
+    case 3:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_DEF_MINUS_1; // 1/60
         break;
-    case BATTLE_TERRAIN_SAND:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ACC_MINUS_1;
+    case 4:
+    case 5:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SPD_MINUS_1; // 1/60
         break;
-    case BATTLE_TERRAIN_UNDERWATER:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_DEF_MINUS_1;
+    case 6:
+    case 7:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SP_ATK_MINUS_1; // 1/60
         break;
-    case BATTLE_TERRAIN_WATER:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ATK_MINUS_1;
+    case 8:
+    case 9:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SP_DEF_MINUS_1; // 1/60
         break;
-    case BATTLE_TERRAIN_POND:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SPD_MINUS_1;
+    case 10:
+    case 11:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ACC_MINUS_1; // 1/60
         break;
-    case BATTLE_TERRAIN_MOUNTAIN:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_CONFUSION;
+    // Inflicting Status
+    case 12:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_FLINCH; // 1/120
         break;
-    case BATTLE_TERRAIN_CAVE:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_FLINCH;
+    case 13:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_FREEZE; // 1/120
         break;
-    default:
-        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
+    case 14:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_BURN; // 1/120
+        break;
+    case 15:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON; // 1/120
+        break;
+    case 16:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS; // 1/120
+        break;
+    case 17:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_CONFUSION; // 1/120
         break;
     }
+
+    // switch (gBattleTerrain)
+    // {
+    // case BATTLE_TERRAIN_GRASS:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON;
+    //     break;
+    // case BATTLE_TERRAIN_LONG_GRASS:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
+    //     break;
+    // case BATTLE_TERRAIN_SAND:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ACC_MINUS_1;
+    //     break;
+    // case BATTLE_TERRAIN_UNDERWATER:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_DEF_MINUS_1;
+    //     break;
+    // case BATTLE_TERRAIN_WATER:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ATK_MINUS_1;
+    //     break;
+    // case BATTLE_TERRAIN_POND:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SPD_MINUS_1;
+    //     break;
+    // case BATTLE_TERRAIN_MOUNTAIN:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_CONFUSION;
+    //     break;
+    // case BATTLE_TERRAIN_CAVE:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_FLINCH;
+    //     break;
+    // default:
+    //     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
+    //     break;
+    // }
     gBattlescriptCurrInstr++;
 }
 

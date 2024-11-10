@@ -3773,11 +3773,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_SECRET_POWER] =
     {
         .effect = EFFECT_SECRET_POWER,
-        .power = 70,
+        .power = 50,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 20,
-        .secondaryEffectChance = 30,
+        .secondaryEffectChance = 25,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
