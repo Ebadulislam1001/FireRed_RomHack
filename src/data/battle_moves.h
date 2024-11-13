@@ -2563,15 +2563,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_DETECT] =
     {
-        .effect = EFFECT_PROTECT,
-        .power = 0,
-        .type = TYPE_FIGHTING,
-        .accuracy = 0,
-        .pp = 5,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
-        .priority = 3,
-        .flags = 0,
+        .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT, // MOVE_CRYSTAL_BEAM
+        .power = 55,
+        .type = TYPE_ROCK,
+        .accuracy = 100,
+        .pp = 20,
+        .secondaryEffectChance = 20,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
 
     [MOVE_BONE_RUSH] =
@@ -3031,15 +3031,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_VITAL_THROW] =
     {
-        .effect = EFFECT_VITAL_THROW,
-        .power = 70,
-        .type = TYPE_FIGHTING,
+        .effect = EFFECT_POISON_HIT, // MOVE_SLUDGE_WAVE
+        .power = 110,
+        .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_SELECTED,
-        .priority = -1,
-        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
     },
 
     [MOVE_MORNING_SUN] =
