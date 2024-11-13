@@ -139,24 +139,24 @@ void printMoveList(vector<Move> &moveList)
     }
 
     // Apply custom sorting on the moveList
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.priority < b.priority; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.pp < b.pp; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.accuracy < b.accuracy; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.effectChance < b.effectChance; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.target < b.target; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.effect < b.effect; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.priority < b.priority; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.pp < b.pp; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.accuracy < b.accuracy; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.effectChance < b.effectChance; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.target < b.target; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.effect < b.effect; });
+    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+    //             { return a.name < b.name; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.basePower < b.basePower; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.type < b.type; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.name < b.name; });
 
     // Print the sorted moveList
     string lineSeparator = "+-------+----------------+----------+------------+----------+--------------------------+----------+-----------------+----------+----------+";
@@ -167,14 +167,17 @@ void printMoveList(vector<Move> &moveList)
     for (int i = 0, j = 0; i < moveList.size(); i++)
     {
         Move thisMove = moveList[i];
-        bool condition = true;
-        // bool condition = thisMove.type == "WATER";
-        // bool condition = thisMove.basePower >= 100;
-        // bool condition = thisMove.accuracy < 100;
-        // bool condition = thisMove.target == "USER";
-        // bool condition = thisMove.effectChance >= 50;
-        // bool condition = thisMove.effect == "MULTI_HIT";
-        // bool condition = thisMove.priority < 0;
+
+        // Apply custom filtering on the moveList
+        bool condition = (true
+                          // && thisMove.type == "WATER"
+                          // && thisMove.basePower >= 100
+                          // && thisMove.accuracy < 100
+                          // && thisMove.target == "USER"
+                          // && thisMove.effectChance >= 50
+                          // && thisMove.effect == "MULTI_HIT"
+                          // && thisMove.priority < 0
+        );
 
         if (condition)
         {
@@ -206,9 +209,9 @@ void printMoveList(vector<Move> &moveList)
 //         printf("Could not open moves_info.csv\n");
 //         return;
 //     }
-// 
+//
 //     fprintf(writePointer, "Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority\n");
-// 
+//
 //     for (int i = 0; i < moveList.size(); i += 1)
 //     {
 //         Move thisMove = moveList[i];
@@ -223,7 +226,7 @@ void printMoveList(vector<Move> &moveList)
 //         fprintf(writePointer, "\"%s\",", thisMove.target.c_str());
 //         fprintf(writePointer, "%d\n", thisMove.priority);
 //     }
-// 
+//
 //     fclose(writePointer);
 //     printf("GENERATING COMPLETE !!!\n");
 // }
