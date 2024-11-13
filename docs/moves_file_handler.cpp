@@ -155,6 +155,8 @@ void printMoveList(vector<Move> &moveList)
                 { return a.basePower < b.basePower; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.type < b.type; });
+    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+                { return a.name < b.name; });
 
     // Print the sorted moveList
     string lineSeparator = "+-------+----------------+----------+------------+----------+--------------------------+----------+-----------------+----------+----------+";
@@ -165,15 +167,15 @@ void printMoveList(vector<Move> &moveList)
     for (int i = 0, j = 0; i < moveList.size(); i++)
     {
         Move thisMove = moveList[i];
-        // bool condition = true;
-        // bool condition = thisMove.type == "BUG";
+        bool condition = true;
+        // bool condition = thisMove.type == "WATER";
         // bool condition = thisMove.basePower >= 100;
         // bool condition = thisMove.accuracy < 100;
         // bool condition = thisMove.target == "USER";
         // bool condition = thisMove.effectChance >= 50;
         // bool condition = thisMove.effect == "MULTI_HIT";
         // bool condition = thisMove.priority < 0;
-        bool condition = true;
+
         if (condition)
         {
             // fprintf(writePointer, "| %4d  ", thisMove.index);

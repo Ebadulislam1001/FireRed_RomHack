@@ -237,6 +237,9 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectCamouflage             @ EFFECT_CAMOUFLAGE
 	.4byte BattleScript_EffectFocusBoost             @ EFFECT_FOCUS_BOOST
 	.4byte BattleScript_EffectDualScreen             @ EFFECT_DUAL_SCREEN
+	.4byte BattleScript_EffectBurnHit                @ EFFECT_SCORCH
+	.4byte BattleScript_EffectHit                	 @ EFFECT_HEX
+	.4byte BattleScript_EffectFlinchHit              @ EFFECT_AQUA_CUTTER
 
 BattleScript_EffectHit::
 	jumpifnotmove MOVE_CONSTRICT, BattleScript_HitFromAtkCanceler @MOVE_SEAQUAKE

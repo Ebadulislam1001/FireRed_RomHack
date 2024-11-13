@@ -1278,7 +1278,7 @@ extern const u8 gText_QuestLog_SoldItemsIncludingItem[];
 extern const u8 gText_QuestLog_JustOne[];
 extern const u8 gText_QuestLog_Num[];
 extern const u8 gText_QuestLog_UsedSoftboiled[];
-extern const u8 gText_QuestLog_UsedMilkDrink[];
+// extern const u8 gText_QuestLog_UsedMilkDrink[];
 extern const u8 gText_QuestLog_MonLearnedMoveFromHM[];
 extern const u8 gText_QuestLog_MonReplacedMoveWithHM[];
 extern const u8 gText_QuestLog_DefeatedWildMon[];

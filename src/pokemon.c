@@ -2532,6 +2532,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     //     spAttack = (150 * spAttack) / 100;
     // if (attacker->ability == ABILITY_MINUS && ABILITY_ON_FIELD2(ABILITY_PLUS))
     //     spAttack = (150 * spAttack) / 100;
+
     if (attacker->ability == ABILITY_GUTS && attacker->status1)
         attack = (150 * attack) / 100;
     if (attacker->ability == ABILITY_IMPULSE && attacker->status1)
@@ -2540,16 +2541,24 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         defense = (150 * defense) / 100;
     if (defender->ability == ABILITY_MYSTIC_SCALE && defender->status1)
         spDefense = (150 * spDefense) / 100;
+
+    if (gBattleMoves[move].effect == EFFECT_HEX && defender->status1)
+        spAttack = (300*attack) /100;
+    if (gBattleMoves[move].effect == EFFECT_SCORCH && defender->status1 && defender->status1 == STATUS1_BURN)
+        spAttack = (200*attack) /100;
+
     if (type == TYPE_ELECTRIC && AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_MUD_SPORT, 0))
         gBattleMovePower /= 2;
     if (type == TYPE_FIRE && AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_WATER_SPORT, 0))
         gBattleMovePower /= 2;
+
     if (type == TYPE_GRASS && attacker->ability == ABILITY_OVERGROW && attacker->hp <= (attacker->maxHP / 3))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
     if (type == TYPE_FIRE && attacker->ability == ABILITY_BLAZE && attacker->hp <= (attacker->maxHP / 3))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
     if (type == TYPE_WATER && attacker->ability == ABILITY_TORRENT && attacker->hp <= (attacker->maxHP / 3))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
+
     if (type == TYPE_BUG && attacker->ability == ABILITY_SWARM && attacker->hp <= (attacker->maxHP / 3))
         gBattleMovePower = (150 * gBattleMovePower) / 100;
     if (type == TYPE_FIGHTING && attacker->ability == ABILITY_VITAL_SPIRIT && attacker->hp <= (attacker->maxHP / 3))

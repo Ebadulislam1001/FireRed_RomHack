@@ -3914,7 +3914,7 @@ static void CursorCB_FieldMove(u8 taskId)
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     if (MenuHelpers_IsLinkActive() == TRUE || InUnionRoom() == TRUE)
     {
-        if (fieldMove == FIELD_MOVE_MILK_DRINK || fieldMove == FIELD_MOVE_SOFT_BOILED)
+        if (fieldMove == FIELD_MOVE_SOFT_BOILED /*|| fieldMove == FIELD_MOVE_MILK_DRINK*/ )
             DisplayPartyMenuStdMessage(PARTY_MSG_CANT_USE_HERE);
         else
             DisplayPartyMenuStdMessage(sFieldMoveCursorCallbacks[fieldMove].msgId);
@@ -3932,7 +3932,7 @@ static void CursorCB_FieldMove(u8 taskId)
         {
             switch (fieldMove)
             {
-            case FIELD_MOVE_MILK_DRINK:
+            /*case FIELD_MOVE_MILK_DRINK:*/
             case FIELD_MOVE_SOFT_BOILED:
                 ChooseMonForSoftboiled(taskId);
                 break;
