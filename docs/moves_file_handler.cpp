@@ -216,7 +216,7 @@ void printMoveList(vector<Move> &moveList)
             fprintf(writePointer, "| %-14s ", thisMove.name.c_str());
             fprintf(writePointer, "| %-8s ", thisMove.type.c_str());
             fprintf(writePointer, "| %-80s ", thisMove.effect.c_str());
-            fprintf(writePointer, "| %10d ", thisMove.effect.size());
+            fprintf(writePointer, "| %10d ", thisMove.basePower);
             fprintf(writePointer, "| %8d ", thisMove.accuracy);
             fprintf(writePointer, "| %8d ", thisMove.effectChance);
             fprintf(writePointer, "| %8d ", thisMove.pp);
