@@ -23,6 +23,7 @@ struct Move
 };
 
 void readMoveList(vector<Move> &moveList);
+void readMoveDesc(vector<Move> &moveList);
 void updateNames(vector<Move> &moveList);
 void printMoveList(vector<Move> &moveList);
 // void printCSV(vector<Move> &moveList);
@@ -31,6 +32,7 @@ int main()
 {
     vector<Move> moveList;
     readMoveList(moveList);
+    readMoveDesc(moveList);
     updateNames(moveList);
     printMoveList(moveList); // use new names
     // printCSV(moveList); // use new names
@@ -38,7 +40,7 @@ int main()
 
 void readMoveList(vector<Move> &moveList)
 {
-    printf("READING ...\n");
+    printf("READING MOVES DATA...\n");
     FILE *readPointer = fopen("./../src/data/battle_moves.h", "r");
     if (readPointer == NULL)
     {
@@ -50,19 +52,14 @@ void readMoveList(vector<Move> &moveList)
     for (int i = 0; i < TOTAL_MOVES; i++)
     {
         Move thisMove;
-        thisMove.index = i + 1;
+        thisMove.index = i;
         // printf("Move.index        = %d\n", thisMove.index);
 
         skipChars(readPointer, 10);
         thisMove.name = readString(readPointer, ']');
         // printf("Move.name         = %s\n", thisMove.name.c_str());
 
-        skipLines(readPointer, 2);
-        skipChars(readPointer, 25);
-        thisMove.effect = readString(readPointer, ',');
-        // printf("Move.effect       = %s\n", thisMove.effect.c_str());
-
-        skipLines(readPointer, 1);
+        skipLines(readPointer, 3);
         skipChars(readPointer, 17);
         thisMove.basePower = readInt(readPointer);
         // printf("Move.basePower    = %d\n", thisMove.basePower);
@@ -105,10 +102,43 @@ void readMoveList(vector<Move> &moveList)
     fclose(readPointer);
     printf("READING COMPLETE !!!\n");
 }
+void readMoveDesc(vector<Move> &moveList)
+{
+    printf("READING MOVE DESCRIPTIONS...\n");
+    FILE *readPointer = fopen("./../src/move_descriptions.c", "r");
+    if (readPointer == NULL)
+    {
+        printf("Could not open move_names.h\n");
+        return;
+    }
+
+    skipLines(readPointer, 2); // 3 garbage lines in the beginning
+    for (int i = 0; i < TOTAL_MOVES; i += 1)
+    {
+        Move &thismove = moveList[i];
+        int underscoreCount = count(thismove.name.begin(), thismove.name.end(), '_');
+        skipChars(readPointer, 34 + thismove.name.size() - underscoreCount);
+        string text = readString(readPointer, '"');
+        for (int i = 0; i < text.size(); i++)
+        {
+            if (text[i] == '\\')
+            {
+                i += 2;
+                thismove.effect.push_back(' ');
+            }
+            thismove.effect.push_back(text[i]);
+        }
+        // printf("New name : %s\n", thismove.name.c_str());
+        skipLines(readPointer, 1);
+    }
+
+    fclose(readPointer);
+    printf("READING COMPLETE !!!\n");
+}
 void updateNames(vector<Move> &moveList)
 {
-    printf("UPDATING ...\n");
-    FILE *readPointer = fopen("./../src/data/text/move_names.h", "r"); // this needs a fix
+    printf("UPDATING MOVES NAMES...\n");
+    FILE *readPointer = fopen("./../src/data/text/move_names.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open move_names.h\n");
@@ -130,7 +160,7 @@ void updateNames(vector<Move> &moveList)
 }
 void printMoveList(vector<Move> &moveList)
 {
-    printf("PRINTING ...\n");
+    printf("PRINTING MOVES DATA...\n");
     FILE *writePointer = fopen("moves_info.txt", "w");
     if (writePointer == NULL)
     {
@@ -159,9 +189,9 @@ void printMoveList(vector<Move> &moveList)
                 { return a.type < b.type; });
 
     // Print the sorted moveList
-    string lineSeparator = "+-------+----------------+----------+------------+----------+--------------------------+----------+-----------------+----------+----------+";
+    string lineSeparator = "+-------+----------------+----------+----------------------------------------------------------------------------------+------------+----------+----------+----------+------------------+----------+";
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    fprintf(writePointer, "| INDEX |  NAME          | TYPE     | BASE POWER | ACCURACY | ADDITIONAL EFFECT NAME   | EFFECT % |     TARGET      |    PP    | PRIORITY |\n");
+    fprintf(writePointer, "| INDEX |  NAME          | TYPE     |                                MOVE DESCRIPTION                                  | BASE POWER | ACCURACY | EFFECT % |    PP    |     TARGET       | PRIORITY |\n");
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
 
     for (int i = 0, j = 0; i < moveList.size(); i++)
@@ -185,12 +215,12 @@ void printMoveList(vector<Move> &moveList)
             fprintf(writePointer, "| %4d  ", ++j);
             fprintf(writePointer, "| %-14s ", thisMove.name.c_str());
             fprintf(writePointer, "| %-8s ", thisMove.type.c_str());
-            fprintf(writePointer, "| %10d ", thisMove.basePower);
+            fprintf(writePointer, "| %-80s ", thisMove.effect.c_str());
+            fprintf(writePointer, "| %10d ", thisMove.effect.size());
             fprintf(writePointer, "| %8d ", thisMove.accuracy);
-            fprintf(writePointer, "| %-24s ", thisMove.effect.c_str());
             fprintf(writePointer, "| %8d ", thisMove.effectChance);
-            fprintf(writePointer, "| %-15s ", thisMove.target.c_str());
             fprintf(writePointer, "| %8d ", thisMove.pp);
+            fprintf(writePointer, "| %-16s ", thisMove.target.c_str());
             fprintf(writePointer, "| %+8d ", thisMove.priority);
             fprintf(writePointer, "|\n%s\n", lineSeparator.c_str());
             // printf("successfully wrote %dth Move info\n", i + 1);}

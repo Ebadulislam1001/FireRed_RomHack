@@ -1,7 +1,7 @@
 #include "global.h"
 #include "constants/moves.h"
 
-const u8 gMoveDescription_Pound[] = _("A tough attack that\ndrains half the\ndamage it inflicted\nto restore HP."); // MOVE_DRAIN_PUNCH
+const u8 gMoveDescription_Pound[] =_("A tough attack that\ndrains half the\ndamage it inflicted\nto restore HP."); // MOVE_DRAIN_PUNCH
 const u8 gMoveDescription_KarateChop[] = _("The foe is attacked\nwith a sharp chop.\nIt has a high\ncritical-hit ratio.");
 const u8 gMoveDescription_DoubleSlap[] = _("The foe is slapped\nrepeatedly, back\nand forth, two to\nfive times.");
 const u8 gMoveDescription_CometPunch[] = _("A punch thrown at\nblinding speed.\nIt is certain to\nstrike first."); // MOVE_BULLET_PUNCH
@@ -21,7 +21,7 @@ const u8 gMoveDescription_WingAttack[] = _("The foe is struck\nwith large, impos
 const u8 gMoveDescription_Whirlwind[] = _("The foe is made to\nswitch out with an\nally. In the wild,\nthe battle ends.");
 const u8 gMoveDescription_Fly[] = _("A 2-turn move that\nhits on the 2nd\nturn. Use it to fly\nto any known town.");
 const u8 gMoveDescription_Bind[] = _("A long body or\ntentacles are used\nto bind the foe for\ntwo to five turns.");
-const u8 gMoveDescription_Slam[] = _("Weakens ELECTRIC & \n FIRE type attacks\nwhile the user is\nin the battle."); // MOVE_INSULATION
+const u8 gMoveDescription_Slam[] = _("Weakens ELECTRIC &\nFIRE type attacks\nwhile the user is\nin the battle."); // MOVE_INSULATION
 const u8 gMoveDescription_VineWhip[] = _("The foe is struck\nwith slender, whip-\nlike vines.");
 const u8 gMoveDescription_Stomp[] = _("The foe is stomped\nwith a big foot.\nIt may make the\nfoe flinch.");
 const u8 gMoveDescription_DoubleKick[] = _("Two legs are used\nto quickly kick the\nfoe twice in one\nturn.");
@@ -73,7 +73,7 @@ const u8 gMoveDescription_SeismicToss[] = _("A gravity-fed throw\nthat causes da
 const u8 gMoveDescription_Strength[] = _("The foe is slugged\nat maximum power.\nCan also be used\nto move boulders.");
 const u8 gMoveDescription_Absorb[] = _("An attack that\nabsorbs half the\ndamage it inflicted\nto restore HP.");
 const u8 gMoveDescription_MegaDrain[] = _("A tough attack that\ndrains half the\ndamage it inflicted\nto restore HP.");
-const u8 gMoveDescription_LeechSeed[] = _("A seed is planted\non the foe to steal\nsome HP for the \nuser on every turn.");
+const u8 gMoveDescription_LeechSeed[] = _("A seed is planted\non the foe to steal\nsome HP for the\nuser on every turn.");
 const u8 gMoveDescription_Growth[] = _("The user's body is\nforced to grow,\nraising the\nSp.Atk stat.");
 const u8 gMoveDescription_RazorLeaf[] = _("The foe is hit with\na cutting leaf.\nIt has a high\ncritical-hit ratio.");
 const u8 gMoveDescription_SolarBeam[] = _("A 2-turn move that\nblasts the foe with\nabsorbed energy in\nthe 2nd turn.");
@@ -123,7 +123,7 @@ const u8 gMoveDescription_MirrorMove[] = _("The user counters\nthe move last use
 const u8 gMoveDescription_SelfDestruct[] = _("Power increases if\nthe target has\nsome status problem\nand heals it."); // MOVE_BITTER_CURE
 const u8 gMoveDescription_EggBomb[] = _("The foe is scorched\nand may get a burn.\nDamage increases if\ntarget is burnt."); // MOVE_SCORCH
 const u8 gMoveDescription_Lick[] = _("The foe is licked\nand hit with a long\ntongue. It may\nalso paralyze."); 
-const u8 gMoveDescription_Smog[] = _("The user uses its\n SPEED stat instead\nof its Ph.Atk\nstat for damage."); // MOVE_SPEED_STRIKE
+const u8 gMoveDescription_Smog[] = _("The user uses its\nSPEED stat instead\nof its Ph.Atk\nstat for damage."); // MOVE_SPEED_STRIKE
 const u8 gMoveDescription_Sludge[] = _("Toxic sludge is\nhurled at the foe.\nIt may poison the\ntarget.");
 const u8 gMoveDescription_BoneClub[] = _("The foe is clubbed\nwith a bone held in\nhand. It may make\nthe foe flinch.");
 const u8 gMoveDescription_FireBlast[] = _("The foe is hit with\nan intense flame.\nIt may leave the\ntarget with a burn.");
@@ -169,7 +169,7 @@ const u8 gMoveDescription_Struggle[] = _("An attack that is\nused only if there\
 const u8 gMoveDescription_Sketch[] = _("This move copies\nthe move last used\nby the foe, then\ndisappears.");
 const u8 gMoveDescription_TripleKick[] = _("A 3-kick attack\nthat becomes more\npowerful with each\nsuccessive hit.");
 const u8 gMoveDescription_Thief[] = _("An attack that may\ntake the foe's held\nitem if the user\nisn't holding one.");
-const u8 gMoveDescription_SpiderWeb[] = _("Ensnares the foe \nwith sticky string\nso it doesn't flee\nor switch out.");
+const u8 gMoveDescription_SpiderWeb[] = _("Ensnares the foe\nwith sticky string\nso it doesn't flee\nor switch out.");
 const u8 gMoveDescription_MindReader[] = _("Does more damage\nto the foe having\nthe same gender\nas of the user."); // MOVE_RIVALRY
 const u8 gMoveDescription_Nightmare[] = _("A sleeping foe is\nshown a nightmare\nthat inflicts some\ndamage every turn.");
 const u8 gMoveDescription_FlameWheel[] = _("The user makes a\nfiery charge at the\nfoe. It may cause\na burn.");
