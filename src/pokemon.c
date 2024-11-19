@@ -2542,10 +2542,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (defender->ability == ABILITY_MYSTIC_SCALE && defender->status1)
         spDefense = (150 * spDefense) / 100;
 
-    if (gBattleMoves[move].effect == EFFECT_HEX && defender->status1)
-        spAttack = (300*attack) /100;
     if (gBattleMoves[move].effect == EFFECT_SCORCH && defender->status1 && defender->status1 == STATUS1_BURN)
-        spAttack = (200*attack) /100;
+        spAttack = (200 * spAttack) /100;
 
     if (type == TYPE_ELECTRIC && AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_MUD_SPORT, 0))
         gBattleMovePower /= 2;

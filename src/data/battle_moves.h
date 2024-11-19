@@ -1562,10 +1562,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SELF_DESTRUCT] =
     {
-        .effect = EFFECT_HEX, // MOVE_HEX
-        .power = 45,
-        .type = TYPE_GHOST,
-        .accuracy = 100,
+        .effect = EFFECT_SMELLINGSALT, // MOVE_BITTER_CURE
+        .power = 75,
+        .type = TYPE_GRASS,
+        .accuracy = 95,
         .pp = 10,
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
@@ -1579,8 +1579,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .power = 75,
         .type = TYPE_FIRE,
         .accuracy = 95,
-        .pp = 5,
-        .secondaryEffectChance = 50,
+        .pp = 10,
+        .secondaryEffectChance = 30,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
@@ -2707,7 +2707,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_MILK_DRINK] =
     {
         .effect = EFFECT_AQUA_CUTTER, // MOVE_AQUA_CUTTER
-        .power = 90,
+        .power = 85,
         .type = TYPE_GRASS,
         .accuracy = 90,
         .pp = 10,

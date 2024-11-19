@@ -2764,14 +2764,14 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
                 break;
-            case MOVE_EFFECT_REMOVE_PARALYSIS: // Smelling salts
-                if (!(gBattleMons[gBattlerTarget].status1 & STATUS1_PARALYSIS))
+            case MOVE_EFFECT_REMOVE_PARALYSIS: // SmellingSalts -> BitterCure
+                if (!(gBattleMons[gBattlerTarget].status1))
                 {
                     gBattlescriptCurrInstr++;
                 }
                 else
                 {
-                    gBattleMons[gBattlerTarget].status1 &= ~STATUS1_PARALYSIS;
+                    gBattleMons[gBattlerTarget].status1 &= STATUS1_NONE;
 
                     gActiveBattler = gBattlerTarget;
                     BtlController_EmitSetMonData(BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gActiveBattler].status1), &gBattleMons[gActiveBattler].status1);
