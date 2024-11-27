@@ -13,6 +13,7 @@ struct Move
     int index;
     string name;
     string effect;
+    string description;
     int basePower;
     string type;
     int accuracy;
@@ -59,7 +60,12 @@ void readMoveList(vector<Move> &moveList)
         thisMove.name = readString(readPointer, ']');
         // printf("Move.name         = %s\n", thisMove.name.c_str());
 
-        skipLines(readPointer, 3);
+        skipLines(readPointer, 2);
+        skipChars(readPointer, 25);
+        thisMove.effect = readString(readPointer, ',');
+        // printf("Move.basePower    = %d\n", thisMove.basePower);
+
+        skipLines(readPointer, 1);
         skipChars(readPointer, 17);
         thisMove.basePower = readInt(readPointer);
         // printf("Move.basePower    = %d\n", thisMove.basePower);
@@ -124,9 +130,9 @@ void readMoveDesc(vector<Move> &moveList)
             if (text[i] == '\\')
             {
                 i += 2;
-                thismove.effect.push_back(' ');
+                thismove.description.push_back(' ');
             }
-            thismove.effect.push_back(text[i]);
+            thismove.description.push_back(text[i]);
         }
         // printf("New name : %s\n", thismove.name.c_str());
         skipLines(readPointer, 1);
@@ -180,17 +186,19 @@ void printMoveList(vector<Move> &moveList)
     // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
     //             { return a.target < b.target; });
     // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.effect < b.effect; });
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
     //             { return a.name < b.name; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.basePower < b.basePower; });
     stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
                 { return a.type < b.type; });
+    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
+                { return a.effect < b.effect; });
 
     // Print the sorted moveList
+    // string lineSeparator = "+-------+----------------+----------+--------------------------+----------------------------------------------------------------------------------+------------+----------+----------+----------+------------------+----------+";
     string lineSeparator = "+-------+----------------+----------+----------------------------------------------------------------------------------+------------+----------+----------+----------+------------------+----------+";
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
+    // fprintf(writePointer, "| INDEX |  NAME          | TYPE     |          EFFECT          |                                MOVE DESCRIPTION                                  | BASE POWER | ACCURACY | EFFECT % |    PP    |     TARGET       | PRIORITY |\n");
     fprintf(writePointer, "| INDEX |  NAME          | TYPE     |                                MOVE DESCRIPTION                                  | BASE POWER | ACCURACY | EFFECT % |    PP    |     TARGET       | PRIORITY |\n");
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
 
@@ -215,7 +223,8 @@ void printMoveList(vector<Move> &moveList)
             fprintf(writePointer, "| %4d  ", ++j);
             fprintf(writePointer, "| %-14s ", thisMove.name.c_str());
             fprintf(writePointer, "| %-8s ", thisMove.type.c_str());
-            fprintf(writePointer, "| %-80s ", thisMove.effect.c_str());
+            // fprintf(writePointer, "| %-24s ", thisMove.effect.c_str());
+            fprintf(writePointer, "| %-80s ", thisMove.description.c_str());
             fprintf(writePointer, "| %10d ", thisMove.basePower);
             fprintf(writePointer, "| %8d ", thisMove.accuracy);
             fprintf(writePointer, "| %8d ", thisMove.effectChance);
