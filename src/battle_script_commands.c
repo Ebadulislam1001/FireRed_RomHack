@@ -742,19 +742,41 @@ static const u8 sFlailHpScaleToPowerTable[] =
     48, 20
 };
 
+// TODO: update these lists
+
+// For MOVE_NATURE_POWER
 static const u16 sNaturePowerMoves[] =
 {
     [BATTLE_TERRAIN_GRASS]      = MOVE_STUN_SPORE,
     [BATTLE_TERRAIN_LONG_GRASS] = MOVE_RAZOR_LEAF,
+
     [BATTLE_TERRAIN_SAND]       = MOVE_EARTHQUAKE,
+
     [BATTLE_TERRAIN_UNDERWATER] = MOVE_HYDRO_PUMP,
     [BATTLE_TERRAIN_WATER]      = MOVE_SURF,
     [BATTLE_TERRAIN_POND]       = MOVE_BUBBLE_BEAM,
+
     [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_ROCK_SLIDE,
     [BATTLE_TERRAIN_CAVE]       = MOVE_SHADOW_BALL,
+
     [BATTLE_TERRAIN_BUILDING]   = MOVE_SWIFT,
     [BATTLE_TERRAIN_PLAIN]      = MOVE_SWIFT
 };
+
+// // For MOVE_CAMOUFLAGE
+// static const u8 sTerrainToType[] =
+// {
+//     [BATTLE_TERRAIN_GRASS]      = TYPE_GRASS,
+//     [BATTLE_TERRAIN_LONG_GRASS] = TYPE_GRASS,
+//     [BATTLE_TERRAIN_SAND]       = TYPE_GROUND,
+//     [BATTLE_TERRAIN_UNDERWATER] = TYPE_WATER,
+//     [BATTLE_TERRAIN_WATER]      = TYPE_WATER,
+//     [BATTLE_TERRAIN_POND]       = TYPE_WATER,
+//     [BATTLE_TERRAIN_MOUNTAIN]   = TYPE_ROCK,
+//     [BATTLE_TERRAIN_CAVE]       = TYPE_ROCK,
+//     [BATTLE_TERRAIN_BUILDING]   = TYPE_NORMAL,
+//     [BATTLE_TERRAIN_PLAIN]      = TYPE_NORMAL,
+// };
 
 // format: min. weight (hectograms), base power
 static const u16 sWeightToDamageTable[] =
@@ -843,19 +865,6 @@ static const struct PickupItem sPickupItems[] =
 
 };
 
-// static const u8 sTerrainToType[] =
-// {
-//     [BATTLE_TERRAIN_GRASS]      = TYPE_GRASS,
-//     [BATTLE_TERRAIN_LONG_GRASS] = TYPE_GRASS,
-//     [BATTLE_TERRAIN_SAND]       = TYPE_GROUND,
-//     [BATTLE_TERRAIN_UNDERWATER] = TYPE_WATER,
-//     [BATTLE_TERRAIN_WATER]      = TYPE_WATER,
-//     [BATTLE_TERRAIN_POND]       = TYPE_WATER,
-//     [BATTLE_TERRAIN_MOUNTAIN]   = TYPE_ROCK,
-//     [BATTLE_TERRAIN_CAVE]       = TYPE_ROCK,
-//     [BATTLE_TERRAIN_BUILDING]   = TYPE_NORMAL,
-//     [BATTLE_TERRAIN_PLAIN]      = TYPE_NORMAL,
-// };
 static const u8 sSkillsToSkipCount = 14;
 static const u8 sSkillsToSkip[] =
 {
@@ -8841,8 +8850,8 @@ static void Cmd_settaunt(void)
 {
     if (gDisableStructs[gBattlerTarget].tauntTimer == 0)
     {
-        gDisableStructs[gBattlerTarget].tauntTimer = 2;
-        gDisableStructs[gBattlerTarget].tauntTimer2 = 2;
+        gDisableStructs[gBattlerTarget].tauntTimer = 3;
+        gDisableStructs[gBattlerTarget].tauntTimer2 = 3;
         gBattlescriptCurrInstr += 5;
     }
     else
