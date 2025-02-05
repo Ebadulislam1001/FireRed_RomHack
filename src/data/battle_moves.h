@@ -2564,12 +2564,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_DETECT] =
     {
         .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT, // MOVE_CRYSTAL_BEAM
-        .power = 55,
+        .power = 65,
         .type = TYPE_ROCK,
         .accuracy = 100,
         .pp = 20,
         .secondaryEffectChance = 20,
-        .target = MOVE_TARGET_BOTH,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
     },
