@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 #include <algorithm>
 #include "fileHelper.cpp"
 using namespace std;
@@ -26,8 +25,8 @@ struct Move
 void readMoveList(vector<Move> &moveList);
 void readMoveDesc(vector<Move> &moveList);
 void updateNames(vector<Move> &moveList);
-void printMoveList(vector<Move> &moveList);
-// void printCSV(vector<Move> &moveList);
+void printMoveList(vector<Move> moveList);
+void printCSV(vector<Move> moveList);
 
 int main()
 {
@@ -36,7 +35,7 @@ int main()
     readMoveDesc(moveList);
     updateNames(moveList);
     printMoveList(moveList); // use new names
-    // printCSV(moveList); // use new names
+    // printCSV(moveList);      // use new names
 }
 
 void readMoveList(vector<Move> &moveList)
@@ -164,7 +163,7 @@ void updateNames(vector<Move> &moveList)
     fclose(readPointer);
     printf("UPDATING COMPLETE !!!\n");
 }
-void printMoveList(vector<Move> &moveList)
+void printMoveList(vector<Move> moveList)
 {
     printf("PRINTING MOVES DATA...\n");
     FILE *writePointer = fopen("moves_info.txt", "w");
@@ -174,32 +173,85 @@ void printMoveList(vector<Move> &moveList)
         return;
     }
 
+    // Select columns to print
+    bool printIndex = true;
+    bool printName = true;
+    bool printType = true;
+    bool printEffect = true;
+    bool printDescription = true;
+    bool printBasePower = true;
+    bool printAccuracy = true;
+    bool printEffectChance = true;
+    bool printPP = true;
+    bool printTarget = true;
+    bool printPriority = true;
+
     // Apply custom sorting on the moveList
     // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.priority < b.priority; });
+    //             { return a.basePower < b.basePower; });
     // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.pp < b.pp; });
+    //             { return a.type < b.type; });
     // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.accuracy < b.accuracy; });
+    //             { return a.effect < b.effect; });
     // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.effectChance < b.effectChance; });
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.target < b.target; });
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.name < b.name; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.basePower < b.basePower; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.type < b.type; });
-    stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-                { return a.effect < b.effect; });
+    //             { return a.index < b.index; });
 
     // Print the sorted moveList
-    // string lineSeparator = "+-------+----------------+----------+--------------------------+----------------------------------------------------------------------------------+------------+----------+----------+----------+------------------+----------+";
-    string lineSeparator = "+-------+----------------+----------+----------------------------------------------------------------------------------+------------+----------+----------+----------+------------------+----------+";
+    string lineSeparator = "+-------+";
+    string tableHeader__ = "| INDEX |";
+    if (printName)
+    {
+        lineSeparator += "----------------+";
+        tableHeader__ += "  NAME          |";
+    }
+    if (printType)
+    {
+        lineSeparator += "----------+";
+        tableHeader__ += " TYPE     |";
+    }
+    if (printEffect)
+    {
+        lineSeparator += "--------------------------+";
+        tableHeader__ += "          EFFECT          |";
+    }
+    if (printDescription)
+    {
+        lineSeparator += "----------------------------------------------------------------------------------+";
+        tableHeader__ += "                                MOVE DESCRIPTION                                  |";
+    }
+    if (printBasePower)
+    {
+        lineSeparator += "------------+";
+        tableHeader__ += " BASE POWER |";
+    }
+    if (printAccuracy)
+    {
+        lineSeparator += "----------+";
+        tableHeader__ += " ACCURACY |";
+    }
+    if (printEffectChance)
+    {
+        lineSeparator += "----------+";
+        tableHeader__ += " EFFECT % |";
+    }
+    if (printPP)
+    {
+        lineSeparator += "----------+";
+        tableHeader__ += "    PP    |";
+    }
+    if (printTarget)
+    {
+        lineSeparator += "------------------+";
+        tableHeader__ += "     TARGET       |";
+    }
+    if (printPriority)
+    {
+        lineSeparator += "----------+";
+        tableHeader__ += " PRIORITY |";
+    }
+
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    // fprintf(writePointer, "| INDEX |  NAME          | TYPE     |          EFFECT          |                                MOVE DESCRIPTION                                  | BASE POWER | ACCURACY | EFFECT % |    PP    |     TARGET       | PRIORITY |\n");
-    fprintf(writePointer, "| INDEX |  NAME          | TYPE     |                                MOVE DESCRIPTION                                  | BASE POWER | ACCURACY | EFFECT % |    PP    |     TARGET       | PRIORITY |\n");
+    fprintf(writePointer, "%s\n", tableHeader__.c_str());
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
 
     for (int i = 0, j = 0; i < moveList.size(); i++)
@@ -208,29 +260,40 @@ void printMoveList(vector<Move> &moveList)
 
         // Apply custom filtering on the moveList
         bool condition = (true
-                          // && thisMove.type == "WATER"
-                          // && thisMove.basePower >= 100
-                          // && thisMove.accuracy < 100
-                          // && thisMove.target == "USER"
-                          // && thisMove.effectChance >= 50
-                          // && thisMove.effect == "MULTI_HIT"
-                          // && thisMove.priority < 0
+                        // && thisMove.type == "WATER"
+                        // && thisMove.effect == "MULTI_HIT"
+                        // && thisMove.basePower >= 100
+                        // && thisMove.accuracy < 100
+                        // && thisMove.pp == 40
+                        // && thisMove.target == "USER"
+                        // && thisMove.effectChance >= 50
+                        // && thisMove.priority < 0
         );
 
         if (condition)
         {
             // fprintf(writePointer, "| %4d  ", thisMove.index);
             fprintf(writePointer, "| %4d  ", ++j);
-            fprintf(writePointer, "| %-14s ", thisMove.name.c_str());
-            fprintf(writePointer, "| %-8s ", thisMove.type.c_str());
-            // fprintf(writePointer, "| %-24s ", thisMove.effect.c_str());
-            fprintf(writePointer, "| %-80s ", thisMove.description.c_str());
-            fprintf(writePointer, "| %10d ", thisMove.basePower);
-            fprintf(writePointer, "| %8d ", thisMove.accuracy);
-            fprintf(writePointer, "| %8d ", thisMove.effectChance);
-            fprintf(writePointer, "| %8d ", thisMove.pp);
-            fprintf(writePointer, "| %-16s ", thisMove.target.c_str());
-            fprintf(writePointer, "| %+8d ", thisMove.priority);
+            if (printName)
+                fprintf(writePointer, "| %-14s ", thisMove.name.c_str());
+            if (printType)
+                fprintf(writePointer, "| %-8s ", thisMove.type.c_str());
+            if (printEffect)
+                fprintf(writePointer, "| %-24s ", thisMove.effect.c_str());
+            if (printDescription)
+                fprintf(writePointer, "| %-80s ", thisMove.description.c_str());
+            if (printBasePower)
+                fprintf(writePointer, "| %10d ", thisMove.basePower);
+            if (printAccuracy)
+                fprintf(writePointer, "| %8d ", thisMove.accuracy);
+            if (printEffectChance)
+                fprintf(writePointer, "| %8d ", thisMove.effectChance);
+            if (printPP)
+                fprintf(writePointer, "| %8d ", thisMove.pp);
+            if (printTarget)
+                fprintf(writePointer, "| %-16s ", thisMove.target.c_str());
+            if (printPriority)
+                fprintf(writePointer, "| %+8d ", thisMove.priority);
             fprintf(writePointer, "|\n%s\n", lineSeparator.c_str());
             // printf("successfully wrote %dth Move info\n", i + 1);}
         }
@@ -239,33 +302,33 @@ void printMoveList(vector<Move> &moveList)
     fclose(writePointer);
     printf("PRINTING COMPLETE !!!\n");
 }
-// void printCSV(vector<Move> &moveList)
-// {
-//     printf("GENERATING CSV...\n");
-//     FILE *writePointer = fopen("moves_info.csv", "w");
-//     if (writePointer == NULL)
-//     {
-//         printf("Could not open moves_info.csv\n");
-//         return;
-//     }
-//
-//     fprintf(writePointer, "Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority\n");
-//
-//     for (int i = 0; i < moveList.size(); i += 1)
-//     {
-//         Move thisMove = moveList[i];
-//         fprintf(writePointer, "%d,", thisMove.index);
-//         fprintf(writePointer, "\"%s\",", thisMove.name.c_str());
-//         fprintf(writePointer, "\"%s\",", thisMove.type.c_str());
-//         fprintf(writePointer, "%d,", thisMove.basePower);
-//         fprintf(writePointer, "%d,", thisMove.accuracy);
-//         fprintf(writePointer, "%d,", thisMove.pp);
-//         fprintf(writePointer, "\"%s\",", thisMove.effect.c_str());
-//         fprintf(writePointer, "%d,", thisMove.effectChance);
-//         fprintf(writePointer, "\"%s\",", thisMove.target.c_str());
-//         fprintf(writePointer, "%d\n", thisMove.priority);
-//     }
-//
-//     fclose(writePointer);
-//     printf("GENERATING COMPLETE !!!\n");
-// }
+void printCSV(vector<Move> moveList)
+{
+    printf("GENERATING CSV...\n");
+    FILE *writePointer = fopen("moves_info.csv", "w");
+    if (writePointer == NULL)
+    {
+        printf("Could not open moves_info.csv\n");
+        return;
+    }
+
+    fprintf(writePointer, "Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority\n");
+
+    for (int i = 0; i < moveList.size(); i += 1)
+    {
+        Move thisMove = moveList[i];
+        fprintf(writePointer, "%d,", thisMove.index);
+        fprintf(writePointer, "\"%s\",", thisMove.name.c_str());
+        fprintf(writePointer, "\"%s\",", thisMove.type.c_str());
+        fprintf(writePointer, "%d,", thisMove.basePower);
+        fprintf(writePointer, "%d,", thisMove.accuracy);
+        fprintf(writePointer, "%d,", thisMove.pp);
+        fprintf(writePointer, "\"%s\",", thisMove.effect.c_str());
+        fprintf(writePointer, "%d,", thisMove.effectChance);
+        fprintf(writePointer, "\"%s\",", thisMove.target.c_str());
+        fprintf(writePointer, "%d\n", thisMove.priority);
+    }
+
+    fclose(writePointer);
+    printf("GENERATING COMPLETE !!!\n");
+}
