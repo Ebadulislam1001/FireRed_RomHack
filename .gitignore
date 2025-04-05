@@ -64,6 +64,5 @@ _Deparsed_XSubs.pm
 porymap.*.cfg
 prefabs.json
 .vscode/*.*
-*.html
 *.js
 *.sym
