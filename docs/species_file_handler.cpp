@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 #include <algorithm>
 #include "fileHelper.cpp"
 using namespace std;
@@ -27,8 +26,7 @@ void readPokedex(vector<Pokemon> &pokedex);
 void writeStatsInDex(vector<Pokemon> &pokedex);
 void updateNames(vector<Pokemon> &pokedex);
 void printPokedex(vector<Pokemon> &pokedex);
-// void printCSV(vector<Pokemon> &pokedex);
-// void printDataAnalysis(vector<Pokemon> &pokedex);
+void printCSV(vector<Pokemon> &pokedex);
 
 int main()
 {
@@ -37,8 +35,7 @@ int main()
     writeStatsInDex(pokedex); // use old names
     updateNames(pokedex);
     printPokedex(pokedex); // use new names
-    // printCSV(pokedex);
-    // printDataAnalysis(pokedex);
+    // printCSV(pokedex);     // use new names
     return 0;
 }
 
@@ -194,63 +191,114 @@ void printPokedex(vector<Pokemon> &pokedex)
         return;
     }
 
-    // string lineSeparator = "+-------+---------------+-----------+-----------+---------------+---------------+-----+-----+-----+-----+-----+-----+-----+";
-    string lineSeparator = "+-------+---------------+-----+-----+-----+-----+-----+-----+-----+-----------+-----------+---------------+---------------+";
+    // Select columns to print
+    bool printName = true;
+    bool printTypes = true;
+    bool printAbilities = true;
+    bool printStats = true;
+    bool printBST = true;
+
+    // Apply custom sorting on the moveList
+    // stable_sort(pokedex.begin(), pokedex.end(), [](const Pokemon &a, const Pokemon &b)
+    //             { return a.name < b.name; });
+    // stable_sort(pokedex.begin(), pokedex.end(), [](const Pokemon &a, const Pokemon &b)
+    //             { return a.BST < b.BST; });
+    // stable_sort(pokedex.begin(), pokedex.end(), [](const Pokemon &a, const Pokemon &b)
+    //             { return a.index < b.index; });
+
+    // Print the sorted pokedex
+    string lineSeparator = "+-------+";
+    string tableHeader = "| INDEX |";
+    if (printName)
+    {
+        lineSeparator += "------------+";
+        tableHeader += "  NAME      |";
+    }
+    if (printTypes)
+    {
+        lineSeparator += "----------+----------+";
+        tableHeader += "  TYPE 1  |  TYPE 2  |";
+    }
+    if (printAbilities)
+    {
+        lineSeparator += "---------------+---------------+";
+        tableHeader += "   ABILITY 1   |   ABILITY 2   |";
+    }
+    if (printStats)
+    {
+        lineSeparator += "-----+-----+-----+-----+-----+-----+";
+        tableHeader += " HP  | PA  | PD  | SA  | SD  | SP  |";
+    }
+    if (printBST)
+    {
+        lineSeparator += "-----+";
+        tableHeader += " BST |";
+    }
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    // fprintf(writePointer, "| INDEX |  NAME         | TYPE 1    | TYPE 2    | ABILITY 1     | ABILITY 2     | HP  | PA  | PD  | SA  | SD  | SP  | BST |\n");
-    fprintf(writePointer, "| INDEX |  NAME         | HP  | PA  | PD  | SA  | SD  | SP  | BST | TYPE 1    | TYPE 2    | ABILITY 1     | ABILITY 2     |\n");
+    fprintf(writePointer, "%s\n", tableHeader.c_str());
     fprintf(writePointer, "%s\n", lineSeparator.c_str());
 
     for (int i = 0; i < pokedex.size(); i += 1)
     {
         Pokemon pkmn = pokedex[i];
-        fprintf(writePointer, "|  %03d  | %-12s  ", pokedex[i].index, pkmn.name.c_str());
-        fprintf(writePointer, "| %3d | %3d | %3d ", pkmn.HP, pkmn.PA, pkmn.PD);
-        fprintf(writePointer, "| %3d | %3d | %3d ", pkmn.SA, pkmn.SD, pkmn.SP);
-        fprintf(writePointer, "| %3d ", pkmn.BST);
-        fprintf(writePointer, "| %-8s  ", pkmn.types[0].c_str());
-        fprintf(writePointer, "| %-8s  ", pkmn.types[1].c_str());
-        fprintf(writePointer, "| %-13s ", pkmn.abils[0].c_str());
-        fprintf(writePointer, "| %-13s ", pkmn.abils[1].c_str());
-        fprintf(writePointer, "|\n%s\n", lineSeparator.c_str());
-        // printf("successfully wrote %dth pokemon data\n", i + 1);
+        fprintf(writePointer, "|  %03d  |", pokedex[i].index);
+        if (printName)
+        {
+            fprintf(writePointer, " %-10s |", pkmn.name.c_str());
+        }
+        if (printTypes)
+        {
+            fprintf(writePointer, " %-8s | %-8s |", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+        }
+        if (printAbilities)
+        {
+            fprintf(writePointer, " %-13s | %-13s |", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+        }
+        if (printStats)
+        {
+            fprintf(writePointer, " %3d | %3d | %3d | %3d | %3d | %3d |", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
+        }
+        if (printBST)
+        {
+            fprintf(writePointer, " %3d |", pkmn.BST);
+        }
+        fprintf(writePointer, "\n");
+        fprintf(writePointer, "%s\n", lineSeparator.c_str());
+    }
+}
+
+void printCSV(vector<Pokemon> &pokedex)
+{
+    FILE *writePointer = fopen("species_info.csv", "w");
+    if (writePointer == NULL)
+    {
+        printf("Could not open species_info.csv\n");
+        return;
+    }
+
+    fprintf(writePointer, "DexNum,Name,HP,PA,PD,SA,SD,SP,BST,Type1,Type2,Abil1,Abil2\n");
+
+    for (int i = 0; i < pokedex.size(); i += 1)
+    {
+        Pokemon pkmn = pokedex[i];
+        fprintf(writePointer, "%03d,", pokedex[i].index);
+        fprintf(writePointer, "\"%s\",", pkmn.name.c_str());
+        fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
+        fprintf(writePointer, "%d,", pkmn.BST);
+
+        if (pkmn.types[1] == "")
+            fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
+        else
+            fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+
+        if (pkmn.abils[1] == "")
+            fprintf(writePointer, "%s,...\n", pkmn.abils[0].c_str());
+        else
+            fprintf(writePointer, "%s,%s\n", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
     }
 
     fclose(writePointer);
 }
-
-// void printCSV(vector<Pokemon> &pokedex)
-// {
-//     FILE *writePointer = fopen("species_info.csv", "w");
-//     if (writePointer == NULL)
-//     {
-//         printf("Could not open species_info.csv\n");
-//         return;
-//     }
-// 
-//     fprintf(writePointer, "DexNum,Name,HP,PA,PD,SA,SD,SP,BST,Type1,Type2,Abil1,Abil2\n");
-// 
-//     for (int i = 0; i < pokedex.size(); i += 1)
-//     {
-//         Pokemon pkmn = pokedex[i];
-//         fprintf(writePointer, "%03d,", pokedex[i].index);
-//         fprintf(writePointer, "\"%s\",", pkmn.name.c_str());
-//         fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
-//         fprintf(writePointer, "%d,", pkmn.BST);
-// 
-//         if (pkmn.types[1] == "")
-//             fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
-//         else
-//             fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
-// 
-//         if (pkmn.abils[1] == "")
-//             fprintf(writePointer, "%s,...\n", pkmn.abils[0].c_str());
-//         else
-//             fprintf(writePointer, "%s,%s\n", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
-//     }
-// 
-//     fclose(writePointer);
-// }
 
 // void printDataAnalysis(vector<Pokemon> &pokedex)
 // {
@@ -262,43 +310,21 @@ void printPokedex(vector<Pokemon> &pokedex)
 //     {
 //         indexOf[typeName[i]] = i;
 //     }
-// 
+//
 //     vector<int> typeFrequency(typeCount, 0);
-//     vector<vector<int>> typeCombFrequency2(typeCount, vector<int>(typeCount, 0));
-// 
 //     for (int i = 0; i < pokedex.size(); i += 1)
 //     {
 //         Pokemon pkmn = pokedex[i];
 //         string type1 = pkmn.types[0];
 //         string type2 = pkmn.types[1];
-// 
+//
 //         typeFrequency[indexOf[type1]] += 1;
 //         typeFrequency[indexOf[type2]] += 1;
-//         typeCombFrequency2[indexOf[type1]][indexOf[type2]] += 1;
-//         typeCombFrequency2[indexOf[type2]][indexOf[type1]] += 1;
 //     }
-// 
+//
 //     printf("\nType frequency:\n");
 //     for (int i = 0; i < typeCount; i += 1)
 //     {
 //         printf("%s : %3d\n", typeAbbr[i].c_str(), typeFrequency[i]);
-//     }
-// 
-//     printf("\nType combination frequency:");
-//     printf("\n###");
-//     for (int i = typeCount; i > 0; i -= 1)
-//     {
-//         printf(" %s ", typeAbbr[i - 1].c_str());
-//     }
-//     for (int i = 0; i < typeCount; i += 1)
-//     {
-//         printf("\n%s", typeAbbr[i].c_str());
-//         for (int j = typeCount - 1; j > i; j -= 1)
-//         {
-//             if (typeCombFrequency2[i][j] > 0)
-//                 printf(" %3d ", typeCombFrequency2[i][j]);
-//             else
-//                 printf(" %3s ", "---");
-//         }
 //     }
 // }

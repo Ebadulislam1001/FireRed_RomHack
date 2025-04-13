@@ -25,8 +25,8 @@ struct Move
 void readMoveList(vector<Move> &moveList);
 void readMoveDesc(vector<Move> &moveList);
 void updateNames(vector<Move> &moveList);
-void printMoveList(vector<Move> moveList);
-void printCSV(vector<Move> moveList);
+void printMoveList(vector<Move> &moveList);
+void printCSV(vector<Move> &moveList);
 
 int main()
 {
@@ -40,7 +40,6 @@ int main()
 
 void readMoveList(vector<Move> &moveList)
 {
-    printf("READING MOVES DATA...\n");
     FILE *readPointer = fopen("./../src/data/battle_moves.h", "r");
     if (readPointer == NULL)
     {
@@ -105,11 +104,9 @@ void readMoveList(vector<Move> &moveList)
     }
 
     fclose(readPointer);
-    printf("READING COMPLETE !!!\n");
 }
 void readMoveDesc(vector<Move> &moveList)
 {
-    printf("READING MOVE DESCRIPTIONS...\n");
     FILE *readPointer = fopen("./../src/move_descriptions.c", "r");
     if (readPointer == NULL)
     {
@@ -138,11 +135,9 @@ void readMoveDesc(vector<Move> &moveList)
     }
 
     fclose(readPointer);
-    printf("READING COMPLETE !!!\n");
 }
 void updateNames(vector<Move> &moveList)
 {
-    printf("UPDATING MOVES NAMES...\n");
     FILE *readPointer = fopen("./../src/data/text/move_names.h", "r");
     if (readPointer == NULL)
     {
@@ -161,11 +156,9 @@ void updateNames(vector<Move> &moveList)
     }
 
     fclose(readPointer);
-    printf("UPDATING COMPLETE !!!\n");
 }
-void printMoveList(vector<Move> moveList)
+void printMoveList(vector<Move> &moveList)
 {
-    printf("PRINTING MOVES DATA...\n");
     FILE *writePointer = fopen("moves_info.txt", "w");
     if (writePointer == NULL)
     {
@@ -174,7 +167,6 @@ void printMoveList(vector<Move> moveList)
     }
 
     // Select columns to print
-    bool printIndex = true;
     bool printName = true;
     bool printType = true;
     bool printEffect = true;
@@ -260,14 +252,14 @@ void printMoveList(vector<Move> moveList)
 
         // Apply custom filtering on the moveList
         bool condition = (true
-                        // && thisMove.type == "WATER"
-                        // && thisMove.effect == "MULTI_HIT"
-                        // && thisMove.basePower >= 100
-                        // && thisMove.accuracy < 100
-                        // && thisMove.pp == 40
-                        // && thisMove.target == "USER"
-                        // && thisMove.effectChance >= 50
-                        // && thisMove.priority < 0
+                          // && thisMove.type == "WATER"
+                          // && thisMove.effect == "MULTI_HIT"
+                          // && thisMove.basePower >= 100
+                          // && thisMove.accuracy < 100
+                          // && thisMove.pp == 40
+                          // && thisMove.target == "USER"
+                          // && thisMove.effectChance >= 50
+                          // && thisMove.priority < 0
         );
 
         if (condition)
@@ -300,11 +292,9 @@ void printMoveList(vector<Move> moveList)
     }
 
     fclose(writePointer);
-    printf("PRINTING COMPLETE !!!\n");
 }
-void printCSV(vector<Move> moveList)
+void printCSV(vector<Move> &moveList)
 {
-    printf("GENERATING CSV...\n");
     FILE *writePointer = fopen("moves_info.csv", "w");
     if (writePointer == NULL)
     {
@@ -330,5 +320,4 @@ void printCSV(vector<Move> moveList)
     }
 
     fclose(writePointer);
-    printf("GENERATING COMPLETE !!!\n");
 }
