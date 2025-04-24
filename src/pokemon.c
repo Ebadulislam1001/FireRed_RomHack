@@ -97,7 +97,7 @@ static const struct CombinedMove sCombinedMoves[2] =
 };
 
 // NOTE: The order of the elements in the 3 arrays below is irrelevant.
-// To reorder the pokedex, see the values in include/constants/pokedex.h.
+// IMPORTANT NOTE: To reorder the pokedex, see the values in include/constants/pokedex.h.
 
  // Assigns all species to the Hoenn Dex Index (Summary No. for Hoenn Dex)
 static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
