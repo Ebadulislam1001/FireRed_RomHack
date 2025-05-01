@@ -2043,13 +2043,29 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                  && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
                  && (Random() % 100) < 45) // 45% chance to inflict
                 {
-                    do
+                    u16 randomEffect = 0;
+                    while(randomEffect == 0)
                     {
-                        gBattleCommunication[MOVE_EFFECT_BYTE] = Random() & 3;
-                    } while (gBattleCommunication[MOVE_EFFECT_BYTE] == 0);
-
-                    if (gBattleCommunication[MOVE_EFFECT_BYTE] == MOVE_EFFECT_BURN)
-                        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_BURN;
+                        randomEffect = Random() & 3;  // can get 1, 2, 3
+                    }
+                    if(randomEffect == 1)
+                    {
+                        if(gBattleMons[gBattlerAttacker].ability != ABILITY_INSOMNIA)
+                            break;
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
+                    }
+                    else if(randomEffect == 2)
+                    {
+                        if(gBattleMons[gBattlerAttacker].ability != ABILITY_IMMUNITY)
+                            break;
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON;
+                    }
+                    else if(randomEffect == 3)
+                    {
+                        if(gBattleMons[gBattlerAttacker].ability != ABILITY_LIMBER)
+                            break;
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
+                    }
 
                     gBattleCommunication[MOVE_EFFECT_BYTE] += MOVE_EFFECT_AFFECTS_USER;
                     BattleScriptPushCursor();
@@ -2062,8 +2078,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                  && gBattleMons[gBattlerAttacker].hp != 0
                  && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-                 && TARGET_TURN_DAMAGED
                  && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
+                 && TARGET_TURN_DAMAGED
+                 && gBattleMons[gBattlerAttacker].ability != ABILITY_OWN_TEMPO
                  && (Random() % 100) < 100) // 100% chance to inflict confusion
                 {
                     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CONFUSION;
@@ -2077,8 +2094,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                  && gBattleMons[gBattlerAttacker].hp != 0
                  && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-                 && TARGET_TURN_DAMAGED
                  && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
+                 && TARGET_TURN_DAMAGED
+                 && gBattleMons[gBattlerAttacker].ability != ABILITY_IMMUNITY
                  && (Random() % 100) < 30) // 30% chance to inflict poison
                 {
                     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_POISON;
@@ -2092,8 +2110,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                  && gBattleMons[gBattlerAttacker].hp != 0
                  && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-                 && TARGET_TURN_DAMAGED
                  && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
+                 && TARGET_TURN_DAMAGED
+                 && gBattleMons[gBattlerAttacker].ability != ABILITY_LIMBER
                  && (Random() % 100) < 30) // 30% chance to inflict paralysis
                 {
                     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PARALYSIS;
@@ -2109,6 +2128,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                  && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
                  && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
                  && TARGET_TURN_DAMAGED
+                 && gBattleMons[gBattlerAttacker].ability != ABILITY_WATER_VEIL
                  && (Random() % 100) < 30) // 30% chance to inflict burn
                 {
                     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
@@ -2124,6 +2144,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                  && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
                  && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
                  && TARGET_TURN_DAMAGED
+                 && gBattleMons[gBattlerAttacker].ability != ABILITY_MAGMA_ARMOR
                  && (Random() % 100) < 30) // 30% chance to inflict freeze
                 {
                     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_FREEZE;
