@@ -9,8 +9,10 @@ using namespace std;
 
 struct Pokemon
 {
-    int index;
-    string name;
+    int oldIndex;
+    int newIndex;
+    string oldName;
+    string newName;
     int HP;
     int PA;
     int PD;
@@ -25,6 +27,7 @@ struct Pokemon
 void readPokedex(vector<Pokemon> &pokedex);
 void writeStatsInDex(vector<Pokemon> &pokedex);
 void updateNames(vector<Pokemon> &pokedex);
+void reOrderPokedex(vector<Pokemon> &pokedex);
 void printPokedex(vector<Pokemon> &pokedex);
 void printCSV(vector<Pokemon> &pokedex);
 
@@ -32,10 +35,11 @@ int main()
 {
     vector<Pokemon> pokedex;
     readPokedex(pokedex);
-    writeStatsInDex(pokedex); // use old names
+    writeStatsInDex(pokedex);   // use old names
     updateNames(pokedex);
-    printPokedex(pokedex); // use new names
-    // printCSV(pokedex);     // use new names
+    reOrderPokedex(pokedex);    // use new names
+    printPokedex(pokedex);      // use new names
+    printCSV(pokedex);          // use new names
     return 0;
 }
 
@@ -53,9 +57,9 @@ void readPokedex(vector<Pokemon> &pokedex)
     for (int i = 0; i < TOTAL_POKEMON; i += 1)
     {
         Pokemon pkmn;
-        pkmn.index = (i + 1);
+        pkmn.oldIndex = (i + 1);
         skipChars(readPointer, 13);
-        pkmn.name = readString(readPointer, ']');
+        pkmn.oldName = readString(readPointer, ']');
         skipLines(readPointer, 2);
         skipChars(readPointer, 18);
         pkmn.HP = readInt(readPointer);
@@ -119,7 +123,7 @@ void writeStatsInDex(vector<Pokemon> &pokedex)
 
     for (int i = 0; i < pokedex.size(); i += 1)
     {
-        string upperCase = pokedex[i].name;
+        string upperCase = pokedex[i].oldName;
         string camelCase;
         if (upperCase == "NIDORAN_F")
         {
@@ -174,13 +178,45 @@ void updateNames(vector<Pokemon> &pokedex)
     for (int i = 0; i < TOTAL_POKEMON; i += 1)
     {
         Pokemon &pkmn = pokedex[i];
-        skipChars(readPointer, 20 + pkmn.name.length());
-        pkmn.name = readString(readPointer, '"');
+        skipChars(readPointer, 20 + pkmn.oldName.length());
+        pkmn.newName = readString(readPointer, '"');
         // printf("successfully read %dth pokemon name\n", i + 1);
         skipLines(readPointer, 1);
     }
 
     fclose(readPointer);
+}
+void reOrderPokedex(vector<Pokemon> &pokedex)
+{
+    FILE *readPointer;
+    readPointer = fopen("./../docs/new_pokedex.txt", "r");
+    if (readPointer == NULL)
+    {
+        printf("Could not open new_pokedex.txt\n");
+        return;
+    }
+
+    vector<Pokemon> tempPokedex;
+    for (int i = 0; i < TOTAL_POKEMON; i += 1)
+    {
+        skipChars(readPointer, 1);
+        string name = readString(readPointer, '"');
+        skipLines(readPointer, 1);
+        // printf("%s\n", name.c_str());
+
+        for(int j = 0; j < pokedex.size(); j += 1)
+        {
+            if(pokedex[j].oldName == name)
+            {
+                pokedex[j].newIndex = i + 1;
+                tempPokedex.push_back(pokedex[j]);
+                break;
+            }
+        }
+    }
+    pokedex = tempPokedex;
+    fclose(readPointer);
+
 }
 void printPokedex(vector<Pokemon> &pokedex)
 {
@@ -207,8 +243,8 @@ void printPokedex(vector<Pokemon> &pokedex)
     //             { return a.index < b.index; });
 
     // Print the sorted pokedex
-    string lineSeparator = "+-------+";
-    string tableHeader = "| INDEX |";
+    string lineSeparator = "+-------+-------+";
+    string tableHeader = "| INDEX | INDEX |";
     if (printName)
     {
         lineSeparator += "------------+";
@@ -241,10 +277,10 @@ void printPokedex(vector<Pokemon> &pokedex)
     for (int i = 0; i < pokedex.size(); i += 1)
     {
         Pokemon pkmn = pokedex[i];
-        fprintf(writePointer, "|  %03d  |", pokedex[i].index);
+        fprintf(writePointer, "|  %03d  |  %03d  |", pokedex[i].oldIndex, pokedex[i].newIndex);
         if (printName)
         {
-            fprintf(writePointer, " %-10s |", pkmn.name.c_str());
+            fprintf(writePointer, " %-10s |", pkmn.newName.c_str());
         }
         if (printTypes)
         {
@@ -266,7 +302,6 @@ void printPokedex(vector<Pokemon> &pokedex)
         fprintf(writePointer, "%s\n", lineSeparator.c_str());
     }
 }
-
 void printCSV(vector<Pokemon> &pokedex)
 {
     FILE *writePointer = fopen("species_info.csv", "w");
@@ -276,25 +311,30 @@ void printCSV(vector<Pokemon> &pokedex)
         return;
     }
 
-    fprintf(writePointer, "DexNum,Name,HP,PA,PD,SA,SD,SP,BST,Type1,Type2,Abil1,Abil2\n");
+    fprintf(writePointer, "OldIndex,NewIndex,Name,Sprite,Type1,Type2,Abil1,Abil2,HP,PA,PD,SA,SD,SP,BST\n");
 
     for (int i = 0; i < pokedex.size(); i += 1)
     {
         Pokemon pkmn = pokedex[i];
-        fprintf(writePointer, "%03d,", pokedex[i].index);
-        fprintf(writePointer, "\"%s\",", pkmn.name.c_str());
-        fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
-        fprintf(writePointer, "%d,", pkmn.BST);
-
+        fprintf(writePointer, "%03d,", pkmn.oldIndex);
+        fprintf(writePointer, "%03d,", pkmn.newIndex);
+        fprintf(writePointer, "\"%s\",", pkmn.newName.c_str());
+        string name = pkmn.oldName;
+        transform(name.begin(), name.end(), name.begin(), ::tolower);
+        fprintf(writePointer, "https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/%s/front.png,", name.c_str());
+        // printing types
         if (pkmn.types[1] == "")
-            fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
+        fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
         else
-            fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
-
+        fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+        // printing abilities
         if (pkmn.abils[1] == "")
-            fprintf(writePointer, "%s,...\n", pkmn.abils[0].c_str());
+        fprintf(writePointer, "%s,...,", pkmn.abils[0].c_str());
         else
-            fprintf(writePointer, "%s,%s\n", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+        fprintf(writePointer, "%s,%s,", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+        // printing stats
+        fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
+        fprintf(writePointer, "%d\n", pkmn.BST);
     }
 
     fclose(writePointer);
