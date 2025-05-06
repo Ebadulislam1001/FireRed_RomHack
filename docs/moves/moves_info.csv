@@ -1,4 +1,4 @@
-Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect,Target,Priority
+Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority
 0,"DRAIN PUNCH","FIGHTING",40,100,20,"ABSORB",0,"SELECTED",0
 1,"KARATE CHOP","FIGHTING",50,100,25,"HIGH_CRITICAL",0,"SELECTED",0
 2,"DOUBLESLAP","NORMAL",30,100,30,"DOUBLE_HIT",0,"SELECTED",0

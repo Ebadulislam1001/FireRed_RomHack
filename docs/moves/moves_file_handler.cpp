@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "fileHelper.cpp"
+#include "./../fileHelper.cpp"
 using namespace std;
 
 #define TOTAL_MOVES 354
@@ -35,12 +35,12 @@ int main()
     readMoveDesc(moveList);
     updateNames(moveList);
     printMoveList(moveList); // use new names
-    // printCSV(moveList);      // use new names
+    printCSV(moveList);      // use new names
 }
 
 void readMoveList(vector<Move> &moveList)
 {
-    FILE *readPointer = fopen("./../src/data/battle_moves.h", "r");
+    FILE *readPointer = fopen("./../../src/data/battle_moves.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open battle_moves.h\n");
@@ -107,7 +107,7 @@ void readMoveList(vector<Move> &moveList)
 }
 void readMoveDesc(vector<Move> &moveList)
 {
-    FILE *readPointer = fopen("./../src/move_descriptions.c", "r");
+    FILE *readPointer = fopen("./../../src/move_descriptions.c", "r");
     if (readPointer == NULL)
     {
         printf("Could not open move_names.h\n");
@@ -138,7 +138,7 @@ void readMoveDesc(vector<Move> &moveList)
 }
 void updateNames(vector<Move> &moveList)
 {
-    FILE *readPointer = fopen("./../src/data/text/move_names.h", "r");
+    FILE *readPointer = fopen("./../../src/data/text/move_names.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open move_names.h\n");
