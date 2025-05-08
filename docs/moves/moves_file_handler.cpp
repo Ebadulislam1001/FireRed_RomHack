@@ -159,7 +159,7 @@ void updateNames(vector<Move> &moveList)
 }
 void printMoveList(vector<Move> &moveList)
 {
-    FILE *writePointer = fopen("moves_info.txt", "w");
+    FILE *writePointer = fopen("./moves_info.txt", "w");
     if (writePointer == NULL)
     {
         printf("Could not open moves_info.txt\n");
@@ -295,7 +295,7 @@ void printMoveList(vector<Move> &moveList)
 }
 void printCSV(vector<Move> &moveList)
 {
-    FILE *writePointer = fopen("moves_info.csv", "w");
+    FILE *writePointer = fopen("./moves_info.csv", "w");
     if (writePointer == NULL)
     {
         printf("Could not open moves_info.csv\n");

@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include <algorithm>
-#include "fileHelper.cpp"
+#include "./../fileHelper.cpp"
 using namespace std;
 
 #define TOTAL_POKEMON 386
@@ -35,18 +36,18 @@ int main()
 {
     vector<Pokemon> pokedex;
     readPokedex(pokedex);
-    writeStatsInDex(pokedex);   // use old names
+    writeStatsInDex(pokedex); // use old names
     updateNames(pokedex);
-    reOrderPokedex(pokedex);    // use new names
-    printPokedex(pokedex);      // use new names
-    printCSV(pokedex);          // use new names
+    reOrderPokedex(pokedex); // use new names
+    printPokedex(pokedex);   // use new names
+    printCSV(pokedex);       // use new names
     return 0;
 }
 
 void readPokedex(vector<Pokemon> &pokedex)
 {
     FILE *readPointer;
-    readPointer = fopen("./../src/data/pokemon/species_info.h", "r");
+    readPointer = fopen("./../../src/data/pokemon/species_info.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open species_info.h\n");
@@ -108,7 +109,7 @@ void readPokedex(vector<Pokemon> &pokedex)
 void writeStatsInDex(vector<Pokemon> &pokedex)
 {
     FILE *writePointer;
-    writePointer = fopen("./../src/data/pokemon/pokedex_text_fr.h", "w");
+    writePointer = fopen("./../../src/data/pokemon/pokedex_text_fr.h", "w");
     // writePointer = fopen("./output.txt", "w");
     if (writePointer == NULL)
     {
@@ -167,7 +168,7 @@ void writeStatsInDex(vector<Pokemon> &pokedex)
 void updateNames(vector<Pokemon> &pokedex)
 {
     FILE *readPointer;
-    readPointer = fopen("./../src/data/text/species_names.h", "r");
+    readPointer = fopen("./../../src/data/text/species_names.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open species_names.h\n");
@@ -189,24 +190,25 @@ void updateNames(vector<Pokemon> &pokedex)
 void reOrderPokedex(vector<Pokemon> &pokedex)
 {
     FILE *readPointer;
-    readPointer = fopen("./../docs/new_pokedex.txt", "r");
+    readPointer = fopen("./../../include/constants/pokedex.h", "r");
     if (readPointer == NULL)
     {
-        printf("Could not open new_pokedex.txt\n");
+        printf("Could not open pokedex.h\n");
         return;
     }
 
+    skipLines(readPointer, 7);
     vector<Pokemon> tempPokedex;
     for (int i = 0; i < TOTAL_POKEMON; i += 1)
     {
-        skipChars(readPointer, 1);
-        string name = readString(readPointer, '"');
+        skipChars(readPointer, 17);
+        string name = readString(readPointer, ',');
         skipLines(readPointer, 1);
         // printf("%s\n", name.c_str());
 
-        for(int j = 0; j < pokedex.size(); j += 1)
+        for (int j = 0; j < pokedex.size(); j += 1)
         {
-            if(pokedex[j].oldName == name)
+            if (pokedex[j].oldName == name)
             {
                 pokedex[j].newIndex = i + 1;
                 tempPokedex.push_back(pokedex[j]);
@@ -217,10 +219,37 @@ void reOrderPokedex(vector<Pokemon> &pokedex)
     pokedex = tempPokedex;
     fclose(readPointer);
 
+    FILE *writePointer;
+    writePointer = fopen("./new_pokedex.js", "w");
+    if (writePointer == NULL)
+    {
+        printf("Could not open new_pokdex.txt\n");
+        return;
+    }
+
+    fprintf(writePointer, "const pokemon_names = [\n");
+    for (int i = 0; i < pokedex.size(); i += 1)
+    {
+        if (pokedex[i].oldName == "UNOWN")
+        {
+            fprintf(writePointer, "\t\"UNOWN/A\",\n");
+        }
+        else if (pokedex[i].oldName == "CASTFORM")
+        {
+            fprintf(writePointer, "\t\"CASTFORM/NORMAL\",\n");
+        }
+        else
+        {
+
+            fprintf(writePointer, "\t\"%s\",\n", pokedex[i].oldName.c_str());
+        }
+    }
+    fprintf(writePointer, "];\n");
+    fclose(writePointer);
 }
 void printPokedex(vector<Pokemon> &pokedex)
 {
-    FILE *writePointer = fopen("species_info.txt", "w");
+    FILE *writePointer = fopen("./species_info.txt", "w");
     if (writePointer == NULL)
     {
         printf("Could not open species_info.txt\n");
@@ -304,7 +333,7 @@ void printPokedex(vector<Pokemon> &pokedex)
 }
 void printCSV(vector<Pokemon> &pokedex)
 {
-    FILE *writePointer = fopen("species_info.csv", "w");
+    FILE *writePointer = fopen("./species_info.csv", "w");
     if (writePointer == NULL)
     {
         printf("Could not open species_info.csv\n");
@@ -324,14 +353,14 @@ void printCSV(vector<Pokemon> &pokedex)
         fprintf(writePointer, "https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/%s/front.png,", name.c_str());
         // printing types
         if (pkmn.types[1] == "")
-        fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
+            fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
         else
-        fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+            fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
         // printing abilities
         if (pkmn.abils[1] == "")
-        fprintf(writePointer, "%s,...,", pkmn.abils[0].c_str());
+            fprintf(writePointer, "%s,...,", pkmn.abils[0].c_str());
         else
-        fprintf(writePointer, "%s,%s,", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+            fprintf(writePointer, "%s,%s,", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
         // printing stats
         fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
         fprintf(writePointer, "%d\n", pkmn.BST);
@@ -339,32 +368,3 @@ void printCSV(vector<Pokemon> &pokedex)
 
     fclose(writePointer);
 }
-
-// void printDataAnalysis(vector<Pokemon> &pokedex)
-// {
-//     int typeCount = 18; // including "empty" type
-//     vector<string> typeName = {"", "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE", "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG", "ROCK", "GHOST", "DRAGON", "DARK", "STEEL"};
-//     vector<string> typeAbbr = {"???", "NRM", "FIR", "WTR", "ELE", "GRS", "ICE", "FGH", "PSN", "GRN", "FLY", "PSY", "BUG", "RCK", "GHS", "DGN", "DRK", "STL"};
-//     map<string, int> indexOf;
-//     for (int i = 0; i < typeCount; i += 1)
-//     {
-//         indexOf[typeName[i]] = i;
-//     }
-//
-//     vector<int> typeFrequency(typeCount, 0);
-//     for (int i = 0; i < pokedex.size(); i += 1)
-//     {
-//         Pokemon pkmn = pokedex[i];
-//         string type1 = pkmn.types[0];
-//         string type2 = pkmn.types[1];
-//
-//         typeFrequency[indexOf[type1]] += 1;
-//         typeFrequency[indexOf[type2]] += 1;
-//     }
-//
-//     printf("\nType frequency:\n");
-//     for (int i = 0; i < typeCount; i += 1)
-//     {
-//         printf("%s : %3d\n", typeAbbr[i].c_str(), typeFrequency[i]);
-//     }
-// }

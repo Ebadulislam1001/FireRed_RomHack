@@ -64,5 +64,7 @@ _Deparsed_XSubs.pm
 porymap.*.cfg
 prefabs.json
 .vscode/*.*
-*.js
 *.sym
+*.js
+!poke_banner.js
+!new_pokedex.js

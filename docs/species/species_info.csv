@@ -126,6 +126,7 @@ OldIndex,NewIndex,Name,Sprite,Type1,Type2,Abil1,Abil2,HP,PA,PD,SA,SD,SP,BST
 301,125,"FROSMOTH",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/delcatty/front.png,BUG,ICE,CUTE_CHARM,...,70,65,65,55,55,70,380
 050,126,"DIGLETT",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/diglett/front.png,GROUND,...,SAND_VEIL,ARENA_TRAP,10,55,25,35,45,95,265
 051,127,"DUGTRIO",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/dugtrio/front.png,GROUND,STEEL,SAND_VEIL,ARENA_TRAP,35,80,50,50,70,120,405
+201,128,"UNOWN",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/unown/front.png,PSYCHIC,...,LEVITATE,...,48,72,48,72,48,48,336
 327,129,"SPINDA",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/spinda/front.png,NORMAL,...,OWN_TEMPO,...,60,60,60,60,60,60,360
 202,130,"WOBBUFFET",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/wobbuffet/front.png,PSYCHIC,...,SHADOW_TAG,...,190,33,58,33,58,33,405
 203,131,"BOOMER",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/girafarig/front.png,FIRE,GHOST,INNER_FOCUS,EARLY_BIRD,70,80,65,90,65,85,455
@@ -229,6 +230,7 @@ OldIndex,NewIndex,Name,Sprite,Type1,Type2,Abil1,Abil2,HP,PA,PD,SA,SD,SP,BST
 334,229,"ALTARIA",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/altaria/front.png,DRAGON,FLYING,NATURAL_CURE,...,75,70,90,70,105,80,490
 132,230,"DITTO",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/ditto/front.png,NORMAL,...,LIMBER,...,48,48,48,48,48,48,288
 235,231,"SMEARGLE",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/smeargle/front.png,NORMAL,...,OWN_TEMPO,...,55,20,35,20,45,75,250
+351,232,"CASTFORM",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/castform/front.png,NORMAL,...,FORECAST,...,70,70,70,70,70,70,420
 352,233,"KECLEON",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/kecleon/front.png,NORMAL,...,COLOR_CHANGE,...,60,90,70,60,120,40,440
 233,234,"PORYGON2",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/porygon2/front.png,NORMAL,GHOST,TRACE,...,85,80,90,105,95,60,515
 335,235,"ZANGOOSE",https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/zangoose/front.png,NORMAL,...,IMMUNITY,...,73,115,60,60,60,90,458
