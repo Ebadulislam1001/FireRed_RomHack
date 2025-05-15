@@ -2706,7 +2706,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_MILK_DRINK] =
     {
-        .effect = EFFECT_AQUA_CUTTER, // MOVE_AQUA_CUTTER
+        .effect = EFFECT_AQUA_CUTTER, // MOVE_AQUA_CUTTER // TODO
         .power = 85,
         .type = TYPE_GRASS,
         .accuracy = 90,
