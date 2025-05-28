@@ -83,7 +83,8 @@
 #define ABILITY_GENJUTSU 79         // new ability
 #define ABILITY_OPPORTUNIST 80      // new ability
 #define ABILITY_ICE_BODY 81         // new ability
+#define ABILITY_AERILATE 82         // new ability
 
-#define ABILITIES_COUNT 82
+#define ABILITIES_COUNT 83
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H

@@ -80,6 +80,7 @@ static const u8 sSenjutsuDescription[] = _("Slight HP recovery each turn.");
 static const u8 sGenjutsuDescription[] = _("Confuses the foe on contact.");
 static const u8 sOpportunistDescription[] = _("Sometimes allows to strike first.");
 static const u8 sIceBodyDescription[] = _("Freezes the foe on contact.");
+static const u8 sAerilateDescription[] = _("Ups FLYING moves in a pinch.");
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 {
@@ -165,6 +166,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_GENJUTSU] = sGenjutsuDescription,
     [ABILITY_OPPORTUNIST] = sOpportunistDescription,
     [ABILITY_ICE_BODY] = sIceBodyDescription,
+    [ABILITY_AERILATE] = sAerilateDescription,
 };
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -251,4 +253,5 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GENJUTSU] = _("GENJUTSU"),
     [ABILITY_OPPORTUNIST] = _("OPPORTUNIST"),
     [ABILITY_ICE_BODY] = _("ICE BODY"),
+    [ABILITY_AERILATE] = _("AERILATE"),
 };
