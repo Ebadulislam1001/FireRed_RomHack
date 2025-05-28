@@ -1840,6 +1840,46 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 }
                 break;
             case ABILITY_FORECAST:
+                if(Random() % 100 < 25) // net 25% chance
+                {
+                    if (!(gBattleWeather & B_WEATHER_RAIN_PERMANENT))
+                    {
+                        gBattleWeather = (B_WEATHER_RAIN_PERMANENT | B_WEATHER_RAIN_TEMPORARY);
+                        BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
+                        gBattleScripting.battler = battler;
+                        effect++;
+                    }
+                }
+                else if (Random() % 100 < 33) // net 25% chance
+                {
+                    if (!(gBattleWeather & B_WEATHER_SANDSTORM_PERMANENT))
+                    {
+                        gBattleWeather = B_WEATHER_SANDSTORM;
+                        BattleScriptPushCursorAndCallback(BattleScript_SandstreamActivates);
+                        gBattleScripting.battler = battler;
+                        effect++;
+                    }
+                }
+                else if (Random() % 100 < 50) // net 25% chance
+                {
+                    if (!(gBattleWeather & B_WEATHER_SUN_PERMANENT))
+                    {
+                        gBattleWeather = B_WEATHER_SUN;
+                        BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
+                        gBattleScripting.battler = battler;
+                        effect++;
+                    }
+                }
+                else if (Random() % 100 < 100) // net 25% chance
+                {
+                    if (!(gBattleWeather & B_WEATHER_HAIL_PERMANENT))
+                    {
+                        gBattleWeather = B_WEATHER_HAIL;
+                        BattleScriptPushCursorAndCallback(BattleScript_SnowWarningActivates);
+                        gBattleScripting.battler = battler;
+                        effect++;
+                    }
+                }
                 effect = CastformDataTypeChange(battler);
                 if (effect != 0)
                 {
