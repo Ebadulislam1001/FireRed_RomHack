@@ -81,6 +81,9 @@ static const u8 sGenjutsuDescription[] = _("Confuses the foe on contact.");
 static const u8 sOpportunistDescription[] = _("Sometimes allows to strike first.");
 static const u8 sIceBodyDescription[] = _("Freezes the foe on contact.");
 static const u8 sAerilateDescription[] = _("Ups FLYING moves in a pinch.");
+static const u8 sSandRiderDescription[] = _("Ups SPEED in SandStorm.");
+static const u8 sSandShieldDescription[] = _("Ups Defenses in SandStorm.");
+static const u8 sSnowShieldDescription[] = _("Ups Defenses in HailStorm.");
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 {
@@ -167,6 +170,9 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_OPPORTUNIST] = sOpportunistDescription,
     [ABILITY_ICE_BODY] = sIceBodyDescription,
     [ABILITY_AERILATE] = sAerilateDescription,
+    [ABILITY_SAND_RIDER] = sSandRiderDescription,
+    [ABILITY_SAND_SHIELD] = sSandShieldDescription,
+    [ABILITY_SNOW_SHIELD] = sSnowShieldDescription,
 };
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -254,4 +260,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_OPPORTUNIST] = _("OPPORTUNIST"),
     [ABILITY_ICE_BODY] = _("ICE BODY"),
     [ABILITY_AERILATE] = _("AERILATE"),
+    [ABILITY_SAND_RIDER] = _("SAND RIDER"),
+    [ABILITY_SAND_SHIELD] = _("SAND SHIELD"),
+    [ABILITY_SNOW_SHIELD] = _("SNOW SHIELD"),
 };

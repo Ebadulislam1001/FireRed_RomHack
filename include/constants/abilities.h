@@ -84,7 +84,10 @@
 #define ABILITY_OPPORTUNIST 80      // new ability
 #define ABILITY_ICE_BODY 81         // new ability
 #define ABILITY_AERILATE 82         // new ability
+#define ABILITY_SAND_RIDER 83       // new ability
+#define ABILITY_SAND_SHIELD 84      // new ability
+#define ABILITY_SNOW_SHIELD 85      // new ability
 
-#define ABILITIES_COUNT 83
+#define ABILITIES_COUNT 86
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H

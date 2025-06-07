@@ -2451,6 +2451,20 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         defense  = (150 * defense)/100;
     if (defender->ability == ABILITY_SHELL_ARMOR)
         spDefense  = (150 * spDefense)/100;
+    
+    if(WEATHER_HAS_EFFECT2)
+    {
+        if (gBattleWeather & B_WEATHER_SANDSTORM && defender->ability == ABILITY_SAND_SHIELD)
+        {
+            spDefense  = (150 * spDefense)/100;
+            spDefense  = (150 * spDefense)/100;
+        }
+        if (gBattleWeather & B_WEATHER_HAIL && defender->ability == ABILITY_SNOW_SHIELD)
+        {
+            spDefense  = (150 * spDefense)/100;
+            spDefense  = (150 * spDefense)/100;
+        }
+    }
 
     if (ShouldGetStatBadgeBoost(FLAG_BADGE01_GET, battlerIdAtk))
         attack = (110 * attack) / 100;
