@@ -273,7 +273,7 @@ void printPokedex(vector<Pokemon> &pokedex)
 
     // Print the sorted pokedex
     string lineSeparator = "+-------+-------+";
-    string tableHeader = "| INDEX | INDEX |";
+    string tableHeader = "|  OLD  |  NEW  |";
     if (printName)
     {
         lineSeparator += "------------+";
