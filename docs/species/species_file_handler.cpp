@@ -33,24 +33,24 @@ struct Pokemon
     string bodyColor;
 };
 
-void readPokedex(vector<Pokemon> &pokedex);
-void writeStatsInDex(vector<Pokemon> &pokedex);
-void updateNames(vector<Pokemon> &pokedex);
-void reOrderPokedex(vector<Pokemon> &pokedex);
-void printCSV(vector<Pokemon> &pokedex);
+void read_data_from_species_info(vector<Pokemon> &pokedex);
+void write_data_in_pokedex_text(vector<Pokemon> &pokedex);
+void read_newnames_from_species_names(vector<Pokemon> &pokedex);
+void read_order_from_pokedex_order(vector<Pokemon> &pokedex);
+void write_csv_data(vector<Pokemon> &pokedex);
 
 int main()
 {
     vector<Pokemon> pokedex;  // initialize pokedex
-    readPokedex(pokedex);     // read pokedex from `species_info.h` file
-    writeStatsInDex(pokedex); // use old names
-    updateNames(pokedex);
-    reOrderPokedex(pokedex); // use new names
-    printCSV(pokedex); // use new names
+    read_data_from_species_info(pokedex);     // read pokedex from `species_info.h` file
+    write_data_in_pokedex_text(pokedex); // use old names
+    read_newnames_from_species_names(pokedex);
+    read_order_from_pokedex_order(pokedex); // use new names
+    write_csv_data(pokedex); // use new names
     return 0;
 }
 
-void readPokedex(vector<Pokemon> &pokedex)
+void read_data_from_species_info(vector<Pokemon> &pokedex)
 {
     FILE *readPointer;
     readPointer = fopen("./../../src/data/pokemon/species_info.h", "r");
@@ -167,7 +167,7 @@ void readPokedex(vector<Pokemon> &pokedex)
 
     fclose(readPointer);
 }
-void writeStatsInDex(vector<Pokemon> &pokedex)
+void write_data_in_pokedex_text(vector<Pokemon> &pokedex)
 {
     FILE *writePointer;
     writePointer = fopen("./../../src/data/pokemon/pokedex_text_fr.h", "w");
@@ -224,7 +224,7 @@ void writeStatsInDex(vector<Pokemon> &pokedex)
 
     fclose(writePointer);
 }
-void updateNames(vector<Pokemon> &pokedex)
+void read_newnames_from_species_names(vector<Pokemon> &pokedex)
 {
     FILE *readPointer;
     readPointer = fopen("./../../src/data/text/species_names.h", "r");
@@ -245,7 +245,7 @@ void updateNames(vector<Pokemon> &pokedex)
 
     fclose(readPointer);
 }
-void reOrderPokedex(vector<Pokemon> &pokedex)
+void read_order_from_pokedex_order(vector<Pokemon> &pokedex)
 {
     FILE *readPointer;
     readPointer = fopen("./../../include/constants/pokedex.h", "r");
@@ -304,7 +304,7 @@ void reOrderPokedex(vector<Pokemon> &pokedex)
     fprintf(writePointer, "];\n");
     fclose(writePointer);
 }
-void printCSV(vector<Pokemon> &pokedex)
+void write_csv_data(vector<Pokemon> &pokedex)
 {
     FILE *writePointer = fopen("./species_info.csv", "w");
     if (writePointer == NULL)
