@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
-#include <algorithm>
 #include "./../fileHelper.cpp"
 using namespace std;
 
@@ -41,12 +39,12 @@ void write_csv_data(vector<Pokemon> &pokedex);
 
 int main()
 {
-    vector<Pokemon> pokedex;  // initialize pokedex
-    read_data_from_species_info(pokedex);     // read pokedex from `species_info.h` file
-    write_data_in_pokedex_text(pokedex); // use old names
+    vector<Pokemon> pokedex;
+    read_data_from_species_info(pokedex);
+    write_data_in_pokedex_text(pokedex);
     read_newnames_from_species_names(pokedex);
-    read_order_from_pokedex_order(pokedex); // use new names
-    write_csv_data(pokedex); // use new names
+    read_order_from_pokedex_order(pokedex);
+    write_csv_data(pokedex);
     return 0;
 }
 
@@ -113,7 +111,7 @@ void read_data_from_species_info(vector<Pokemon> &pokedex)
         pkmn.expYield = readInt(readPointer);
 
         int evYieldsOffsets[6] = {22, 26, 27, 25, 28, 29};
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i += 1)
         {
             skipLines(readPointer, 1);
             skipChars(readPointer, evYieldsOffsets[i]);
@@ -209,7 +207,7 @@ void write_data_in_pokedex_text(vector<Pokemon> &pokedex)
         else
         {
             camelCase.push_back(upperCase[0]);
-            for (int i = 1; i < upperCase.length(); i++)
+            for (int i = 1; i < upperCase.length(); i += 1)
             {
                 camelCase.push_back(upperCase[i] + 32);
             }
@@ -312,7 +310,7 @@ void write_csv_data(vector<Pokemon> &pokedex)
         printf("Could not open species_info.csv\n");
         return;
     }
-    
+
     fprintf(writePointer, "oldIndex,newIndex,oldName,newName,");
     fprintf(writePointer, "HP,phAtk,phDef,spAtk,spDef,speed,totalStats,");
     fprintf(writePointer, "type1,type2,abil1,abil2,eggGroup1,eggGroup2,");
@@ -324,15 +322,15 @@ void write_csv_data(vector<Pokemon> &pokedex)
         Pokemon pkmn = pokedex[i];
         fprintf(writePointer, "%03d,", pkmn.oldIndex);
         fprintf(writePointer, "%03d,", pkmn.newIndex);
-        fprintf(writePointer, "\"%s\",", pkmn.oldName.c_str());
-        fprintf(writePointer, "\"%s\",", pkmn.newName.c_str());
+        fprintf(writePointer, "%s,", pkmn.oldName.c_str());
+        fprintf(writePointer, "%s,", pkmn.newName.c_str());
         fprintf(writePointer, "%d,%d,%d,", pkmn.HP, pkmn.phAtk, pkmn.phDef);
         fprintf(writePointer, "%d,%d,%d,", pkmn.spAtk, pkmn.spDef, pkmn.speed);
         fprintf(writePointer, "%d,", pkmn.totalStats);
         fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
         fprintf(writePointer, "%s,%s,", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
         fprintf(writePointer, "%s,%s,", pkmn.eggGroups[0].c_str(), pkmn.eggGroups[1].c_str());
-        for(int EV=0; EV<6; EV++)
+        for (int EV = 0; EV < 6; EV += 1)
         {
             fprintf(writePointer, "%d,", pkmn.evYields[EV]);
         }
