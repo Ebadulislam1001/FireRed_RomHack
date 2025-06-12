@@ -10,35 +10,35 @@ using namespace std;
 struct Move
 {
     int index;
-    string name;
+    string oldName;
+    string newName;
+    string type;
     string effect;
     string description;
+    string target;
     int basePower;
-    string type;
     int accuracy;
     int pp;
     int effectChance;
-    string target;
     int priority;
+    vector<int> flags;
 };
 
-void readMoveList(vector<Move> &moveList);
-void readMoveDesc(vector<Move> &moveList);
-void updateNames(vector<Move> &moveList);
-void printMoveList(vector<Move> &moveList);
-void printCSV(vector<Move> &moveList);
+void read_move_data_from_battle_moves(vector<Move> &moveList);
+void read_move_desc_from_move_descriptions(vector<Move> &moveList);
+void read_new_names_from_move_names(vector<Move> &moveList);
+void write_csv_data(vector<Move> &moveList);
 
 int main()
 {
     vector<Move> moveList;
-    readMoveList(moveList);
-    readMoveDesc(moveList);
-    updateNames(moveList);
-    printMoveList(moveList); // use new names
-    printCSV(moveList);      // use new names
+    read_move_data_from_battle_moves(moveList);
+    read_move_desc_from_move_descriptions(moveList);
+    read_new_names_from_move_names(moveList);
+    write_csv_data(moveList); // use new names
 }
 
-void readMoveList(vector<Move> &moveList)
+void read_move_data_from_battle_moves(vector<Move> &moveList)
 {
     FILE *readPointer = fopen("./../../src/data/battle_moves.h", "r");
     if (readPointer == NULL)
@@ -48,64 +48,63 @@ void readMoveList(vector<Move> &moveList)
     }
 
     skipLines(readPointer, 15); // 15 garbage lines in the beginning
-    for (int i = 0; i < TOTAL_MOVES; i++)
+    for (int i = 0; i < TOTAL_MOVES; i += 1)
     {
         Move thisMove;
         thisMove.index = i;
-        // printf("Move.index        = %d\n", thisMove.index);
 
         skipChars(readPointer, 10);
-        thisMove.name = readString(readPointer, ']');
-        // printf("Move.name         = %s\n", thisMove.name.c_str());
+        thisMove.oldName = readString(readPointer, ']');
 
         skipLines(readPointer, 2);
         skipChars(readPointer, 25);
         thisMove.effect = readString(readPointer, ',');
-        // printf("Move.basePower    = %d\n", thisMove.basePower);
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 17);
         thisMove.basePower = readInt(readPointer);
-        // printf("Move.basePower    = %d\n", thisMove.basePower);
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 21);
         thisMove.type = readString(readPointer, ',');
-        // printf("Move.type         = %s\n", thisMove.type.c_str());
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 20);
         thisMove.accuracy = readInt(readPointer);
-        // printf("Move.accuracy     = %d\n", thisMove.accuracy);
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 14);
         thisMove.pp = readInt(readPointer);
-        // printf("Move.pp           = %d\n", thisMove.pp);
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 33);
         thisMove.effectChance = readInt(readPointer);
-        // printf("Move.effectChance = %d\n", thisMove.effectChance);
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 30);
         thisMove.target = readString(readPointer, ',');
-        // printf("Move.target     = %s\n", thisMove.target.c_str());
 
         skipLines(readPointer, 1);
         skipChars(readPointer, 20);
         thisMove.priority = readInt(readPointer);
-        // printf("Move.priority     = %d\n", thisMove.priority);
+        
+        skipLines(readPointer, 1);
+        skipChars(readPointer, 17);
+        string flags = readString(readPointer, ',');
+        thisMove.flags.push_back(flags.find("FLAG_MAKES_CONTACT") != string::npos ? 1 : 0);
+        thisMove.flags.push_back(flags.find("FLAG_PROTECT_AFFECTED") != string::npos ? 1 : 0);
+        thisMove.flags.push_back(flags.find("FLAG_MAGIC_COAT_AFFECTED") != string::npos ? 1 : 0);
+        thisMove.flags.push_back(flags.find("FLAG_SNATCH_AFFECTED") != string::npos ? 1 : 0);
+        thisMove.flags.push_back(flags.find("FLAG_MIRROR_MOVE_AFFECTED") != string::npos ? 1 : 0);
+        thisMove.flags.push_back(flags.find("FLAG_KINGS_ROCK_AFFECTED") != string::npos ? 1 : 0);
 
-        skipLines(readPointer, 4);
+        skipLines(readPointer, 3);
         moveList.push_back(thisMove);
-        // printf("successfully read %dth Move info\n", i + 1);
     }
 
     fclose(readPointer);
 }
-void readMoveDesc(vector<Move> &moveList)
+void read_move_desc_from_move_descriptions(vector<Move> &moveList)
 {
     FILE *readPointer = fopen("./../../src/move_descriptions.c", "r");
     if (readPointer == NULL)
@@ -118,10 +117,10 @@ void readMoveDesc(vector<Move> &moveList)
     for (int i = 0; i < TOTAL_MOVES; i += 1)
     {
         Move &thismove = moveList[i];
-        int underscoreCount = count(thismove.name.begin(), thismove.name.end(), '_');
-        skipChars(readPointer, 34 + thismove.name.size() - underscoreCount);
+        int underscoreCount = count(thismove.oldName.begin(), thismove.oldName.end(), '_');
+        skipChars(readPointer, 34 + thismove.oldName.size() - underscoreCount);
         string text = readString(readPointer, '"');
-        for (int i = 0; i < text.size(); i++)
+        for (int i = 0; i < text.size(); i += 1)
         {
             if (text[i] == '\\')
             {
@@ -130,13 +129,12 @@ void readMoveDesc(vector<Move> &moveList)
             }
             thismove.description.push_back(text[i]);
         }
-        // printf("New name : %s\n", thismove.name.c_str());
         skipLines(readPointer, 1);
     }
 
     fclose(readPointer);
 }
-void updateNames(vector<Move> &moveList)
+void read_new_names_from_move_names(vector<Move> &moveList)
 {
     FILE *readPointer = fopen("./../../src/data/text/move_names.h", "r");
     if (readPointer == NULL)
@@ -150,150 +148,13 @@ void updateNames(vector<Move> &moveList)
     {
         Move &thismove = moveList[i];
         skipChars(readPointer, 30);
-        thismove.name = readString(readPointer, '"');
-        // printf("New name : %s\n", thismove.name.c_str());
+        thismove.newName = readString(readPointer, '"');
         skipLines(readPointer, 1);
     }
 
     fclose(readPointer);
 }
-void printMoveList(vector<Move> &moveList)
-{
-    FILE *writePointer = fopen("./moves_info.txt", "w");
-    if (writePointer == NULL)
-    {
-        printf("Could not open moves_info.txt\n");
-        return;
-    }
-
-    // Select columns to print
-    bool printName = true;
-    bool printType = true;
-    bool printEffect = true;
-    bool printDescription = true;
-    bool printBasePower = true;
-    bool printAccuracy = true;
-    bool printEffectChance = true;
-    bool printPP = true;
-    bool printTarget = true;
-    bool printPriority = true;
-
-    // Apply custom sorting on the moveList
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.basePower < b.basePower; });
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.type < b.type; });
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.effect < b.effect; });
-    // stable_sort(moveList.begin(), moveList.end(), [](Move a, Move b)
-    //             { return a.index < b.index; });
-
-    // Print the sorted moveList
-    string lineSeparator = "+-------+";
-    string tableHeader__ = "| INDEX |";
-    if (printName)
-    {
-        lineSeparator += "----------------+";
-        tableHeader__ += "  NAME          |";
-    }
-    if (printType)
-    {
-        lineSeparator += "----------+";
-        tableHeader__ += " TYPE     |";
-    }
-    if (printEffect)
-    {
-        lineSeparator += "--------------------------+";
-        tableHeader__ += "          EFFECT          |";
-    }
-    if (printDescription)
-    {
-        lineSeparator += "----------------------------------------------------------------------------------+";
-        tableHeader__ += "                                MOVE DESCRIPTION                                  |";
-    }
-    if (printBasePower)
-    {
-        lineSeparator += "------------+";
-        tableHeader__ += " BASE POWER |";
-    }
-    if (printAccuracy)
-    {
-        lineSeparator += "----------+";
-        tableHeader__ += " ACCURACY |";
-    }
-    if (printEffectChance)
-    {
-        lineSeparator += "----------+";
-        tableHeader__ += " EFFECT % |";
-    }
-    if (printPP)
-    {
-        lineSeparator += "----------+";
-        tableHeader__ += "    PP    |";
-    }
-    if (printTarget)
-    {
-        lineSeparator += "------------------+";
-        tableHeader__ += "     TARGET       |";
-    }
-    if (printPriority)
-    {
-        lineSeparator += "----------+";
-        tableHeader__ += " PRIORITY |";
-    }
-
-    fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    fprintf(writePointer, "%s\n", tableHeader__.c_str());
-    fprintf(writePointer, "%s\n", lineSeparator.c_str());
-
-    for (int i = 0, j = 0; i < moveList.size(); i++)
-    {
-        Move thisMove = moveList[i];
-
-        // Apply custom filtering on the moveList
-        bool condition = (true
-                          // && thisMove.type == "WATER"
-                          // && thisMove.effect == "MULTI_HIT"
-                          // && thisMove.basePower >= 100
-                          // && thisMove.accuracy < 100
-                          // && thisMove.pp == 40
-                          // && thisMove.target == "USER"
-                          // && thisMove.effectChance >= 50
-                          // && thisMove.priority < 0
-        );
-
-        if (condition)
-        {
-            // fprintf(writePointer, "| %4d  ", thisMove.index);
-            fprintf(writePointer, "| %4d  ", ++j);
-            if (printName)
-                fprintf(writePointer, "| %-14s ", thisMove.name.c_str());
-            if (printType)
-                fprintf(writePointer, "| %-8s ", thisMove.type.c_str());
-            if (printEffect)
-                fprintf(writePointer, "| %-24s ", thisMove.effect.c_str());
-            if (printDescription)
-                fprintf(writePointer, "| %-80s ", thisMove.description.c_str());
-            if (printBasePower)
-                fprintf(writePointer, "| %10d ", thisMove.basePower);
-            if (printAccuracy)
-                fprintf(writePointer, "| %8d ", thisMove.accuracy);
-            if (printEffectChance)
-                fprintf(writePointer, "| %8d ", thisMove.effectChance);
-            if (printPP)
-                fprintf(writePointer, "| %8d ", thisMove.pp);
-            if (printTarget)
-                fprintf(writePointer, "| %-16s ", thisMove.target.c_str());
-            if (printPriority)
-                fprintf(writePointer, "| %+8d ", thisMove.priority);
-            fprintf(writePointer, "|\n%s\n", lineSeparator.c_str());
-            // printf("successfully wrote %dth Move info\n", i + 1);}
-        }
-    }
-
-    fclose(writePointer);
-}
-void printCSV(vector<Move> &moveList)
+void write_csv_data(vector<Move> &moveList)
 {
     FILE *writePointer = fopen("./moves_info.csv", "w");
     if (writePointer == NULL)
@@ -301,22 +162,44 @@ void printCSV(vector<Move> &moveList)
         printf("Could not open moves_info.csv\n");
         return;
     }
-
-    fprintf(writePointer, "Serial,Name,Type,BP,Accuracy,PP,Sec_Effect,Effect%,Target,Priority\n");
+    // int index;
+    // string oldName;
+    // string newName;
+    // string type;
+    // string effect;
+    // string description;
+    // string target;
+    // int basePower;
+    // int accuracy;
+    // int pp;
+    // int effectChance;
+    // int priority;
+    // vector<int> flags;
+    fprintf(writePointer, "serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,");
+    fprintf(writePointer, "PP,priority,target,description,");
+    fprintf(writePointer, "makesContact,protectAffected,magicCoatAffected,snatchAffected,mirrorMoveAffected,kingsRockAffected\n");
 
     for (int i = 0; i < moveList.size(); i += 1)
     {
         Move thisMove = moveList[i];
         fprintf(writePointer, "%d,", thisMove.index);
-        fprintf(writePointer, "\"%s\",", thisMove.name.c_str());
-        fprintf(writePointer, "\"%s\",", thisMove.type.c_str());
+        fprintf(writePointer, "%s,", thisMove.oldName.c_str());
+        fprintf(writePointer, "%s,", thisMove.newName.c_str());
+        fprintf(writePointer, "%s,", thisMove.type.c_str());
         fprintf(writePointer, "%d,", thisMove.basePower);
         fprintf(writePointer, "%d,", thisMove.accuracy);
-        fprintf(writePointer, "%d,", thisMove.pp);
-        fprintf(writePointer, "\"%s\",", thisMove.effect.c_str());
+        fprintf(writePointer, "%s,", thisMove.effect.c_str());
         fprintf(writePointer, "%d,", thisMove.effectChance);
-        fprintf(writePointer, "\"%s\",", thisMove.target.c_str());
-        fprintf(writePointer, "%d\n", thisMove.priority);
+        fprintf(writePointer, "%d,", thisMove.pp);
+        fprintf(writePointer, "%d,", thisMove.priority);
+        fprintf(writePointer, "%s,", thisMove.target.c_str());
+        replace(thisMove.description.begin(), thisMove.description.end(), ',', ';');
+        fprintf(writePointer, "%s", thisMove.description.c_str());
+        for(int j = 0; j < thisMove.flags.size(); j += 1)
+        {
+            fprintf(writePointer, ",%d", thisMove.flags[j]);
+        }
+        fprintf(writePointer, "\n");
     }
 
     fclose(writePointer);
