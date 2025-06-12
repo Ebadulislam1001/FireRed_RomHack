@@ -15,32 +15,38 @@ struct Pokemon
     string oldName;
     string newName;
     int HP;
-    int PA;
-    int PD;
-    int SA;
-    int SD;
-    int SP;
-    int BST;
+    int phAtk;
+    int phDef;
+    int spAtk;
+    int spDef;
+    int speed;
+    int totalStats;
     vector<string> types;
     vector<string> abils;
+    vector<string> eggGroups;
+    vector<int> evYields;
+    int expYield;
+    int catchRate;
+    int eggCycles;
+    int baseHappiness;
+    string growthRate;
+    string bodyColor;
 };
 
 void readPokedex(vector<Pokemon> &pokedex);
 void writeStatsInDex(vector<Pokemon> &pokedex);
 void updateNames(vector<Pokemon> &pokedex);
 void reOrderPokedex(vector<Pokemon> &pokedex);
-void printPokedex(vector<Pokemon> &pokedex);
 void printCSV(vector<Pokemon> &pokedex);
 
 int main()
 {
-    vector<Pokemon> pokedex;
-    readPokedex(pokedex);
+    vector<Pokemon> pokedex;  // initialize pokedex
+    readPokedex(pokedex);     // read pokedex from `species_info.h` file
     writeStatsInDex(pokedex); // use old names
     updateNames(pokedex);
     reOrderPokedex(pokedex); // use new names
-    printPokedex(pokedex);   // use new names
-    printCSV(pokedex);       // use new names
+    printCSV(pokedex); // use new names
     return 0;
 }
 
@@ -59,48 +65,103 @@ void readPokedex(vector<Pokemon> &pokedex)
     {
         Pokemon pkmn;
         pkmn.oldIndex = (i + 1);
+
         skipChars(readPointer, 13);
         pkmn.oldName = readString(readPointer, ']');
+
         skipLines(readPointer, 2);
         skipChars(readPointer, 18);
         pkmn.HP = readInt(readPointer);
+
         skipLines(readPointer, 1);
         skipChars(readPointer, 22);
-        pkmn.PA = readInt(readPointer);
+        pkmn.phAtk = readInt(readPointer);
+
         skipLines(readPointer, 1);
         skipChars(readPointer, 23);
-        pkmn.PD = readInt(readPointer);
+        pkmn.phDef = readInt(readPointer);
+
         skipLines(readPointer, 1);
         skipChars(readPointer, 21);
-        pkmn.SP = readInt(readPointer);
+        pkmn.speed = readInt(readPointer);
+
         skipLines(readPointer, 1);
         skipChars(readPointer, 24);
-        pkmn.SA = readInt(readPointer);
+        pkmn.spAtk = readInt(readPointer);
+
         skipLines(readPointer, 1);
         skipChars(readPointer, 25);
-        pkmn.SD = readInt(readPointer);
+        pkmn.spDef = readInt(readPointer);
+
         // BST is not given in the file. It has to be calculated
-        pkmn.BST = pkmn.HP + pkmn.PA + pkmn.PD + pkmn.SA + pkmn.SD + pkmn.SP;
+        pkmn.totalStats = pkmn.HP + pkmn.phAtk + pkmn.phDef + pkmn.spAtk + pkmn.spDef + pkmn.speed;
+
         skipLines(readPointer, 1);
         skipChars(readPointer, 23);
         pkmn.types.push_back(readString(readPointer, ','));
         skipChars(readPointer, 6);
         pkmn.types.push_back(readString(readPointer, '}'));
         if (pkmn.types[1] == pkmn.types[0])
-            pkmn.types[1] = "";
-        skipLines(readPointer, 16);
+            pkmn.types[1] = "---";
+
+        skipLines(readPointer, 1);
+        skipChars(readPointer, 21);
+        pkmn.catchRate = readInt(readPointer);
+
+        skipLines(readPointer, 1);
+        skipChars(readPointer, 20);
+        pkmn.expYield = readInt(readPointer);
+
+        int evYieldsOffsets[6] = {22, 26, 27, 25, 28, 29};
+        for (int i = 0; i < 6; i++)
+        {
+            skipLines(readPointer, 1);
+            skipChars(readPointer, evYieldsOffsets[i]);
+            pkmn.evYields.push_back(readInt(readPointer));
+        }
+        // speed, spAtk, spDef -> spAtk, spDef, speed
+        int temp = pkmn.evYields[3];
+        pkmn.evYields[3] = pkmn.evYields[4];
+        pkmn.evYields[4] = pkmn.evYields[5];
+        pkmn.evYields[5] = temp;
+
+        skipLines(readPointer, 4);
+        skipChars(readPointer, 21);
+        pkmn.eggCycles = readInt(readPointer);
+
+        skipLines(readPointer, 1);
+        skipChars(readPointer, 22);
+        pkmn.baseHappiness = readInt(readPointer);
+
+        skipLines(readPointer, 1);
+        skipChars(readPointer, 29);
+        pkmn.growthRate = readString(readPointer, ',');
+
+        skipLines(readPointer, 1);
+        skipChars(readPointer, 32);
+        pkmn.eggGroups.push_back(readString(readPointer, ','));
+        skipChars(readPointer, 11);
+        pkmn.eggGroups.push_back(readString(readPointer, '}'));
+        if (pkmn.eggGroups[1] == pkmn.eggGroups[0])
+            pkmn.eggGroups[1] = "---";
+
+        skipLines(readPointer, 1);
         skipChars(readPointer, 30);
         pkmn.abils.push_back(readString(readPointer, ','));
         skipChars(readPointer, 9);
         pkmn.abils.push_back(readString(readPointer, '}'));
         if (pkmn.abils[1] == "NONE")
-            pkmn.abils[1] = "";
+            pkmn.abils[1] = "---";
+
+        skipLines(readPointer, 2);
+        skipChars(readPointer, 32);
+        pkmn.bodyColor = readString(readPointer, ',');
+
         pokedex.push_back(pkmn);
-        // printf("successfully read %dth pokemon data\n", i + 1);
-        skipLines(readPointer, 5);
+        skipLines(readPointer, 3);
         if (i == 250)
         {
-            skipLines(readPointer, 25); // 25 garbage lines for unown data
+            skipLines(readPointer, 25); // 22 garbage lines for unown data
         }
     }
 
@@ -110,7 +171,6 @@ void writeStatsInDex(vector<Pokemon> &pokedex)
 {
     FILE *writePointer;
     writePointer = fopen("./../../src/data/pokemon/pokedex_text_fr.h", "w");
-    // writePointer = fopen("./output.txt", "w");
     if (writePointer == NULL)
     {
         printf("Could not open pokedex_text_fr.h\n");
@@ -156,11 +216,10 @@ void writeStatsInDex(vector<Pokemon> &pokedex)
         }
 
         fprintf(writePointer, "\nconst u8 g%sPokedexText[] = _(\n", camelCase.c_str());
-        fprintf(writePointer, "    \"HP     - %3d    Ph.Atk - %3d\\n\"\n", pokedex[i].HP, pokedex[i].PA);
-        fprintf(writePointer, "    \"Ph.Def - %3d    Sp.Atk - %3d\\n\"\n", pokedex[i].PD, pokedex[i].SA);
-        fprintf(writePointer, "    \"Sp.Def - %3d    Speed  - %3d\");\n", pokedex[i].SD, pokedex[i].SP);
+        fprintf(writePointer, "    \"HP     - %3d    Ph.Atk - %3d\\n\"\n", pokedex[i].HP, pokedex[i].phAtk);
+        fprintf(writePointer, "    \"Ph.Def - %3d    Sp.Atk - %3d\\n\"\n", pokedex[i].phDef, pokedex[i].spAtk);
+        fprintf(writePointer, "    \"Sp.Def - %3d    Speed  - %3d\");\n", pokedex[i].spDef, pokedex[i].speed);
         fprintf(writePointer, "\nconst u8 g%sPokedexTextUnused[] = _(\"\");\n", camelCase.c_str());
-        // printf("successfully wrote %dth pokemon name\n", i + 1);
     }
 
     fclose(writePointer);
@@ -181,7 +240,6 @@ void updateNames(vector<Pokemon> &pokedex)
         Pokemon &pkmn = pokedex[i];
         skipChars(readPointer, 20 + pkmn.oldName.length());
         pkmn.newName = readString(readPointer, '"');
-        // printf("successfully read %dth pokemon name\n", i + 1);
         skipLines(readPointer, 1);
     }
 
@@ -204,7 +262,6 @@ void reOrderPokedex(vector<Pokemon> &pokedex)
         skipChars(readPointer, 17);
         string name = readString(readPointer, ',');
         skipLines(readPointer, 1);
-        // printf("%s\n", name.c_str());
 
         for (int j = 0; j < pokedex.size(); j += 1)
         {
@@ -247,90 +304,6 @@ void reOrderPokedex(vector<Pokemon> &pokedex)
     fprintf(writePointer, "];\n");
     fclose(writePointer);
 }
-void printPokedex(vector<Pokemon> &pokedex)
-{
-    FILE *writePointer = fopen("./species_info.txt", "w");
-    if (writePointer == NULL)
-    {
-        printf("Could not open species_info.txt\n");
-        return;
-    }
-
-    // Select columns to print
-    bool printName = true;
-    bool printTypes = true;
-    bool printAbilities = true;
-    bool printStats = true;
-    bool printBST = true;
-
-    // Apply custom sorting on the moveList
-    // stable_sort(pokedex.begin(), pokedex.end(), [](const Pokemon &a, const Pokemon &b)
-    //             { return a.name < b.name; });
-    // stable_sort(pokedex.begin(), pokedex.end(), [](const Pokemon &a, const Pokemon &b)
-    //             { return a.BST < b.BST; });
-    // stable_sort(pokedex.begin(), pokedex.end(), [](const Pokemon &a, const Pokemon &b)
-    //             { return a.index < b.index; });
-
-    // Print the sorted pokedex
-    string lineSeparator = "+-------+-------+";
-    string tableHeader = "|  OLD  |  NEW  |";
-    if (printName)
-    {
-        lineSeparator += "------------+";
-        tableHeader += "  NAME      |";
-    }
-    if (printTypes)
-    {
-        lineSeparator += "----------+----------+";
-        tableHeader += "  TYPE 1  |  TYPE 2  |";
-    }
-    if (printAbilities)
-    {
-        lineSeparator += "---------------+---------------+";
-        tableHeader += "   ABILITY 1   |   ABILITY 2   |";
-    }
-    if (printStats)
-    {
-        lineSeparator += "-----+-----+-----+-----+-----+-----+";
-        tableHeader += " HP  | PA  | PD  | SA  | SD  | SP  |";
-    }
-    if (printBST)
-    {
-        lineSeparator += "-----+";
-        tableHeader += " BST |";
-    }
-    fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    fprintf(writePointer, "%s\n", tableHeader.c_str());
-    fprintf(writePointer, "%s\n", lineSeparator.c_str());
-
-    for (int i = 0; i < pokedex.size(); i += 1)
-    {
-        Pokemon pkmn = pokedex[i];
-        fprintf(writePointer, "|  %03d  |  %03d  |", pokedex[i].oldIndex, pokedex[i].newIndex);
-        if (printName)
-        {
-            fprintf(writePointer, " %-10s |", pkmn.newName.c_str());
-        }
-        if (printTypes)
-        {
-            fprintf(writePointer, " %-8s | %-8s |", pkmn.types[0].c_str(), pkmn.types[1].c_str());
-        }
-        if (printAbilities)
-        {
-            fprintf(writePointer, " %-13s | %-13s |", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
-        }
-        if (printStats)
-        {
-            fprintf(writePointer, " %3d | %3d | %3d | %3d | %3d | %3d |", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
-        }
-        if (printBST)
-        {
-            fprintf(writePointer, " %3d |", pkmn.BST);
-        }
-        fprintf(writePointer, "\n");
-        fprintf(writePointer, "%s\n", lineSeparator.c_str());
-    }
-}
 void printCSV(vector<Pokemon> &pokedex)
 {
     FILE *writePointer = fopen("./species_info.csv", "w");
@@ -339,31 +312,36 @@ void printCSV(vector<Pokemon> &pokedex)
         printf("Could not open species_info.csv\n");
         return;
     }
-
-    fprintf(writePointer, "OldIndex,NewIndex,Name,Sprite,Type1,Type2,Abil1,Abil2,HP,PA,PD,SA,SD,SP,BST\n");
+    
+    fprintf(writePointer, "oldIndex,newIndex,oldName,newName,");
+    fprintf(writePointer, "HP,phAtk,phDef,spAtk,spDef,speed,totalStats,");
+    fprintf(writePointer, "type1,type2,abil1,abil2,eggGroup1,eggGroup2,");
+    fprintf(writePointer, "HPYield,phAtkYield,phDefYield,spAtkYield,spDefYield,speedYield,");
+    fprintf(writePointer, "expYield,catchRate,eggCycles,baseHappiness,growthRate,bodyColor\n");
 
     for (int i = 0; i < pokedex.size(); i += 1)
     {
         Pokemon pkmn = pokedex[i];
         fprintf(writePointer, "%03d,", pkmn.oldIndex);
         fprintf(writePointer, "%03d,", pkmn.newIndex);
+        fprintf(writePointer, "\"%s\",", pkmn.oldName.c_str());
         fprintf(writePointer, "\"%s\",", pkmn.newName.c_str());
-        string name = pkmn.oldName;
-        transform(name.begin(), name.end(), name.begin(), ::tolower);
-        fprintf(writePointer, "https://raw.githubusercontent.com/Ebadulislam1001/FireRed_RomHack/refs/heads/main/graphics/pokemon/%s/front.png,", name.c_str());
-        // printing types
-        if (pkmn.types[1] == "")
-            fprintf(writePointer, "%s,...,", pkmn.types[0].c_str());
-        else
-            fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
-        // printing abilities
-        if (pkmn.abils[1] == "")
-            fprintf(writePointer, "%s,...,", pkmn.abils[0].c_str());
-        else
-            fprintf(writePointer, "%s,%s,", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
-        // printing stats
-        fprintf(writePointer, "%d,%d,%d,%d,%d,%d,", pkmn.HP, pkmn.PA, pkmn.PD, pkmn.SA, pkmn.SD, pkmn.SP);
-        fprintf(writePointer, "%d\n", pkmn.BST);
+        fprintf(writePointer, "%d,%d,%d,", pkmn.HP, pkmn.phAtk, pkmn.phDef);
+        fprintf(writePointer, "%d,%d,%d,", pkmn.spAtk, pkmn.spDef, pkmn.speed);
+        fprintf(writePointer, "%d,", pkmn.totalStats);
+        fprintf(writePointer, "%s,%s,", pkmn.types[0].c_str(), pkmn.types[1].c_str());
+        fprintf(writePointer, "%s,%s,", pkmn.abils[0].c_str(), pkmn.abils[1].c_str());
+        fprintf(writePointer, "%s,%s,", pkmn.eggGroups[0].c_str(), pkmn.eggGroups[1].c_str());
+        for(int EV=0; EV<6; EV++)
+        {
+            fprintf(writePointer, "%d,", pkmn.evYields[EV]);
+        }
+        fprintf(writePointer, "%d,", pkmn.expYield);
+        fprintf(writePointer, "%d,", pkmn.catchRate);
+        fprintf(writePointer, "%d,", pkmn.eggCycles);
+        fprintf(writePointer, "%d,", pkmn.baseHappiness);
+        fprintf(writePointer, "%s,", pkmn.growthRate.c_str());
+        fprintf(writePointer, "%s\n", pkmn.bodyColor.c_str());
     }
 
     fclose(writePointer);
