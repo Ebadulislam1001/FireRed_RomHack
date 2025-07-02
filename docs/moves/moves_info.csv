@@ -26,7 +26,7 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 24,MEGA_KICK,MEGA KICK,NORMAL,120,75,HIT,0,5,0,SELECTED,The foe is attacked by a kick fired with muscle-packed power.,1,1,0,0,1,1
 25,JUMP_KICK,JUMP KICK,FIGHTING,90,95,RECOIL_IF_MISS,0,25,0,SELECTED,The user jumps up high; then kicks. If it misses; the user hurts itself.,1,1,0,0,1,1
 26,ROLLING_KICK,ROLLING KICK,FIGHTING,60,85,FLINCH_HIT,15,15,0,SELECTED,A quick kick from a rolling spin. It may make the foe flinch.,1,1,0,0,1,1
-27,SAND_ATTACK,SAND-ATTACK,GROUND,0,100,ACCURACY_DOWN,0,20,0,BOTH,A lot of sand is hurled in the foe's face; reducing their accuracy.,0,1,1,0,1,0
+27,SAND_ATTACK,SAND-ATTACK,GROUND,0,100,ACCURACY_DOWN,0,20,0,SELECTED,A lot of sand is hurled in the foe's face; reducing their accuracy.,0,1,1,0,1,0
 28,HEADBUTT,HEADBUTT,NORMAL,75,90,FLINCH_HIT,15,15,0,SELECTED,The user sticks its head out and rams. It may make the foe flinch.,1,1,0,0,1,0
 29,HORN_ATTACK,HORN ATTACK,NORMAL,65,100,HIT,0,25,0,SELECTED,The foe is jabbed with a sharply pointed horn to inflict damage.,1,1,0,0,1,1
 30,FURY_ATTACK,X-SCISSOR,BUG,70,100,HIGH_CRITICAL,0,15,0,SELECTED,A large scissor is used to slash the foe. It has a high critical-hit ratio.,1,1,0,0,1,1
@@ -70,7 +70,7 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 68,SEISMIC_TOSS,SEISMIC TOSS,FIGHTING,1,100,LEVEL_DAMAGE,0,20,0,SELECTED,A gravity-fed throw that causes damage matching the user's level.,1,1,0,0,1,1
 69,STRENGTH,STRENGTH,NORMAL,80,100,HIT,0,15,0,SELECTED,The foe is slugged at maximum power. Can also be used to move boulders.,1,1,0,0,1,1
 70,ABSORB,ABSORB,GRASS,25,100,ABSORB,0,20,0,SELECTED,An attack that absorbs half the damage it inflicted to restore HP.,0,1,0,0,1,0
-71,MEGA_DRAIN,MEGA DRAIN,GRASS,40,100,ABSORB,0,10,0,SELECTED,A tough attack that drains half the damage it inflicted to restore HP.,0,1,0,0,1,0
+71,MEGA_DRAIN,MEGA DRAIN,GRASS,40,100,ABSORB,0,20,0,SELECTED,A tough attack that drains half the damage it inflicted to restore HP.,0,1,0,0,1,0
 72,LEECH_SEED,LEECH SEED,GRASS,0,90,LEECH_SEED,0,10,0,SELECTED,A seed is planted on the foe to steal some HP for the user on every turn.,0,1,1,0,1,0
 73,GROWTH,GROWTH,NORMAL,0,0,SPECIAL_ATTACK_UP,0,30,0,USER,The user's body is forced to grow; raising the Sp.Atk stat.,0,0,0,1,0,0
 74,RAZOR_LEAF,RAZOR LEAF,GRASS,50,100,HIGH_CRITICAL,0,25,0,SELECTED,The foe is hit with a cutting leaf. It has a high critical-hit ratio.,0,1,0,0,1,1
@@ -146,7 +146,7 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 144,BUBBLE,BUBBLE,WATER,40,100,SPEED_DOWN_HIT,50,20,0,BOTH,A spray of bubbles hits the foe. It may lower the foe's SPEED stat.,0,1,0,0,1,0
 145,DIZZY_PUNCH,DIZZY PUNCH,NORMAL,75,100,CONFUSE_HIT,20,15,0,SELECTED,The foe is hit with a rhythmic punch that may leave it confused.,1,1,0,0,1,0
 146,SPORE,SPORE,GRASS,0,100,SLEEP,0,5,0,SELECTED,The user scatters bursts of fine spores that induce sleep.,0,1,1,0,1,0
-147,FLASH,FLASH,NORMAL,0,100,ACCURACY_DOWN,0,20,0,SELECTED,A blast of light that cuts the foe's accuracy. It also illuminates caves.,0,1,1,0,1,0
+147,FLASH,FLASH,NORMAL,0,100,ACCURACY_DOWN,0,20,0,BOTH,A blast of light that cuts the foe's accuracy. It also illuminates caves.,0,1,1,0,1,0
 148,PSYWAVE,PSYWAVE,PSYCHIC,1,80,PSYWAVE,0,15,0,SELECTED,The foe is attacked with an odd; hot energy wave that varies in intensity.,0,1,0,0,1,1
 149,SPLASH,SPLASH,NORMAL,0,0,SPLASH,0,40,0,USER,The user just flops and splashes around without having any effect.,0,0,0,0,0,0
 150,ACID_ARMOR,ACID ARMOR,POISON,0,0,SPECIAL_DEFENSE_UP,0,40,0,USER,The user alters its cells to liquefy itself and raise Sp.Def.,0,0,0,1,0,0
@@ -188,7 +188,7 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 186,BELLY_DRUM,BELLY DRUM,NORMAL,0,0,BELLY_DRUM,0,10,0,USER,The user maximizes its Ph.Atk stat at the cost of half its full HP.,0,0,0,1,0,0
 187,SLUDGE_BOMB,SLUDGE BOMB,POISON,90,100,POISON_HIT,30,10,0,SELECTED,Filthy sludge is hurled at the foe. It may poison the target.,0,1,0,0,1,0
 188,MUD_SLAP,MUD-SLAP,GROUND,30,100,ACCURACY_DOWN_HIT,50,20,0,SELECTED,Mud is hurled in the foe's face to inflict damage and lower its accuracy.,0,1,0,0,1,0
-189,OCTAZOOKA,OCTAZOOKA,WATER,50,90,ACCURACY_DOWN_HIT,50,10,0,BOTH,Ink is blasted in the foe's face or eyes to damage and lower its accuracy.,0,1,0,0,1,0
+189,OCTAZOOKA,OCTAZOOKA,WATER,60,90,ACCURACY_DOWN_HIT,50,10,0,BOTH,Ink is blasted in the foe's face or eyes to damage and lower its accuracy.,0,1,0,0,1,0
 190,SPIKES,SPIKES,GROUND,0,0,SPIKES,0,20,0,OPPONENTS_FIELD,A trap of spikes is laid around the foe's party to hurt foes switching in.,0,0,0,0,0,0
 191,ZAP_CANNON,ZAP CANNON,ELECTRIC,100,50,PARALYZE_HIT,100,5,0,SELECTED,An electric blast is fired like a cannon to inflict damage and paralyze.,0,1,0,0,1,0
 192,FORESIGHT,SHADOW CLAW,GHOST,70,100,HIGH_CRITICAL,0,15,0,SELECTED,The users uses its shadow to strike. It has a high critical-hit ratio.,1,1,0,0,1,1
@@ -200,13 +200,13 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 198,LOCK_ON,LOCK-ON,NORMAL,0,100,LOCK_ON,0,5,0,SELECTED,The user locks on to the foe; making the next move sure to hit.,0,1,0,0,1,0
 199,OUTRAGE,OUTRAGE,DRAGON,90,100,RAMPAGE,100,15,0,RANDOM,The user thrashes about for two to three turns; then becomes confused.,1,1,0,0,1,1
 200,SANDSTORM,SANDSTORM,ROCK,0,0,SANDSTORM,0,10,0,USER,A 5-turn sandstorm that damages all types except ROCK; GROUND; and STEEL.,0,0,0,0,0,0
-201,GIGA_DRAIN,GIGA DRAIN,GRASS,60,100,ABSORB,0,5,0,SELECTED,A harsh attack that absorbs half the damage it inflicted to restore HP.,0,1,0,0,1,0
+201,GIGA_DRAIN,GIGA DRAIN,GRASS,80,100,ABSORB,0,10,0,SELECTED,A harsh attack that absorbs half the damage it inflicted to restore HP.,0,1,0,0,1,0
 202,ENDURE,ENDURE,NORMAL,0,0,ENDURE,0,5,3,USER,The user endures any hit with 1 HP left. It may fail if used in succession.,0,0,0,0,0,0
 203,CHARM,CHARM,NORMAL,0,100,ATTACK_DOWN_2,0,20,0,SELECTED,The foe is charmed by the user's cute appeals; sharply cutting its Ph.Atk.,0,1,1,0,1,0
 204,ROLLOUT,ROLLOUT,ROCK,30,90,ROLLOUT,0,20,0,SELECTED,A 5-turn rolling attack that becomes stronger each time it hits.,1,1,0,0,1,1
 205,FALSE_SWIPE,FALSE SWIPE,NORMAL,40,100,FALSE_SWIPE,0,40,0,SELECTED,A restrained attack that always leaves the foe with at least 1 HP.,1,1,0,0,1,1
 206,SWAGGER,SWAGGER,DARK,0,100,SWAGGER,100,15,0,SELECTED,It confuses the target but also raises its Ph.Atk sharply.,0,1,1,0,1,0
-207,MILK_DRINK,AQUA CUTTER,GRASS,85,90,AQUA_CUTTER,25,10,0,SELECTED,It has a high critical-hit ratio. It may also make the foe flinch.,1,1,0,0,1,1
+207,MILK_DRINK,AQUA CUTTER,WATER,85,90,AQUA_CUTTER,25,10,0,SELECTED,It has a high critical-hit ratio. It may also make the foe flinch.,1,1,0,0,1,1
 208,SPARK,SPARK,ELECTRIC,65,100,ATTACK_DOWN_HIT,20,20,0,SELECTED,An electrically charged tackle. It may lower the foe's Ph.Atk stat.,1,1,0,0,1,0
 209,FURY_CUTTER,FURY CUTTER,BUG,90,100,RAMPAGE,100,15,0,RANDOM,An attack that grows stronger on each successive hit.,1,1,0,0,1,1
 210,STEEL_WING,STEEL WING,STEEL,70,90,DEFENSE_UP_HIT,20,25,0,SELECTED,The foe is hit with wings of steel. It may also raise the user's Ph.Def.,1,1,0,0,1,1
@@ -244,7 +244,7 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 242,MIRROR_COAT,MIRROR COAT,PSYCHIC,1,100,MIRROR_COAT,0,20,-5,DEPENDS,A retaliation move that counters any special hit with double the damage.,0,0,0,0,1,0
 243,PSYCH_UP,PSYCH UP,NORMAL,0,0,PSYCH_UP,0,10,0,SELECTED,The user hypnotizes itself into copying any stat change made by the foe.,0,0,0,1,0,0
 244,EXTREME_SPEED,EXTREMESPEED,NORMAL,90,100,QUICK_ATTACK,0,5,2,SELECTED,A blindingly speedy charge attack that always goes before any other.,1,1,0,0,1,1
-245,ANCIENT_POWER,ANCIENTPOWER,ROCK,60,100,ALL_STATS_UP_HIT,16,5,0,SELECTED,An ancient power is used to attack. It may also raise all the user's stats.,1,1,0,0,1,0
+245,ANCIENT_POWER,ANCIENTPOWER,ROCK,60,100,ALL_STATS_UP_HIT,16,5,0,SELECTED,An ancient power is used to attack. It may also raise all the user's stats.,1,1,0,0,1,1
 246,SHADOW_BALL,SHADOW BALL,GHOST,90,95,DEFENSE_DOWN_HIT,20,15,0,SELECTED,A shadowy blob is hurled at the foe. May also lower the foe's Ph.Def.,0,1,0,0,1,0
 247,FUTURE_SIGHT,FUTURE SIGHT,PSYCHIC,80,90,FUTURE_SIGHT,0,15,0,SELECTED,Two turns after this move is used; the foe is attacked psychically.,0,0,0,0,0,0
 248,ROCK_SMASH,ROCK SMASH,FIGHTING,25,100,DEFENSE_DOWN_HIT,100,20,0,SELECTED,An attack that cuts target's Ph.Def. It can also smash cracked boulders.,1,1,0,0,1,0
@@ -338,7 +338,7 @@ serial,oldName,newName,type,basePower,accuracy,secondaryEffect,effectChance,PP,p
 336,DRAGON_CLAW,DRAGON CLAW,DRAGON,80,100,HIGH_CRITICAL,0,15,0,SELECTED,Sharp; huge claws hook and slash the foe quickly and with great power.,1,1,0,0,1,1
 337,FRENZY_PLANT,FRENZY PLANT,GRASS,150,90,RECHARGE,0,5,0,SELECTED,The foe is hit with an enormous branch. The user can't move on the next turn.,0,1,0,0,1,1
 338,BULK_UP,BULK UP,FIGHTING,0,0,BULK_UP,0,20,0,USER,The user bulks up its body to boost both its Ph.Atk and Ph.Def stats.,0,0,0,1,0,0
-339,BOUNCE,DRIP-DROP,WATER,20,95,FURY_CUTTER,0,20,0,SELECTED,An attack that grows stronger on each successive hit.,0,1,0,0,1,1
+339,BOUNCE,DRIP-DROP,WATER,25,100,FURY_CUTTER,0,20,0,SELECTED,An attack that grows stronger on each successive hit.,0,1,0,0,1,1
 340,MUD_SHOT,MUD SHOT,GROUND,55,95,SPEED_DOWN_HIT,100,15,0,SELECTED,The user attacks by hurling mud. It also reduces the foe's SPEED.,0,1,0,0,1,1
 341,POISON_TAIL,POISON TAIL,POISON,50,100,POISON_TAIL,30,25,0,SELECTED,An attack with a high critical-hit ratio. It may also poison the foe.,1,1,0,0,1,1
 342,COVET,NIGHT SLASH,DARK,70,100,HIGH_CRITICAL,0,15,0,SELECTED,The foe is slashed with a sharp swipe. It has a high critical-hit ratio.,1,1,0,0,1,1
