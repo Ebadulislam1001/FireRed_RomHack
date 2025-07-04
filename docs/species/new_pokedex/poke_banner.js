@@ -1,7 +1,6 @@
 const POKEMON_COUNT = 384;
 let showFront = true;
 let showNames = false;
-console.log('Imported data:', pokemon_names);
 
 function render_sprites() {
 
@@ -32,8 +31,8 @@ function render_sprites() {
         let pokemon_sprite = document.createElement("img");
         pokemon_sprite.className = "pokemon-sprite";
         pokemon_sprite.src = (showFront)
-            ? "../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/front.png"
-            : "../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/back.png";
+            ? "../../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/front.png"
+            : "../../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/back.png";
         pokemon.appendChild(pokemon_sprite);
 
         list.appendChild(pokemon);

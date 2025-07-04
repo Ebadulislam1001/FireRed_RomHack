@@ -275,7 +275,7 @@ void read_order_from_pokedex_order(vector<Pokemon> &pokedex)
     fclose(readPointer);
 
     FILE *writePointer;
-    writePointer = fopen("./new_pokedex.js", "w");
+    writePointer = fopen("./new_pokedex/new_pokedex.js", "w");
     if (writePointer == NULL)
     {
         printf("Could not open new_pokdex.txt\n");
