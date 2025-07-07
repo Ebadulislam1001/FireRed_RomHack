@@ -209,9 +209,13 @@
 
 #define MAX_LEVEL_UP_MOVES       20
 
-#define MON_MALE       0x00
-#define MON_FEMALE     0xFE
-#define MON_GENDERLESS 0xFF
+#define MON_MALE       0x00 // 0.0% FEMALE
+#define MON_12_5       0x20 // 12.5% FEMALE
+#define MON_25_0       0x40 // 25.0% FEMALE
+#define MON_50_0       0x7F // 50.0% FEMALE
+#define MON_75_0       0xBF // 75.0% FEMALE
+#define MON_FEMALE     0xFE // 100% FEMALE
+#define MON_GENDERLESS 0xFF // Genderless
 
 #define FRIENDSHIP_EVENT_GROW_LEVEL           0
 #define FRIENDSHIP_EVENT_VITAMIN              1
