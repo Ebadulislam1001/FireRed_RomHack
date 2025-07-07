@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "./../fileHelper.cpp"
 using namespace std;
 
 #define TOTAL_POKEMON 386
@@ -31,34 +30,33 @@ struct Pokemon
     string bodyColor;
 };
 
-void read_data_from_species_info(vector<Pokemon> &pokedex);
+void read_species_info_data(vector<Pokemon> &pokedex);
 void write_data_in_pokedex_text(vector<Pokemon> &pokedex);
-void read_newnames_from_species_names(vector<Pokemon> &pokedex);
 void read_order_from_pokedex_order(vector<Pokemon> &pokedex);
 void write_csv_data(vector<Pokemon> &pokedex);
 
-int main()
+int species_info_main()
 {
     vector<Pokemon> pokedex;
-    read_data_from_species_info(pokedex);
+    read_species_info_data(pokedex);
     write_data_in_pokedex_text(pokedex);
-    read_newnames_from_species_names(pokedex);
     read_order_from_pokedex_order(pokedex);
     write_csv_data(pokedex);
     return 0;
 }
 
-void read_data_from_species_info(vector<Pokemon> &pokedex)
+void read_species_info_data(vector<Pokemon> &pokedex)
 {
+    printf("Reading data from species_info.h\n");
     FILE *readPointer;
-    readPointer = fopen("./../../src/data/pokemon/species_info.h", "r");
+    readPointer = fopen("./../src/data/pokemon/species_info.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open species_info.h\n");
         return;
     }
 
-    skipLines(readPointer, 37); // 37 garbage lines in the beginning
+    skipLines(readPointer, 33);
     for (int i = 0; i < TOTAL_POKEMON; i += 1)
     {
         Pokemon pkmn;
@@ -159,16 +157,35 @@ void read_data_from_species_info(vector<Pokemon> &pokedex)
         skipLines(readPointer, 3);
         if (i == 250)
         {
-            skipLines(readPointer, 25); // 22 garbage lines for unown data
+            skipLines(readPointer, 25);
         }
     }
+    fclose(readPointer);
 
+    printf("Reading new names from species_names.h\n");
+    // FILE *readPointer;
+    readPointer = fopen("./../src/data/text/species_names.h", "r");
+    if (readPointer == NULL)
+    {
+        printf("Could not open species_names.h\n");
+        return;
+    }
+
+    skipLines(readPointer, 2);
+    for (int i = 0; i < TOTAL_POKEMON; i += 1)
+    {
+        Pokemon &pkmn = pokedex[i];
+        skipChars(readPointer, 20 + pkmn.oldName.length());
+        pkmn.newName = readString(readPointer, '"');
+        skipLines(readPointer, 1);
+    }
     fclose(readPointer);
 }
 void write_data_in_pokedex_text(vector<Pokemon> &pokedex)
 {
+    printf("Writing data in pokedex_text_fr.h\n");
     FILE *writePointer;
-    writePointer = fopen("./../../src/data/pokemon/pokedex_text_fr.h", "w");
+    writePointer = fopen("./../src/data/pokemon/pokedex_text_fr.h", "w");
     if (writePointer == NULL)
     {
         printf("Could not open pokedex_text_fr.h\n");
@@ -222,31 +239,11 @@ void write_data_in_pokedex_text(vector<Pokemon> &pokedex)
 
     fclose(writePointer);
 }
-void read_newnames_from_species_names(vector<Pokemon> &pokedex)
-{
-    FILE *readPointer;
-    readPointer = fopen("./../../src/data/text/species_names.h", "r");
-    if (readPointer == NULL)
-    {
-        printf("Could not open species_names.h\n");
-        return;
-    }
-
-    skipLines(readPointer, 2); // 2 garbage lines in the beginning
-    for (int i = 0; i < TOTAL_POKEMON; i += 1)
-    {
-        Pokemon &pkmn = pokedex[i];
-        skipChars(readPointer, 20 + pkmn.oldName.length());
-        pkmn.newName = readString(readPointer, '"');
-        skipLines(readPointer, 1);
-    }
-
-    fclose(readPointer);
-}
 void read_order_from_pokedex_order(vector<Pokemon> &pokedex)
 {
+    printf("Reading order from pokedex.h\n");
     FILE *readPointer;
-    readPointer = fopen("./../../include/constants/pokedex.h", "r");
+    readPointer = fopen("./../include/constants/pokedex.h", "r");
     if (readPointer == NULL)
     {
         printf("Could not open pokedex.h\n");
@@ -275,7 +272,7 @@ void read_order_from_pokedex_order(vector<Pokemon> &pokedex)
     fclose(readPointer);
 
     FILE *writePointer;
-    writePointer = fopen("./new_pokedex/new_pokedex.js", "w");
+    writePointer = fopen("./webpage/new_pokedex.js", "w");
     if (writePointer == NULL)
     {
         printf("Could not open new_pokdex.txt\n");
@@ -304,7 +301,8 @@ void read_order_from_pokedex_order(vector<Pokemon> &pokedex)
 }
 void write_csv_data(vector<Pokemon> &pokedex)
 {
-    FILE *writePointer = fopen("./species_info.csv", "w");
+    printf("Writing CSV data\n");
+    FILE *writePointer = fopen("./species/species_info.csv", "w");
     if (writePointer == NULL)
     {
         printf("Could not open species_info.csv\n");

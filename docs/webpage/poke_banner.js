@@ -31,8 +31,8 @@ function render_sprites() {
         let pokemon_sprite = document.createElement("img");
         pokemon_sprite.className = "pokemon-sprite";
         pokemon_sprite.src = (showFront)
-            ? "../../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/front.png"
-            : "../../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/back.png";
+            ? "../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/front.png"
+            : "../../graphics/pokemon/" + pokemon_names[i].toLowerCase() + "/back.png";
         pokemon.appendChild(pokemon_sprite);
 
         list.appendChild(pokemon);

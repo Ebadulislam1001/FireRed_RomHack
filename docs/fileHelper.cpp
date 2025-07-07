@@ -34,3 +34,9 @@ string readString(FILE *&readPointer, char delim)
     }
     return ans;
 }
+bool isNextChar(FILE *&readPointer, char ch)
+{
+    char next= fgetc(readPointer);
+    ungetc(next, readPointer);
+    return next == ch;
+}
