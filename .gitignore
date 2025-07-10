@@ -67,5 +67,4 @@ prefabs.json
 *.js
 !poke_banner.js
 !new_pokedex.js
-!species_info.ipynb
-!moves_info.ipynb
+!analysis.ipynb

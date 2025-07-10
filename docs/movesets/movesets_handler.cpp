@@ -6,21 +6,34 @@ using namespace std;
 #define TOTAL_POKEMON 386
 #define TOTAL_MOVES 354
 
-struct LevelUpMove
+struct Moveset
 {
     string species;
+    /*
+        always -1 for a tutor move
+        always 0 for an egg move
+        ranges from 1 to 100 for a level-up move
+        ranges from 101 to 150 for a TM move
+        ranges from 151 onwards for an HM move
+    */
     int level;
     string move;
 };
 
 string lower_to_upper(string str);
-void read_levelup_moveset_data(vector<LevelUpMove> &movesets);
-void write_csv_data(vector<LevelUpMove> &movesets);
+void read_levelup_moves_data(vector<Moveset> &movesets);
+void read_tmhm_moves_data(vector<Moveset> &movesets);
+void read_egg_moves_data(vector<Moveset> &movesets);
+void read_tutor_moves_data(vector<Moveset> &movesets);
+void write_csv_data(vector<Moveset> &movesets);
 
 int movesets_main()
 {
-    vector<LevelUpMove> movesets;
-    read_levelup_moveset_data(movesets);
+    vector<Moveset> movesets;
+    read_levelup_moves_data(movesets);
+    read_tmhm_moves_data(movesets);
+    read_egg_moves_data(movesets);
+    read_tutor_moves_data(movesets);
     write_csv_data(movesets);
     return 0;
 }
@@ -53,7 +66,7 @@ string lower_to_upper(string lowercase)
 
     return lowercase;
 }
-void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
+void read_levelup_moves_data(vector<Moveset> &movesets)
 {
     printf("Reading data from level_up_learnsets.h\n");
     FILE *readPointer;
@@ -67,7 +80,8 @@ void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
     skipLines(readPointer, 3);
     while (true)
     {
-        if(isNextChar(readPointer, '/')){
+        if (isNextChar(readPointer, '/'))
+        {
             break;
         }
         skipChars(readPointer, 18);
@@ -80,7 +94,7 @@ void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
         skipLines(readPointer, 1);
         while (true)
         {
-            LevelUpMove newMove;
+            Moveset newMove;
             newMove.species = speciesName;
             skipChars(readPointer, 13);
             if (isNextChar(readPointer, 'E'))
@@ -97,6 +111,157 @@ void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
         }
     }
     fclose(readPointer);
+}
+void read_tmhm_moves_data(vector<Moveset> &movesets)
+{
+    printf("Reading data from tmhm_learnsets.h\n");
+    FILE *readPointer;
+    readPointer = fopen("./../src/data/pokemon/tmhm_learnsets.h", "r");
+    if (readPointer == NULL)
+    {
+        printf("Could not open tmhm_learnsets.h\n");
+        return;
+    }
+
+    skipLines(readPointer, 10);
+    for (int i = 0; i < TOTAL_POKEMON + 25; i += 1)
+    {
+        skipChars(readPointer, 13);
+        string speciesName = readString(readPointer, ']');
+        skipChars(readPointer, 28 - speciesName.size());
+        if (isNextChar(readPointer, '0'))
+        {
+            skipLines(readPointer, 2);
+            continue;
+        }
+        skipChars(readPointer, 5);
+        while (true)
+        {
+            Moveset newMove;
+            newMove.species = speciesName;
+
+            int offSet = 200;
+            if (isNextChar(readPointer, 'T'))
+            {
+                offSet = 100;
+            }
+            else if (isNextChar(readPointer, 'H'))
+            {
+                offSet = 150;
+            }
+            skipChars(readPointer, 2);
+            newMove.level = offSet + readInt(readPointer);
+
+            skipChars(readPointer, 1);
+            newMove.move = readString(readPointer, ')');
+
+            movesets.push_back(newMove);
+            if (isNextChar(readPointer, ')'))
+            {
+                skipLines(readPointer, 2);
+                break;
+            }
+            else
+            {
+                skipLines(readPointer, 1);
+                skipChars(readPointer, 47);
+            }
+        }
+    }
+    fclose(readPointer);
+}
+void read_egg_moves_data(vector<Moveset> &movesets)
+{
+    printf("Reading data from egg_moves.h\n");
+    FILE *readPointer;
+    readPointer = fopen("./../src/data/pokemon/egg_moves.h", "r");
+    if (readPointer == NULL)
+    {
+        printf("Could not open egg_moves.h\n");
+        return;
+    }
+
+    skipLines(readPointer, 5);
+    while (true)
+    {
+        skipChars(readPointer, 13);
+        if (isNextChar(readPointer, '_'))
+        {
+            break;
+        }
+        skipChars(readPointer, 1);
+        string speciesName = readString(readPointer, ',');
+        skipLines(readPointer, 1);
+        while (true)
+        {
+            Moveset newMove;
+            skipChars(readPointer, 19);
+            newMove.species = speciesName;
+            newMove.level = 0;
+            newMove.move = readString(readPointer, ',');
+            skipLines(readPointer, 1);
+            if (newMove.move.back() == ')')
+            {
+                newMove.move.pop_back();
+                movesets.push_back(newMove);
+                skipLines(readPointer, 1);
+                break;
+            }
+            else
+            {
+                movesets.push_back(newMove);
+            }
+        }
+    }
+    fclose(readPointer);
+}
+void read_tutor_moves_data(vector<Moveset> &movesets)
+{
+    printf("Reading data from tutor_learnsets.h\n");
+    FILE *readPointer;
+    readPointer = fopen("./../src/data/pokemon/tutor_learnsets.h", "r");
+    if (readPointer == NULL)
+    {
+        printf("Could not open tutor_learnsets.h\n");
+        return;
+    }
+
+    skipLines(readPointer, 25);
+    for (int i = 0; i < TOTAL_POKEMON; i += 1)
+    {
+        skipChars(readPointer, 13);
+        string speciesName = readString(readPointer, ']');
+        skipChars(readPointer, 3);
+        if(isNextChar(readPointer, '0'))
+        {
+            skipLines(readPointer, 2);
+            continue;
+        }
+        skipChars(readPointer, 11);
+        while (true)
+        {
+            Moveset newMove;
+            newMove.species = speciesName;
+            newMove.level = -1;
+            newMove.move = readString(readPointer, ')');
+            movesets.push_back(newMove);
+            if (isNextChar(readPointer, ','))
+            {
+                skipLines(readPointer, 2);
+                break;
+            }
+            else
+            {
+                skipLines(readPointer, 1);
+                skipChars(readPointer, 28 + speciesName.size());
+            }
+        }
+    }
+    fclose(readPointer);
+}
+void write_csv_data(vector<Moveset> &movesets)
+{
+    FILE *readPointer;
 
     printf("Reading new names from species_names.h\n");
     readPointer = fopen("./../src/data/text/species_names.h", "r");
@@ -105,7 +270,6 @@ void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
         printf("Could not open species_names.h\n");
         return;
     }
-
     skipLines(readPointer, 2);
     for (int i = 0; i < TOTAL_POKEMON; i += 1)
     {
@@ -131,13 +295,12 @@ void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
         printf("Could not open move_names.h\n");
         return;
     }
-
     skipLines(readPointer, 2);
     for (int i = 0; i < TOTAL_MOVES; i += 1)
     {
         skipChars(readPointer, 10);
         string oldName = readString(readPointer, ']');
-        skipChars(readPointer, 19-oldName.size());
+        skipChars(readPointer, 19 - oldName.size());
         string newName = readString(readPointer, '"');
         skipLines(readPointer, 1);
         for (int j = 0; j < movesets.size(); j += 1)
@@ -149,9 +312,7 @@ void read_levelup_moveset_data(vector<LevelUpMove> &movesets)
         }
     }
     fclose(readPointer);
-}
-void write_csv_data(vector<LevelUpMove> &movesets)
-{
+
     printf("Writing CSV data\n");
     FILE *writePointer = fopen("./movesets/movesets.csv", "w");
     if (writePointer == NULL)
@@ -164,7 +325,7 @@ void write_csv_data(vector<LevelUpMove> &movesets)
 
     for (int i = 0; i < movesets.size(); i += 1)
     {
-        LevelUpMove newMove = movesets[i];
+        Moveset newMove = movesets[i];
         fprintf(writePointer, "%s,", newMove.species.c_str());
         fprintf(writePointer, "%d,", newMove.level);
         fprintf(writePointer, "%s\n", newMove.move.c_str());
